@@ -14,7 +14,7 @@ interface MemberCardProps {
 export function MemberCard({ name, role, interest, image, email, linkedin }: MemberCardProps) {
     return (
         <div className="group flex flex-col space-y-4">
-            <div className="relative aspect-square overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800">
                 {/* Placeholder or Image */}
                 {image ? (
                     <img src={image} alt={name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />

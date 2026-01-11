@@ -44,9 +44,7 @@ export function Hero() {
                             Semiconductor <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 animate-gradient-x">Photonics and Electronics</span> Lab
                         </h1>
 
-                        <p className="mx-auto max-w-2xl text-lg text-muted-foreground sm:text-xl leading-relaxed">
-                            At SPELL Lab, we explore the limits of <span className="text-gray-100">flexible electrodes</span>, <span className="text-gray-100">perovskite LEDs</span>, and <span className="text-gray-100">neuromorphic computing</span> to bridge the gap between science and application.
-                        </p>
+
                     </motion.div>
 
                     <motion.div
@@ -57,7 +55,7 @@ export function Hero() {
                     >
                         <Button size="lg" className="h-12 px-8 text-base bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 border-0 shadow-lg shadow-blue-500/25" asChild>
                             <Link href="/research">
-                                Research Areas <ArrowRight className="ml-2 h-4 w-4" />
+                                Research Areas
                             </Link>
                         </Button>
                         <Button size="lg" variant="outline" className="h-12 px-8 text-base backdrop-blur-sm bg-white/5 border-white/10 hover:bg-white/10 text-white" asChild>

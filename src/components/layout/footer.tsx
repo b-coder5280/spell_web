@@ -24,7 +24,9 @@ export function Footer() {
                         <h4 className="mb-4 text-sm font-semibold">Contact</h4>
                         <div className="space-y-2 text-sm text-muted-foreground">
                             <p>123 Cheomdan-gwagiro, Buk-gu, Gwangju 61005, Korea</p>
-                            <p>Email: contact@spell-lab.com (Example)</p>
+                            <p>Email: hobkim@gist.ac.kr </p>
+                            <p>Tel: +82-62-715-2741 </p>
+                            <p>Office: Materials Science and Engineering Building (S5) Rm:909</p>
                         </div>
                     </div>
                 </div>

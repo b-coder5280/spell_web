@@ -115,7 +115,7 @@ export function AnimatedBackground() {
     return (
         <canvas
             ref={canvasRef}
-            className="fixed inset-0 -z-10 h-full w-full bg-slate-50 dark:bg-slate-900 transition-colors duration-500"
+            className="fixed inset-0 -z-10 h-full w-full bg-slate-900 transition-colors duration-500"
         />
     )
 }

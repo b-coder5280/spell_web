@@ -22,27 +22,18 @@ export default function OpeningPage() {
                             <div className="border-b pb-8 last:border-0 last:pb-0">
                                 <h3 className="text-xl font-semibold">Ph.D. / M.S. Students</h3>
                                 <p className="mt-2 text-muted-foreground">
-                                    We invite applications from students with a strong background in Electrical Engineering, Materials Science, or Physics.
-                                    Successful candidates will work on projects related to Perovskite LEDs, Neuromorphic Computing, or Flexible Electronics.
-                                    Full financial support (tuition + stipend) is provided.
+                                    Semiconductor Photonics and Electronics Lab (SPELL) focuses on next-generation semiconductor and optoelectronic devices, encompassing 1) perovskite material design, 2) perovskite-based device fabrication, and 3) AI/ML-driven performance optimization based on experimental and simulation data, with the goal of establishing core technologies for future semiconductor and optoelectronic industries.
                                 </p>
-                                <div className="mt-4 font-medium text-sm">Target: Entering Fall 2024 / Spring 2025</div>
+                                <div className="mt-2 text-muted-foreground">Please don't hesitate to contact me by email if you are interested to join us. </div>
                             </div>
 
-                            <div className="border-b pb-8 last:border-0 last:pb-0">
-                                <h3 className="text-xl font-semibold">Postdoctoral Researchers</h3>
-                                <p className="mt-2 text-muted-foreground">
-                                    Candidates with expertise in device fabrication, characterization, or circuit design are encouraged to apply.
-                                    Competitive salary and benefits will be provided.
-                                </p>
-                            </div>
                         </div>
                     </div>
 
-                    <div className="rounded-2xl bg-slate-100 p-8 dark:bg-slate-900 text-center">
+                    <div className="rounded-2xl bg-slate-900 p-8 text-center">
                         <h2 className="mb-4 text-2xl font-bold">How to Apply</h2>
                         <p className="mb-8 text-muted-foreground">
-                            Please send your <strong>CV</strong> and a brief <strong>cover letter</strong> (or transcript for students) to Prof. Hong.
+                            Please send your <strong>CV</strong> and a brief <strong>cover letter</strong> (or transcript for students) to Prof. Kim.
                         </p>
                         <Button size="lg" className="gap-2" asChild>
                             <Link href="mailto:email@gist.ac.kr">

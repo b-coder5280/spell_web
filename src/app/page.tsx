@@ -1,115 +1,148 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
 import { Hero } from "@/components/home/hero"
 import { Container } from "@/components/ui/container"
 import { SectionTitle } from "@/components/ui/section-title"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
-import { StaggeredReveal, StaggeredItem } from "@/components/ui/staggered-reveal"
-import { thrusts } from "@/data/research"
-import { X, ArrowRight } from "lucide-react"
+import { publications } from "@/data/publications"
+import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import React, { useState, useCallback, useEffect } from "react"
+import useEmblaCarousel from 'embla-carousel-react'
 
 export default function Home() {
-  const [selectedId, setSelectedId] = useState<string | null>(null)
+  const featuredIds = ["p5", "p9", "p19", "p20", "p34", "p36", "p38"];
+  const featuredPubs = featuredIds.map(id => publications.find(p => p.id === id)).filter(Boolean);
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
+  const [canScrollPrev, setCanScrollPrev] = useState(false)
+  const [canScrollNext, setCanScrollNext] = useState(false)
+
+  const [selectedIndex, setSelectedIndex] = useState(0)
+
+  const onSelect = useCallback((api: any) => {
+    setCanScrollPrev(api.canScrollPrev())
+    setCanScrollNext(api.canScrollNext())
+    setSelectedIndex(api.selectedScrollSnap())
+  }, [])
+
+  useEffect(() => {
+    if (!emblaApi) return
+    onSelect(emblaApi)
+    emblaApi.on('reInit', onSelect)
+    emblaApi.on('select', onSelect)
+  }, [emblaApi, onSelect])
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev()
+  }, [emblaApi])
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext()
+  }, [emblaApi])
+
 
   return (
-    <div className="flex flex-col gap-24 pb-24">
+    <div className="flex flex-col gap-8 pb-12">
       <Hero />
 
-      {/* Research Keywords Section */}
-      <Container>
-        <ScrollReveal className="w-full">
-          <SectionTitle
-            title="Core Technologies"
-            subtitle="We focus on cutting-edge research in semiconductor and photonics fields."
-            align="center"
-          />
-          <StaggeredReveal className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {thrusts.map((thrust) => (
-              <StaggeredItem key={thrust.id}>
-                <motion.div
-                  layoutId={`card-container-${thrust.id}`}
-                  onClick={() => setSelectedId(thrust.id)}
-                  className="flex flex-col items-center justify-center p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:shadow-lg hover:shadow-cyan-500/20 transition-all hover:scale-105 duration-300 cursor-pointer"
-                >
-                  <motion.span layoutId={`card-title-${thrust.id}`} className="text-center font-semibold text-foreground">{thrust.title}</motion.span>
-                </motion.div>
-              </StaggeredItem>
-            ))}
-          </StaggeredReveal>
-        </ScrollReveal>
-      </Container>
-
-      {/* Details Modal */}
-      <AnimatePresence>
-        {selectedId && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedId(null)}
-              className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+      {/* Representative Publication Section */}
+      {featuredPubs.length > 0 && (
+        <Container>
+          <ScrollReveal className="w-full">
+            <SectionTitle
+              title="Representative Publication"
+              subtitle="Highlighting our latest breakthroughs in semiconductor research."
+              align="center"
             />
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
-              {thrusts.filter(t => t.id === selectedId).map(thrust => (
-                <motion.div
-                  layoutId={`card-container-${thrust.id}`}
-                  key={thrust.id}
-                  className="pointer-events-auto relative w-full max-w-2xl overflow-hidden rounded-2xl bg-card shadow-2xl"
-                >
-                  <div className="relative h-64 w-full">
-                    <img src={thrust.image} alt={thrust.title} className="h-full w-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="absolute right-4 top-4 text-white hover:bg-white/20"
-                      onClick={(e) => { e.stopPropagation(); setSelectedId(null); }}
-                    >
-                      <X className="h-6 w-6" />
-                    </Button>
-                    <motion.h2 layoutId={`card-title-${thrust.id}`} className="absolute bottom-6 left-6 text-3xl font-bold text-white">
-                      {thrust.title}
-                    </motion.h2>
-                  </div>
 
-                  <div className="p-8">
-                    <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
-                      {thrust.description}
-                    </p>
+            <div className="relative group mt-8 max-w-6xl mx-auto">
+              <div className="overflow-hidden rounded-3xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm shadow-xl" ref={emblaRef}>
+                <div className="flex">
+                  {featuredPubs.map((pub: any) => (
+                    <div className="flex-[0_0_100%] min-w-0" key={pub.id}>
+                      <div className="flex flex-col lg:flex-row h-auto lg:h-[380px]">
+                        {/* Image Side - Fixed Width 40% & Centered */}
+                        <div className="relative w-full lg:w-2/5 bg-black/40 flex items-center justify-center p-4 min-h-[250px] lg:min-h-0 lg:h-full">
+                          {pub.image ? (
+                            <img
+                              src={pub.image}
+                              alt={pub.title}
+                              className="w-auto h-auto max-w-full max-h-full object-contain rounded-lg shadow-xl"
+                            />
+                          ) : (
+                            <div className="text-white/50">No Image Available</div>
+                          )}
+                        </div>
 
-                    <div className="rounded-xl bg-slate-50 dark:bg-slate-900/50 p-6 border">
-                      <h4 className="mb-2 font-semibold flex items-center gap-2 text-foreground">
-                        <ArrowRight className="h-4 w-4 text-primary" /> Key Research Details
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        {thrust.details}
-                      </p>
+                        {/* Content Side - Fixed Width 60% & Vertically Centered */}
+                        <div className="relative flex flex-col justify-center p-6 lg:w-3/5 lg:p-8 bg-slate-900/30 lg:h-full">
+                          <div className="mb-3 inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-0.5 text-[11px] font-medium text-blue-300 w-fit">
+                            {pub.journal} • {pub.year}
+                          </div>
+                          <h3 className="mb-3 text-xl font-bold leading-tight text-white sm:text-2xl line-clamp-2">
+                            {pub.title}
+                          </h3>
+                          {pub.description && (
+                            <p className="mb-4 text-sm sm:text-base leading-relaxed text-muted-foreground line-clamp-3">
+                              {pub.description}
+                            </p>
+                          )}
+
+                          <div className="flex flex-wrap gap-3">
+                            {pub.doi && (
+                              <Button asChild size="sm" className="bg-white text-black hover:bg-gray-200 shadow-lg shadow-white/5 transition-all hover:scale-105">
+                                <Link href={pub.doi} target="_blank" rel="noopener noreferrer">
+                                  View Paper <ExternalLink className="ml-2 h-3.5 w-3.5" />
+                                </Link>
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                  ))}
+                </div>
+              </div>
 
-                    <div className="mt-8 flex gap-2">
-                      {thrust.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium border-transparent bg-secondary text-secondary-foreground"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+              {/* Navigation Buttons */}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white rounded-full h-10 w-10 z-10 hidden md:flex"
+                onClick={scrollPrev}
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </Button>
+
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white rounded-full h-10 w-10 z-10 hidden md:flex"
+                onClick={scrollNext}
+              >
+                <ChevronRight className="h-6 w-6" />
+              </Button>
+
+              {/* Dots Indicator - Absolute Bottom inside group but outside overflow for safety, or absolute relative to group */}
+              <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 pointer-events-none z-20">
+                {featuredPubs.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => emblaApi && emblaApi.scrollTo(idx)}
+                    className={`h-1.5 rounded-full transition-all duration-300 pointer-events-auto ${idx === selectedIndex ? "w-8 bg-blue-500" : "w-1.5 bg-slate-600 hover:bg-slate-400"}`}
+                  />
+                ))}
+              </div>
             </div>
-          </>
-        )}
-      </AnimatePresence>
+
+          </ScrollReveal>
+        </Container>
+      )}
 
       {/* Quick News Demo */}
-      <Container className="bg-slate-50/50 dark:bg-slate-900/50 py-16 rounded-3xl backdrop-blur-md border border-slate-200 dark:border-slate-800">
+      <Container className="bg-slate-900/50 py-16 rounded-3xl backdrop-blur-md border border-slate-800">
         <ScrollReveal className="w-full">
           <SectionTitle title="Latest at SPELL" align="center" />
           <div className="text-center text-muted-foreground">

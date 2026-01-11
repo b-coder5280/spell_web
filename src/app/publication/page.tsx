@@ -21,8 +21,6 @@ export default function PublicationPage() {
     // Let's go with one unified list where Selected items come first, then sorted by Year.
 
     const sortedPublications = [...publications].sort((a, b) => {
-        if (a.selected && !b.selected) return -1
-        if (!a.selected && b.selected) return 1
         return b.year - a.year
     })
 
@@ -41,16 +39,16 @@ export default function PublicationPage() {
                         </p>
                     </div>
 
-                    <div className="flex bg-slate-100 p-1 rounded-lg dark:bg-slate-800">
+                    <div className="flex bg-slate-800 p-1 rounded-lg">
                         <button
                             onClick={() => setFilter("all")}
-                            className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${filter === "all" ? "bg-white shadow text-foreground dark:bg-slate-950" : "text-muted-foreground hover:text-foreground"}`}
+                            className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${filter === "all" ? "bg-slate-950 shadow text-foreground" : "text-muted-foreground hover:text-foreground"}`}
                         >
                             All
                         </button>
                         <button
                             onClick={() => setFilter("selected")}
-                            className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${filter === "selected" ? "bg-white shadow text-foreground dark:bg-slate-950" : "text-muted-foreground hover:text-foreground"}`}
+                            className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${filter === "selected" ? "bg-slate-950 shadow text-foreground" : "text-muted-foreground hover:text-foreground"}`}
                         >
                             Selected
                         </button>
@@ -65,7 +63,7 @@ export default function PublicationPage() {
                                     <div className="flex items-center gap-2">
                                         <span className="font-semibold text-lg leading-tight">{pub.title}</span>
                                         {pub.selected && (
-                                            <span className="inline-flex items-center rounded-full border border-yellow-500/30 bg-yellow-500/10 px-2 py-0.5 text-xs font-semibold text-yellow-600 dark:text-yellow-400">
+                                            <span className="inline-flex items-center rounded-full border border-yellow-500/30 bg-yellow-500/10 px-2 py-0.5 text-xs font-semibold text-yellow-400">
                                                 <Star className="mr-1 h-3 w-3 fill-current" /> Selected
                                             </span>
                                         )}

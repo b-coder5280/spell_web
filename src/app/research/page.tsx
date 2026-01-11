@@ -14,7 +14,7 @@ export default function ResearchPage() {
     const [selectedId, setSelectedId] = useState<string | null>(null)
 
     return (
-        <div className="pb-24 pt-16">
+        <div className="min-h-screen pb-24 pt-16 text-slate-200">
             <Container>
                 {/* Vision Section */}
                 <div className="mb-24 text-center">
@@ -29,9 +29,9 @@ export default function ResearchPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="mx-auto max-w-3xl text-xl text-muted-foreground"
+                        className="mx-auto max-w-3xl text-xl text-slate-400"
                     >
-                        We aim to <span className="text-foreground font-semibold">redefine the limits of semiconductor technology</span> by leveraging novel materials and innovative device architectures.
+                        We aim to <span className="text-slate-200 font-semibold">redefine the limits of semiconductor technology</span> by leveraging novel materials and innovative device architectures.
                     </motion.p>
                 </div>
 
@@ -55,11 +55,7 @@ export default function ResearchPage() {
 
                                 <motion.div className="p-6">
                                     <p className="line-clamp-3 text-sm text-gray-300">{thrust.description}</p>
-                                    <div className="mt-4 flex flex-wrap gap-2">
-                                        {thrust.tags.map(tag => (
-                                            <span key={tag} className="text-xs font-semibold text-primary/90">#{tag}</span>
-                                        ))}
-                                    </div>
+
                                 </motion.div>
                             </motion.div>
                         </StaggeredItem>
@@ -75,54 +71,55 @@ export default function ResearchPage() {
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 onClick={() => setSelectedId(null)}
-                                className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+                                className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm"
                             />
                             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
                                 {thrusts.filter(t => t.id === selectedId).map(thrust => (
                                     <motion.div
                                         layoutId={`card-container-${thrust.id}`}
                                         key={thrust.id}
-                                        className="pointer-events-auto relative w-full max-w-2xl overflow-hidden rounded-2xl bg-card shadow-2xl"
+                                        className="pointer-events-auto relative w-full max-w-5xl overflow-hidden rounded-2xl bg-[#0f172a] border border-slate-800 shadow-2xl flex flex-col max-h-[95vh]"
                                     >
-                                        <motion.div layoutId={`card-image-container-${thrust.id}`} className="relative h-64 w-full">
-                                            <img src={thrust.image} alt={thrust.title} className="h-full w-full object-cover" />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                                        <div className="relative w-full bg-black/90 flex items-center justify-center overflow-hidden shrink-0">
+                                            <motion.img
+                                                layoutId={`card-image-container-${thrust.id}`}
+                                                src={thrust.detailImage || thrust.image}
+                                                alt={thrust.title}
+                                                className="max-h-[60vh] w-auto max-w-full object-contain"
+                                            />
+
                                             <Button
                                                 size="icon"
                                                 variant="ghost"
-                                                className="absolute right-4 top-4 text-white hover:bg-white/20"
+                                                className="absolute right-4 top-4 rounded-full bg-black/50 text-white opacity-80 hover:bg-black/70 hover:opacity-100 hover:text-white shadow-md backdrop-blur-sm"
                                                 onClick={(e) => { e.stopPropagation(); setSelectedId(null); }}
                                             >
-                                                <X className="h-6 w-6" />
+                                                <X className="h-5 w-5" />
                                             </Button>
-                                            <motion.h2 layoutId={`card-title-${thrust.id}`} className="absolute bottom-6 left-6 text-3xl font-bold text-white">
-                                                {thrust.title}
-                                            </motion.h2>
-                                        </motion.div>
 
-                                        <div className="p-8">
-                                            <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
-                                                {thrust.description}
-                                            </p>
-
-                                            <div className="rounded-xl bg-slate-50 dark:bg-slate-900/50 p-6 border">
-                                                <h4 className="mb-2 font-semibold flex items-center gap-2">
-                                                    <ArrowRight className="h-4 w-4 text-primary" /> Key Research Details
-                                                </h4>
-                                                <p className="text-sm text-muted-foreground">
-                                                    {thrust.details}
-                                                </p>
+                                            <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6 pointer-events-none">
+                                                <motion.h2 layoutId={`card-title-${thrust.id}`} className="text-3xl font-bold text-white shadow-black drop-shadow-md">
+                                                    {thrust.title}
+                                                </motion.h2>
                                             </div>
+                                        </div>
 
-                                            <div className="mt-8 flex gap-2">
-                                                {thrust.tags.map((tag) => (
-                                                    <span
-                                                        key={tag}
-                                                        className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium border-transparent bg-secondary text-secondary-foreground"
-                                                    >
-                                                        #{tag}
-                                                    </span>
-                                                ))}
+                                        <div className="flex-1 overflow-y-auto p-8">
+                                            <div className="prose prose-lg prose-invert max-w-none">
+                                                <p className="mb-6 text-xl leading-relaxed text-slate-300">
+                                                    {thrust.description}
+                                                </p>
+
+                                                <div className="rounded-xl bg-slate-900/50 p-6 border border-slate-800">
+                                                    <h4 className="mb-2 font-semibold flex items-center gap-2 text-slate-200">
+                                                        <ArrowRight className="h-4 w-4 text-sky-400" /> Key Research Details
+                                                    </h4>
+                                                    <p className="text-slate-400">
+                                                        {thrust.details}
+                                                    </p>
+                                                </div>
+
+
                                             </div>
                                         </div>
                                     </motion.div>
