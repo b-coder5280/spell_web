@@ -54,7 +54,7 @@ export const publications: Publication[] = [
         selected: true,
         doi: "https://doi.org/10.1038/s41467-024-50016-6",
         image: "/images/paper2.jpg",
-        description: "This study introduces a method to passivate shallow-level defects in perovskite solar cells using a 6H polytype perovskite. This approach significantly enhances the efficiency and stability of the solar cells, paving the way for more reliable photovoltaic technologies."
+        description: "Y. Lai, C. Chen, M. Yu, H. Kuo, I. Ni, B. Lin, H. Kim, C. Kuo, Y. Lu, C. Chueh*"
     }, {
         id: "p6",
         title: "Asymmetrically substituted 10H,10'H-9,9'-spirobi[acridine] derivatives as hole-transporting materials for perovskite solar cells",
@@ -87,7 +87,7 @@ export const publications: Publication[] = [
         year: 2022,
         selected: true,
         doi: "https://doi.org/10.1002/aenm.202200837",
-        description: "This study introduces a method to passivate shallow-level defects in perovskite solar cells using a 6H polytype perovskite. This approach significantly enhances the efficiency and stability of the solar cells, paving the way for more reliable photovoltaic technologies.",
+        description: "S. Zouhair†, S.-M. Yoo†, D. Bogachuk, J. P. Herterich, J. Lim, H. Kanda, B. Son, H. J. Yun, U. Würfel, A. Chahboun, M. K. Nazeeruddin, A. Hinsch*, L. Wagner*, H. Kim*",
         image: "/images/paper3.jpg"
     }, {
         id: "p10",
@@ -169,7 +169,7 @@ export const publications: Publication[] = [
         year: 2020,
         selected: true,
         doi: "https://doi.org/10.1038/s41467-020-17072-0",
-        description: "This study introduces a method to passivate shallow-level defects in perovskite solar cells using a 6H polytype perovskite. This approach significantly enhances the efficiency and stability of the solar cells, paving the way for more reliable photovoltaic technologies.",
+        description: "H. Kim†, J. S. Kim†, J.-M. Heo†, M. Pei, I.-H. Park, Z. Liu, H. J. Yun, M.-H. Park, S.-H. Jeong, Y.-H. Kim, J.-W. Park, E. Oveisi, S. Nagane, A. Sadhanala, L. Zhang, J. J. Kweon, S. K. Lee, H. Yang, H. M. Jang, R. H. Friend, K. P. Loh, M. K. Nazeeruddin, N.-G. Park, and Tae-Woo Lee*",
         image: "/images/paper4.png"
     }, {
         id: "p20",
@@ -179,7 +179,7 @@ export const publications: Publication[] = [
         year: 2020,
         selected: true,
         doi: "https://doi.org/10.1002/adfm.201910620",
-        description: "This study introduces a method to passivate shallow-level defects in perovskite solar cells using a 6H polytype perovskite. This approach significantly enhances the efficiency and stability of the solar cells, paving the way for more reliable photovoltaic technologies.",
+        description: "H. Kim, M. Pei, Y. Lee, A. A. Sutanto, S. Paek, V. I. E. Queloz, A. J. Huckaba, K. T. Cho, H. J. Yun, H. Yang, and M. K. Nazeeruddin*",
         image: "/images/paper5.jpg"
     }, {
         id: "p21",
@@ -293,7 +293,7 @@ export const publications: Publication[] = [
         year: 2017,
         selected: true,
         doi: "https://doi.org/10.1002/adma.201605587",
-        description: "This study introduces a method to passivate shallow-level defects in perovskite solar cells using a 6H polytype perovskite. This approach significantly enhances the efficiency and stability of the solar cells, paving the way for more reliable photovoltaic technologies.",
+        description: "H.-K. Seo†, H. Kim†, J. Lee, M.-H. Park, S.-H. Jeong, Y.-H Kim, S.-J. Kwon, T.-H. Han, S. Yoo and T.-W. Lee*",
         image: "/images/paper6.jpg"
     }, {
         id: "p35",
@@ -311,7 +311,7 @@ export const publications: Publication[] = [
         year: 2016,
         selected: true,
         doi: "https://doi.org/10.1002/aenm.201600172",
-        description: "This study introduces a method to passivate shallow-level defects in perovskite solar cells using a 6H polytype perovskite. This approach significantly enhances the efficiency and stability of the solar cells, paving the way for more reliable photovoltaic technologies.",
+        description: "H. Kim, J. Byun, S.-H. Bae, T. Ahmed, J.-X. Zhu, S.-J. Kwon, Y. Lee, S.-Y. Min, C. Wolf, H.-K. Seo, J.-H. Ahn, and T.-W. Lee*",
         image: "/images/paper7.jpg"
     }, {
         id: "p37",
@@ -329,7 +329,7 @@ export const publications: Publication[] = [
         year: 2016,
         selected: true,
         doi: "https://doi.org/10.1039/C5EE02194D",
-        description: "This study introduces a method to passivate shallow-level defects in perovskite solar cells using a 6H polytype perovskite. This approach significantly enhances the efficiency and stability of the solar cells, paving the way for more reliable photovoltaic technologies.",
+        description: "H. Kim†, K.-G. Lim†, and T.-W. Lee*",
         image: "/images/paper8.jpg"
     }, {
         id: "p39",
