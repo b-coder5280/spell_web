@@ -17,7 +17,7 @@ export default function ResearchPage() {
         <div className="min-h-screen pb-24 pt-16 text-slate-200">
             <Container>
                 {/* Vision Section */}
-                <div className="mb-24 text-center">
+                <div className="mb-8 text-center">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -34,6 +34,20 @@ export default function ResearchPage() {
                         We aim to <span className="text-slate-200 font-semibold">redefine the limits of semiconductor technology</span> by leveraging novel materials and innovative device architectures.
                     </motion.p>
                 </div>
+
+                {/* Research Overview Image */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="mb-16 w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
+                >
+                    <img
+                        src="/images/research.png"
+                        alt="Research Overview"
+                        className="h-auto w-full object-cover"
+                    />
+                </motion.div>
 
                 {/* Thrusts Grid with Staggered Reveal */}
                 <StaggeredReveal className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

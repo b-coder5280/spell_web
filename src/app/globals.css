@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* Universal box-sizing reset - critical for responsive layouts */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -55,6 +63,10 @@ body {
   font-family: var(--font-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Glassmorphism Utilities managed via Tailwind but defaults here */

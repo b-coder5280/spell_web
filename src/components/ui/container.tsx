@@ -13,9 +13,10 @@ export function Container({
     return (
         <Component
             className={cn(
-                "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8",
+                "mx-auto px-4 box-border overflow-hidden",
                 className
             )}
+            style={{ maxWidth: '66%', width: '100%' }}
             {...props}
         >
             {children}

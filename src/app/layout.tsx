@@ -26,13 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col font-sans`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col font-sans overflow-x-hidden max-w-[100vw]`}
       >
         <AnimatedBackground />
         <Header />
-        <main className="flex-1">
+        <main className="flex-1 overflow-x-hidden w-full max-w-[100vw]">
           {children}
         </main>
         <Footer />

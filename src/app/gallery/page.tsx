@@ -23,7 +23,7 @@ export default function GalleryPage() {
                 </div>
 
                 {/* Gallery Grid */}
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                     {galleryItems.map((item) => (
                         <motion.div
                             layoutId={`gallery-card-${item.id}`}

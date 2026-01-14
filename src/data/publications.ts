@@ -54,7 +54,7 @@ export const publications: Publication[] = [
         selected: true,
         doi: "https://doi.org/10.1038/s41467-024-50016-6",
         image: "/images/paper2.jpg",
-        description: "Y. Lai, C. Chen, M. Yu, H. Kuo, I. Ni, B. Lin, H. Kim, C. Kuo, Y. Lu, C. Chueh*"
+        description: "H. Kim*, S.-M. Yoo†, B. Ding†, H. Kanda, N. Shibayama, M. A. Syzgantseva, F. Fadaei Tirani, P. Schouwink, H. J. Yun, B. Son, Y. Ding, B.-S. Kim, Y. Y. Kim, J. Park, O. A. Syzgantseva, N. J. Jeon*, P. J. Dyson*, M. K. Nazeeruddin*"
     }, {
         id: "p6",
         title: "Asymmetrically substituted 10H,10'H-9,9'-spirobi[acridine] derivatives as hole-transporting materials for perovskite solar cells",
