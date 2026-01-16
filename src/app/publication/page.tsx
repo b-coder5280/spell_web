@@ -60,10 +60,10 @@ export default function PublicationPage() {
                         <div key={pub.id} className="flex flex-col gap-2 rounded-xl border p-6 hover:shadow-sm transition-shadow bg-card text-card-foreground">
                             <div className="flex items-start justify-between gap-4">
                                 <div className="space-y-1">
-                                    <div className="flex items-center gap-2">
-                                        <span className="font-semibold text-lg leading-tight">{pub.title}</span>
+                                    <div className="block">
+                                        <span className="font-semibold text-lg leading-tight mr-2">{pub.title}</span>
                                         {pub.selected && (
-                                            <span className="inline-flex items-center rounded-full border border-yellow-500/30 bg-yellow-500/10 px-2 py-0.5 text-xs font-semibold text-yellow-400">
+                                            <span className="inline-flex items-center rounded-full border border-yellow-500/30 bg-yellow-500/10 px-2 py-0.5 text-xs font-semibold text-yellow-400 whitespace-nowrap align-middle">
                                                 <Star className="mr-1 h-3 w-3 fill-current" /> Selected
                                             </span>
                                         )}

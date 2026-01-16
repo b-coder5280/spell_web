@@ -57,9 +57,9 @@ export default function ResearchPage() {
                                 layoutId={`card-container-${thrust.id}`}
                                 onClick={() => setSelectedId(thrust.id)}
                                 whileHover={{ y: -8, scale: 1.02 }}
-                                className="cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg backdrop-blur-md transition-all hover:bg-white/10 hover:shadow-cyan-500/20"
+                                className="flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg backdrop-blur-md transition-all hover:bg-white/10 hover:shadow-cyan-500/20"
                             >
-                                <motion.div layoutId={`card-image-container-${thrust.id}`} className="relative aspect-[4/3] overflow-hidden">
+                                <motion.div layoutId={`card-image-container-${thrust.id}`} className="relative aspect-[4/3] shrink-0 overflow-hidden">
                                     <img src={thrust.image} alt={thrust.title} className="h-full w-full object-cover transition-transform duration-700 hover:scale-110" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                                     <motion.h3 layoutId={`card-title-${thrust.id}`} className="absolute bottom-4 left-4 text-xl font-bold text-white shadow-black drop-shadow-md">
@@ -67,9 +67,10 @@ export default function ResearchPage() {
                                     </motion.h3>
                                 </motion.div>
 
-                                <motion.div className="p-6">
-                                    <p className="line-clamp-3 text-sm text-gray-300">{thrust.description}</p>
-
+                                <motion.div className="flex flex-1 flex-col p-6">
+                                    <p className="line-clamp-3 text-sm text-gray-300">
+                                        {thrust.description}
+                                    </p>
                                 </motion.div>
                             </motion.div>
                         </StaggeredItem>
