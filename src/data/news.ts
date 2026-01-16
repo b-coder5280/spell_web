@@ -2,7 +2,7 @@ export interface NewsItem {
     id: string
     title: string
     date: string
-    category: "Award" | "Conference" | "Published" | "Grant"
+    category: "Award" | "Conference" | "Published" | "Grant" | "General" | ""
     image?: string
     detailImages?: string[]
     description?: string
@@ -145,7 +145,7 @@ export const newsItems: NewsItem[] = [
         id: "n1",
         title: "New position as an Assistant Professor",
         date: "2022.10",
-        category: "",
+        category: "General",
         image: "/images/GIST_media.jpg",
         description: "Dr. Hobeom Kim has started a new position as an Assistant Professor at the Department of MSE at GIST."
     },

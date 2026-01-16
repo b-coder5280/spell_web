@@ -144,9 +144,11 @@ export default function NewsPage() {
                                         <div className="flex-1 overflow-y-auto p-6 md:p-8 bg-card">
                                             <div className="mb-6">
                                                 <div className="mb-3 flex items-center gap-3">
-                                                    <span className="inline-flex items-center rounded-full bg-primary px-2.5 py-0.5 text-xs font-semibold text-primary-foreground shadow-sm">
-                                                        {item.category}
-                                                    </span>
+                                                    {item.category && item.category !== "General" && (
+                                                        <span className="inline-flex items-center rounded-full bg-primary px-2.5 py-0.5 text-xs font-semibold text-primary-foreground shadow-sm">
+                                                            {item.category}
+                                                        </span>
+                                                    )}
                                                     <span className="flex items-center text-sm font-medium text-muted-foreground">
                                                         <Calendar className="mr-1.5 h-4 w-4" />
                                                         {item.date}
