@@ -50,7 +50,7 @@ export default function ProfessorPage() {
                                 <li>Tel: +82-62-715-2741</li>
                                 <li>E-mail: hobkim@gist.ac.kr, hobkim11@gmail.com</li>
                                 <li>Address: 123 Cheomdangwagi-ro, Buk-gu, Gwangju 61005, Republic of Korea</li>
-                                <li>Office: Materials Science and Engineering Building(S5) #909</li>
+                                <li>Office: Materials Science and Engineering Building(S5)</li>
                             </p>
                         </div>
 

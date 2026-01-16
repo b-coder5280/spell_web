@@ -70,7 +70,7 @@ export default function PublicationPage() {
                                     </div>
                                     <p className="text-muted-foreground">{pub.authors.join(", ")}</p>
                                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                        <span className="font-medium text-foreground">{pub.journal}</span>
+                                        <span className="font-medium text-foreground italic">{pub.journal}</span>
                                         <span>•</span>
                                         <span>{pub.year}</span>
                                     </div>

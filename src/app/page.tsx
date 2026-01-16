@@ -53,7 +53,7 @@ export default function Home() {
           <ScrollReveal className="w-full overflow-hidden">
             <SectionTitle
               title="Selected Publication"
-              subtitle="Highlighting our latest breakthroughs in semiconductor research."
+              subtitle="Highlighting our latest breakthroughs."
               align="center"
             />
 
@@ -78,7 +78,7 @@ export default function Home() {
 
                         {/* Content Side - Right */}
                         <div className="relative flex flex-col justify-center p-4 sm:p-6 md:w-[60%] bg-slate-900/30 min-w-0 w-full md:h-full">
-                          <div className="mb-3 inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-0.5 text-[11px] font-medium text-blue-300 w-fit">
+                          <div className="mb-3 inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-0.5 text-[11px] font-medium text-blue-300 w-fit italic">
                             {pub.journal} • {pub.year}
                           </div>
                           <h3 className="mb-3 text-lg sm:text-xl font-semibold leading-tight text-white line-clamp-3">
