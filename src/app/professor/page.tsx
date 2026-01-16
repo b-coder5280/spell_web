@@ -27,16 +27,7 @@ export default function ProfessorPage() {
                             <h2 className="text-2xl font-bold">Hobeom Kim, Ph.D.</h2>
                             <p className="text-muted-foreground">Assistant Professor</p>
 
-                            <div className="space-y-2 text-sm">
-                                <div className="flex items-center gap-2">
-                                    <Mail className="h-4 w-4" />
-                                    <span>hobkim@gist.ac.kr</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <MapPin className="h-4 w-4" />
-                                    <span>Materials Science and Engineering Building</span>
-                                </div>
-                            </div>
+
 
                             <div className="flex gap-2">
                                 <Button size="icon" variant="outline" title="Google Scholar" asChild>
