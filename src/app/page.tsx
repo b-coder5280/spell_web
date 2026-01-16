@@ -58,18 +58,18 @@ export default function Home() {
             />
 
             <div className="relative group mt-8 w-full max-w-full overflow-hidden">
-              <div className="overflow-hidden rounded-3xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm shadow-xl" ref={emblaRef}>
+              <div className="overflow-hidden" ref={emblaRef}>
                 <div className="flex w-full">
                   {featuredPubs.map((pub: any) => (
                     <div className="flex-[0_0_100%] min-w-0 overflow-hidden" key={pub.id}>
                       <div className="flex flex-col md:flex-row w-full min-w-0 h-auto md:h-[350px]">
                         {/* Image Side - Left */}
-                        <div className="relative w-full md:w-[40%] bg-black/40 flex items-center justify-center p-4 min-h-[200px] md:min-h-0 md:h-full shrink-0">
+                        <div className="relative w-full md:w-[45%] flex items-center justify-center p-4 min-h-[220px] md:min-h-0 md:h-full shrink-0">
                           {pub.image ? (
                             <img
                               src={pub.image}
                               alt={pub.title}
-                              className="w-auto h-auto max-w-full max-h-[280px] md:max-h-full object-contain rounded-lg shadow-xl"
+                              className="w-auto h-auto max-w-full max-h-[300px] md:max-h-full object-contain filter drop-shadow-2xl"
                             />
                           ) : (
                             <div className="text-white/50">No Image Available</div>
@@ -77,7 +77,7 @@ export default function Home() {
                         </div>
 
                         {/* Content Side - Right */}
-                        <div className="relative flex flex-col justify-center p-4 sm:p-6 md:w-[60%] bg-slate-900/30 min-w-0 w-full md:h-full">
+                        <div className="relative flex flex-col justify-center p-4 sm:p-6 md:w-[55%] min-w-0 w-full md:h-full">
                           <div className="mb-3 inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-0.5 text-[11px] font-medium text-blue-300 w-fit italic">
                             {pub.journal} • {pub.year}
                           </div>

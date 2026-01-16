@@ -53,7 +53,7 @@ export const publications: Publication[] = [
         year: 2024,
         selected: true,
         doi: "https://doi.org/10.1038/s41467-024-50016-6",
-        image: "/images/paper2.jpg",
+        image: "/images/shallow.png",
         description: "H. Kim*, S.-M. Yoo†, B. Ding†, H. Kanda, N. Shibayama, M. A. Syzgantseva, F. Fadaei Tirani, P. Schouwink, H. J. Yun, B. Son, Y. Ding, B.-S. Kim, Y. Y. Kim, J. Park, O. A. Syzgantseva, N. J. Jeon*, P. J. Dyson*, M. K. Nazeeruddin*"
     }, {
         id: "p6",
@@ -88,7 +88,7 @@ export const publications: Publication[] = [
         selected: true,
         doi: "https://doi.org/10.1002/aenm.202200837",
         description: "S. Zouhair†, S.-M. Yoo†, D. Bogachuk, J. P. Herterich, J. Lim, H. Kanda, B. Son, H. J. Yun, U. Würfel, A. Chahboun, M. K. Nazeeruddin, A. Hinsch*, L. Wagner*, H. Kim*",
-        image: "/images/paper3.jpg"
+        image: "/images/Employing.png"
     }, {
         id: "p10",
         title: "Superhalogen passivation for efficient and stable perovskite solar cells",
@@ -170,7 +170,7 @@ export const publications: Publication[] = [
         selected: true,
         doi: "https://doi.org/10.1038/s41467-020-17072-0",
         description: "H. Kim†, J. S. Kim†, J.-M. Heo†, M. Pei, I.-H. Park, Z. Liu, H. J. Yun, M.-H. Park, S.-H. Jeong, Y.-H. Kim, J.-W. Park, E. Oveisi, S. Nagane, A. Sadhanala, L. Zhang, J. J. Kweon, S. K. Lee, H. Yang, H. M. Jang, R. H. Friend, K. P. Loh, M. K. Nazeeruddin, N.-G. Park, and Tae-Woo Lee*",
-        image: "/images/paper4.png"
+        image: "/images/proton.png"
     }, {
         id: "p20",
         title: "Self‐Crystallized Multifunctional 2D Perovskite for Efficient and Stable Perovskite Solar Cells",
@@ -180,7 +180,7 @@ export const publications: Publication[] = [
         selected: true,
         doi: "https://doi.org/10.1002/adfm.201910620",
         description: "H. Kim, M. Pei, Y. Lee, A. A. Sutanto, S. Paek, V. I. E. Queloz, A. J. Huckaba, K. T. Cho, H. J. Yun, H. Yang, and M. K. Nazeeruddin*",
-        image: "/images/paper5.jpg"
+        image: "/images/Self.png"
     }, {
         id: "p21",
         title: "Doped but Stable: Spirobisacridine Hole Transporting Materials for Hysteresis-Free and Stable Perovskite Solar Cells",
@@ -294,7 +294,7 @@ export const publications: Publication[] = [
         selected: true,
         doi: "https://doi.org/10.1002/adma.201605587",
         description: "H.-K. Seo†, H. Kim†, J. Lee, M.-H. Park, S.-H. Jeong, Y.-H Kim, S.-J. Kwon, T.-H. Han, S. Yoo and T.-W. Lee*",
-        image: "/images/paper6.jpg"
+        image: "/images/Flex.png"
     }, {
         id: "p35",
         title: "Versatile metal nanowiring platform for large-scale nano- and opto-electronic devices",
@@ -312,7 +312,7 @@ export const publications: Publication[] = [
         selected: true,
         doi: "https://doi.org/10.1002/aenm.201600172",
         description: "H. Kim, J. Byun, S.-H. Bae, T. Ahmed, J.-X. Zhu, S.-J. Kwon, Y. Lee, S.-Y. Min, C. Wolf, H.-K. Seo, J.-H. Ahn, and T.-W. Lee*",
-        image: "/images/paper7.jpg"
+        image: "/images/onf.png"
     }, {
         id: "p37",
         title: "Self-doped conducting polymer as a hole-extraction layer in organic-inorganic hybrid perovskite solar cells",
@@ -330,7 +330,7 @@ export const publications: Publication[] = [
         selected: true,
         doi: "https://doi.org/10.1039/C5EE02194D",
         description: "H. Kim†, K.-G. Lim†, and T.-W. Lee*",
-        image: "/images/paper8.jpg"
+        image: "/images/planer.png"
     }, {
         id: "p39",
         title: "Flexible lamination encapsulation",
