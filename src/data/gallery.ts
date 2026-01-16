@@ -7,6 +7,12 @@ export interface GalleryItem {
 
 export const galleryItems: GalleryItem[] = [
     {
+        id: "g41",
+        title: "연구실 점심 회식 😀",
+        date: "2026.01.14",
+        images: ["/images/회식.jpeg"]
+    },
+    {
         id: "g40",
         title: "연구실 점심 회식 후 기념 촬영 😗",
         date: "2025.10.24",

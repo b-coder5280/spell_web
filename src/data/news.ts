@@ -2,7 +2,7 @@ export interface NewsItem {
     id: string
     title: string
     date: string
-    category: "Award" | "Conference" | "Daily" | "Grant"
+    category: "Award" | "Conference" | "Published" | "Grant"
     image?: string
     detailImages?: string[]
     description?: string
@@ -11,7 +11,7 @@ export interface NewsItem {
 export const newsItems: NewsItem[] = [
     {
         id: "n17",
-        title: "2025년도 이공분야 학술연구지원사업 신규과제 선정",
+        title: "박상증 학생 2025년도 이공분야 학술연구지원사업 신규과제 선정",
         date: "2025.08",
         category: "Grant",
         image: "/images/NRF.png",
@@ -28,7 +28,7 @@ export const newsItems: NewsItem[] = [
     },
     {
         id: "n15",
-        title: "PIERS(Photonics and Electromagnetics Research Symposium) 2025 YSA(Young Scientist Award) 수상",
+        title: "김호범 교수님 PIERS(Photonics and Electromagnetics Research Symposium) 2025 YSA(Young Scientist Award) 수상",
         date: "2025.05",
         category: "Award",
         image: "/images/piers.png",
@@ -36,7 +36,7 @@ export const newsItems: NewsItem[] = [
     },
     {
         id: "n14",
-        title: "2025 고분자학회 춘계학술대회 포스터 발표 수상 ",
+        title: "손연지, 박상증 학생 2025 고분자학회 춘계학술대회 포스터 발표 수상 ",
         date: "2025.04",
         category: "Award",
         image: "/images/polyj.jpg",
@@ -45,7 +45,7 @@ export const newsItems: NewsItem[] = [
     },
     {
         id: "n13",
-        title: "2025 고분자학회 춘계학술대회 신진학술상 수상",
+        title: "김호범 교수님 2025 고분자학회 춘계학술대회 신진학술상 수상",
         date: "2025.04",
         category: "Award",
         image: "/images/25pol.jpg",
@@ -61,7 +61,7 @@ export const newsItems: NewsItem[] = [
     },
     {
         id: "n11",
-        title: "7th Korea Toray Fellowship",
+        title: "Prof. Hobeom Kim has been awarded the 7th Korea Toray Fellowship",
         date: "2024.09",
         category: "Award",
         image: "/images/toery1.jpg",
@@ -70,9 +70,9 @@ export const newsItems: NewsItem[] = [
     },
     {
         id: "n10",
-        title: "Paper published",
+        title: "Prof. Hobeom Kim's paper has been published in Small.",
         date: "2024.09",
-        category: "Daily",
+        category: "Published",
         image: "/images/Small.png",
         description: "Prof. Hobeom Kim's paper, “Efficient Polycrystalline Single-Cation Perovskite Light-Emitting Diodes by Simultaneous Intracrystal and Interfacial Defect Passivation”  has been published in Small. This article also appears in Hot Topic: Surfaces and interfaces and Selected for Front cover"
     },
@@ -87,15 +87,15 @@ export const newsItems: NewsItem[] = [
     },
     {
         id: "n8",
-        title: "Paper published",
+        title: "Prof. Hobeom Kim's paper has been published in Nature Communications.",
         date: "2024.07",
-        category: "Daily",
+        category: "Published",
         image: "/images/paper2.jpg",
         description: "Prof. Hobeom Kim's paper, “Shallow-level Defect Passivation by 6H Perovskite Polytype for Highly Efficient and Stable Perovskite Solar Cells”  has been published in Nature Communications. Featured in Editor’s highlights, 'Devices' and Behind the paper"
     },
     {
         id: "n7",
-        title: "2025년도 이공분야 학술연구지원사업 신규과제 선정",
+        title: "박준모 학생 2024년도 이공분야 학술연구지원사업 신규과제 선정",
         date: "2024.05",
         category: "Grant",
         image: "/images/NRF.png",
@@ -135,9 +135,9 @@ export const newsItems: NewsItem[] = [
     },
     {
         id: "n2",
-        title: "Paper published",
+        title: "Prof. Hobeom Kim's paper has been published in Angewandte Chemie.",
         date: "2022.10",
-        category: "Daily",
+        category: "Published",
         image: "/images/paper1.jpg",
         description: "Prof. Hobeom Kim's paper, 'Asymmetrically substituted 10H,10'H-9,9'-spirobi[acridine] derivatives as hole-transporting materials for perovskite solar cells' has been published in Angewandte Chemie."
     },
@@ -145,7 +145,7 @@ export const newsItems: NewsItem[] = [
         id: "n1",
         title: "New position as an Assistant Professor",
         date: "2022.10",
-        category: "Daily",
+        category: "",
         image: "/images/GIST_media.jpg",
         description: "Dr. Hobeom Kim has started a new position as an Assistant Professor at the Department of MSE at GIST."
     },

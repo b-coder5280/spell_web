@@ -35,7 +35,7 @@ export function Header() {
                 <div className="flex h-16 items-center justify-between">
                     <div className="flex items-center gap-8">
                         <Link href="/" className="flex items-center gap-2">
-                            <span className="text-xl font-bold tracking-tight text-primary">SPELL</span>
+                            <span className="text-xl font-bold tracking-tight text-primary font-display">SPELL</span>
                         </Link>
                         <nav className="hidden md:flex items-center gap-6">
                             {navigation.map((item) => (

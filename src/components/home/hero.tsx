@@ -36,11 +36,8 @@ export function Hero() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="space-y-6"
                     >
-                        <div className="mx-auto w-fit rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-300 backdrop-blur-sm">
-                            Semiconductor Photonics and Electronics Lab
-                        </div>
 
-                        <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl leading-tight">
+                        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl md:text-7xl leading-tight">
                             Semiconductor <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 animate-gradient-x">Photonics and Electronics</span> Lab
                         </h1>
 

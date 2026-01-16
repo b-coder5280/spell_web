@@ -8,9 +8,9 @@ export default function OpeningPage() {
         <div className="pb-24 pt-16">
             <Container>
                 <div className="mx-auto max-w-3xl text-center">
-                    <h1 className="mb-6 text-4xl font-extrabold tracking-tight">Join Our Journey</h1>
+                    <h1 className="mb-6 text-4xl font-extrabold tracking-tight">Recruitment</h1>
                     <p className="mb-12 text-xl text-muted-foreground">
-                        We are constantly looking for motivated graduate students and post-docs to join our team at the forefront of semiconductor innovation.
+                        We are constantly looking for motivated graduate students and post-docs to join our team at the forefront of semiconductor.
                     </p>
                 </div>
 
@@ -22,7 +22,11 @@ export default function OpeningPage() {
                             <div className="border-b pb-8 last:border-0 last:pb-0">
                                 <h3 className="text-xl font-semibold">Ph.D. / M.S. Students</h3>
                                 <p className="mt-2 text-muted-foreground">
-                                    Semiconductor Photonics and Electronics Lab (SPELL) focuses on next-generation semiconductor and optoelectronic devices, encompassing 1) perovskite material design, 2) perovskite-based device fabrication, and 3) AI/ML-driven performance optimization based on experimental and simulation data, with the goal of establishing core technologies for future semiconductor and optoelectronic industries.
+                                    Semiconductor Photonics and Electronics Lab (SPELL) focuses on next-generation semiconductor and optoelectronic devices, encompassing
+                                    <p>1) perovskite material design,</p>
+                                    <p>2) perovskite-based device fabrication,</p>
+                                    <p>3) AI/ML-driven performance optimization based on experimental and simulation data,</p>
+                                    <p>with the goal of establishing core technologies for future semiconductor and optoelectronic industries.</p>
                                 </p>
                                 <div className="mt-2 text-muted-foreground">Please don't hesitate to contact me by email if you are interested to join us. </div>
                             </div>

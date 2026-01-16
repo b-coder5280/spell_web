@@ -34,7 +34,7 @@ export default function ProfessorPage() {
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <MapPin className="h-4 w-4" />
-                                    <span>Rm 909, Materials Science and Engineering Building</span>
+                                    <span>Materials Science and Engineering Building</span>
                                 </div>
                             </div>
 
@@ -52,7 +52,7 @@ export default function ProfessorPage() {
                     {/* Main Content */}
                     <div className="space-y-12">
                         <div>
-                            <h1 className="mb-6 text-4xl font-extrabold tracking-tight">Principal investigator</h1>
+                            <h1 className="mb-6 text-4xl font-extrabold tracking-tight">Principal Investigator</h1>
                             <p className="text-lg leading-relaxed text-muted-foreground">
                                 <li>Department of Materials Science and Engineering</li>
                                 <li>Gwangju Institute of Science and Technology (GIST)</li>
@@ -63,26 +63,14 @@ export default function ProfessorPage() {
                             </p>
                         </div>
 
-                        <Tabs defaultValue="education" className="w-full">
-                            <TabsList className="grid w-full grid-cols-4">
-                                <TabsTrigger value="education">Education</TabsTrigger>
-                                <TabsTrigger value="experience">Experience</TabsTrigger>
+                        <Tabs defaultValue="edu_exp" className="w-full">
+                            <TabsList className="grid w-full grid-cols-3">
+                                <TabsTrigger value="edu_exp">Education & Experience</TabsTrigger>
                                 <TabsTrigger value="grants">Grants</TabsTrigger>
                                 <TabsTrigger value="awards">Awards & Honors</TabsTrigger>
                             </TabsList>
 
-                            <TabsContent value="education" className="mt-8 space-y-8">
-                                <div className="border-l-2 border-primary pl-6 py-1">
-                                    <h3 className="font-bold">Ph.D. in Materials Science and Engineering</h3>
-                                    <p className="text-muted-foreground">Pohang University of Science and Technology (POSTECH), South Korea (Advisor: Prof. Tae-Woo Lee) (2011-2017)</p>
-                                </div>
-                                <div className="border-l-2 border-slate-800 pl-6 py-1">
-                                    <h3 className="font-bold">B.S. in Advanced Materials Science and Engineering</h3>
-                                    <p className="text-muted-foreground">Sungkyunkwan University (SKKU), South Korea (2004-2011)</p>
-                                </div>
-                            </TabsContent>
-
-                            <TabsContent value="experience" className="mt-8 space-y-8">
+                            <TabsContent value="edu_exp" className="mt-8 space-y-8">
                                 <div className="border-l-2 border-primary pl-6 py-1">
                                     <h3 className="font-bold">Assistant Professor</h3>
                                     <p className="text-muted-foreground">Department of Materials Science and Engineering, Gwangju Institute of Science and Technology (GIST) (2022-Present)</p>
@@ -94,6 +82,14 @@ export default function ProfessorPage() {
                                 <div className="border-l-2 border-slate-800 pl-6 py-1">
                                     <h3 className="font-bold">Postdoctoral Researcher</h3>
                                     <p className="text-muted-foreground">Research Institute of Advanced Materials, Seoul National University (SNU), Republic of Korea (Advisor: Prof. Tae-Woo Lee) (2017-2018)</p>
+                                </div>
+                                <div className="border-l-2 border-slate-800 pl-6 py-1">
+                                    <h3 className="font-bold">Ph.D. in Materials Science and Engineering</h3>
+                                    <p className="text-muted-foreground">Pohang University of Science and Technology (POSTECH), South Korea (Advisor: Prof. Tae-Woo Lee) (2011-2017)</p>
+                                </div>
+                                <div className="border-l-2 border-slate-800 pl-6 py-1">
+                                    <h3 className="font-bold">B.S. in Advanced Materials Science and Engineering</h3>
+                                    <p className="text-muted-foreground">Sungkyunkwan University (SKKU), South Korea (2004-2011)</p>
                                 </div>
                             </TabsContent>
 

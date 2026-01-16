@@ -29,7 +29,7 @@ export default function NewsPage() {
                     </div>
 
                     <div className="flex flex-wrap gap-2">
-                        {(["All", "Award", "Conference", "Daily", "Grant"] as const).map((cat) => (
+                        {(["All", "Award", "Conference", "Published", "Grant"] as const).map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setFilter(cat)}
@@ -139,28 +139,27 @@ export default function NewsPage() {
                                                 )}
                                             </div>
 
-                                            {/* Title Overlay */}
-                                            <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6 pointer-events-none z-10">
-                                                <div className="mb-2 flex items-center gap-3">
+                                        </div>
+
+                                        <div className="flex-1 overflow-y-auto p-6 md:p-8 bg-card">
+                                            <div className="mb-6">
+                                                <div className="mb-3 flex items-center gap-3">
                                                     <span className="inline-flex items-center rounded-full bg-primary px-2.5 py-0.5 text-xs font-semibold text-primary-foreground shadow-sm">
                                                         {item.category}
                                                     </span>
-                                                    <span className="flex items-center text-sm font-medium text-gray-200">
+                                                    <span className="flex items-center text-sm font-medium text-muted-foreground">
                                                         <Calendar className="mr-1.5 h-4 w-4" />
                                                         {item.date}
                                                     </span>
                                                 </div>
                                                 <motion.h2
                                                     layoutId={`news-title-${item.id}`}
-                                                    className="text-2xl md:text-3xl font-bold text-white shadow-black drop-shadow-md"
+                                                    className="text-2xl md:text-4xl font-extrabold tracking-tight"
                                                 >
                                                     {item.title}
                                                 </motion.h2>
                                             </div>
-                                        </div>
-
-                                        <div className="flex-1 overflow-y-auto p-6 md:p-8 bg-card">
-                                            <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground">
+                                            <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground border-t pt-6">
                                                 {item.description ? (
                                                     <p className="whitespace-pre-line leading-relaxed">{item.description}</p>
                                                 ) : (

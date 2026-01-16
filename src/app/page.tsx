@@ -47,12 +47,12 @@ export default function Home() {
     <div className="flex flex-col gap-8 pb-12">
       <Hero />
 
-      {/* Representative Publication Section */}
+      {/* Selected Publication Section */}
       {featuredPubs.length > 0 && (
         <Container>
           <ScrollReveal className="w-full overflow-hidden">
             <SectionTitle
-              title="Representative Publication"
+              title="Selected Publication"
               subtitle="Highlighting our latest breakthroughs in semiconductor research."
               align="center"
             />
@@ -81,7 +81,7 @@ export default function Home() {
                           <div className="mb-3 inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-0.5 text-[11px] font-medium text-blue-300 w-fit">
                             {pub.journal} • {pub.year}
                           </div>
-                          <h3 className="mb-3 text-lg sm:text-xl font-bold leading-tight text-white line-clamp-3">
+                          <h3 className="mb-3 text-lg sm:text-xl font-semibold leading-tight text-white line-clamp-3">
                             {pub.title}
                           </h3>
                           {pub.description && (

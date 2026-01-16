@@ -15,7 +15,7 @@ export const publications: Publication[] = [
     {
         id: "p1",
         title: "Review on Perovskite/Si Tandem Solar Cells: Internal and External Components toward High Efficiency, Long-term Durability, and Commercialization",
-        authors: ["Y. Son", "et al."],
+        authors: ["Y. Son†", "J. Lim†", "A. K. Lea", "B.-S. Kim*", "S. Song*", "H. Kim*"],
         journal: "Materials Chemistry Frontiers",
         year: 2025,
         selected: false,
@@ -24,7 +24,7 @@ export const publications: Publication[] = [
     {
         id: "p2",
         title: "Dual Functionality of Carbazole-based Phosphonic Acid Molecular Additives Realizes Efficient Hole Transport Layer-Free Perovskite Light-Emitting Diodes",
-        authors: ["Y. Lai", "et al."],
+        authors: ["Y. Lai", "C. Chen", "M. Yu", "H. Kuo", "I. Ni", "B. Lin", "H. Kim", "C. Kuo", "Y. Lu", "C. Chueh*"],
         journal: "Chemical Engineering Journal",
         year: 2025,
         selected: false,
@@ -32,7 +32,7 @@ export const publications: Publication[] = [
     }, {
         id: "p3",
         title: "Ultra-uniform perovskite crystals formed in the presence of tetrabutylammonium bistriflimide afford efficient and stable perovskite solar cells",
-        authors: ["J. Lim", "et al."],
+        authors: ["J. Lim†, A. I. Rafieh†, N. Shibayama, J. Xia, J.-N. Audinot, T. Wirtz, S. Kinge, S. W. Glunz, Y. Ding, B. Ding, H. Kim, M. Saliba*, Z. Fei*, P. J. Dyson*, M. K. Nazeeruddin*, and H. Kanda*"],
         journal: "Energy & Environmental Science",
         year: 2024,
         selected: false,
@@ -40,7 +40,7 @@ export const publications: Publication[] = [
     }, {
         id: "p4",
         title: "Efficient Polycrystalline Single-Cation Perovskite Light-Emitting Diodes by Simultaneous Intracrystal and Interfacial Defect Passivation",
-        authors: ["H. Kim", "et al."],
+        authors: ["H. Kim", "J.-M. Heo", "C. Wolf", "Y.-H. Kim", "S.-C. Lee", "E. Yoon", "G.-H. Lee", "K. Y. Jang", "J. Park", "J. S. Kim", "M.-H. Park", "S.-H. Jeong", "H. Cho", "T.-H. Han", "E. Oveisi", "M. K. Nazeeruddin", "T.-W. Lee*"],
         journal: "Small",
         year: 2024,
         selected: false,
@@ -48,7 +48,7 @@ export const publications: Publication[] = [
     }, {
         id: "p5",
         title: "Shallow-level defect passivation by 6H perovskite polytype for highly efficient and stable perovskite solar cells",
-        authors: ["H. Kim", "et al."],
+        authors: ["H. Kim*, S.-M. Yoo†, B. Ding†, H. Kanda, N. Shibayama, M. A. Syzgantseva, F. Fadaei Tirani, P. Schouwink, H. J. Yun, B. Son, Y. Ding, B.-S. Kim, Y. Y. Kim, J. Park, O. A. Syzgantseva, N. J. Jeon*, P. J. Dyson*, M. K. Nazeeruddin*"],
         journal: "Nature Communications",
         year: 2024,
         selected: true,
@@ -58,7 +58,7 @@ export const publications: Publication[] = [
     }, {
         id: "p6",
         title: "Asymmetrically substituted 10H,10'H-9,9'-spirobi[acridine] derivatives as hole-transporting materials for perovskite solar cells",
-        authors: ["J. Xia", "et al."],
+        authors: ["J. Xia, Y. Zhang, M. Cavazzini, S. Orlandi, B. Ding, H. Kanda, N. Klipfel, X. Gao, A. Qurat, V. Jankauskas, K. Rakstys, R. Hu, Z. Qiu,  A. Asiri, H. Kim*, P. J. Dyson*, G. Pozzi*, M. K. Nazeeruddin*"],
         journal: "Angewandte Chemie",
         year: 2022,
         selected: false,
@@ -66,7 +66,7 @@ export const publications: Publication[] = [
     }, {
         id: "p7",
         title: "Strain effects on halide perovskite solar cells",
-        authors: ["B. Yang", "et al."],
+        authors: ["B. Yang, D. Bogachuk, J. Suo*, L. Wagner, H. Kim, J. Lim, A. Hinsch, G. Boschloo, M. K. Nazeeruddin, A. Hagfeldt*"],
         journal: "Chemical Society Reviews",
         year: 2022,
         selected: false,
@@ -74,7 +74,7 @@ export const publications: Publication[] = [
     }, {
         id: "p8",
         title: "Bright Lead-Free Inorganic CsSnBr3 Perovskite Light-Emitting Diodes",
-        authors: ["J.-M. Heo", "et al."],
+        authors: ["J.-M. Heo†, H. Cho†, S.-C. Lee, M.-H. Park, J. S. Kim, H. Kim, J. Park, Y.-H. Kim, H. J. Yun, E. Yoon, D.-H. Kim, S. Ahn, S.-J. Kwon, C.-Y. Park, T.-W. Lee*"],
         journal: "ACS Energy Letters",
         year: 2022,
         selected: false,
@@ -82,7 +82,7 @@ export const publications: Publication[] = [
     }, {
         id: "p9",
         title: "Employing 2D-perovskite as an electron blocking layer in highly efficient (18.5%) perovskite solar cells with printable low temperature carbon electrode",
-        authors: ["S. Zouhair", "et al."],
+        authors: ["S. Zouhair†, S.-M. Yoo†, D. Bogachuk, J. P. Herterich, J. Lim, H. Kanda, B. Son, H. J. Yun, U. Würfel, A. Chahboun, M. K. Nazeeruddin, A. Hinsch*, L. Wagner*, H. Kim*"],
         journal: "Advanced Energy Materials",
         year: 2022,
         selected: true,
@@ -92,7 +92,7 @@ export const publications: Publication[] = [
     }, {
         id: "p10",
         title: "Superhalogen passivation for efficient and stable perovskite solar cells",
-        authors: ["H. Kim", "et al."],
+        authors: ["H. Kim*, J. Lim, A. M. Asiri, and M. K. Nazeeruddin*"],
         journal: "Solar RRL",
         year: 2022,
         selected: false,
@@ -100,7 +100,7 @@ export const publications: Publication[] = [
     }, {
         id: "p11",
         title: "Highly Planar Benzodipyrrole-based Hole Transporting Materials with Passivation Effect for Efficient Perovskite Solar Cells",
-        authors: ["C. Igci", "et al."],
+        authors: ["C. Igci, H. Kanda, S.-M. Yoo, A. A. Sutanto, O. A. Syzgantseva, M. A. Syzgantseva, V. Jankauskas, K. Rakstys, H. Kim*, A. M. Asiri, and M. K. Nazeeruddin*"],
         journal: "Solar RRL",
         year: 2022,
         selected: false,
@@ -108,7 +108,7 @@ export const publications: Publication[] = [
     }, {
         id: "p12",
         title: "Phase Pure Quasi-2D Perovskite by Protonation of Neutral Amine",
-        authors: ["M. Dessimoz", "et al."],
+        authors: ["M. Dessimoz†, S.-M. Yoo†, H. Kanda, C. Igci, H. Kim*, M. K. Nazeeruddin*"],
         journal: "The Journal of Physical Chemistry Letters",
         year: 2021,
         selected: false,
@@ -116,7 +116,7 @@ export const publications: Publication[] = [
     }, {
         id: "p13",
         title: "Advances in solution-processed near-infrared light-emitting diodes",
-        authors: ["M. Vasilopoulou", "et al."],
+        authors: ["M. Vasilopoulou*, A. Fakharuddin, F. P. G. Arquer, D. G. Georgiadou, H. Kim, A. R. M. Yusoff, F. Gao, M. K. Nazeeruddin, H. J. Bolink*, E. H. Sargent*"],
         journal: "Nature Photonics",
         year: 2021,
         selected: false,
@@ -124,7 +124,7 @@ export const publications: Publication[] = [
     }, {
         id: "p14",
         title: "Piezo-electric and -phototronic effects of perovskite 2D|3D heterostructures",
-        authors: ["H. Kim", "et al."],
+        authors: ["C. W. Jang†, H. Kim†, M. K. Nazeeruddin, D. H. Shin, S.-H. Choi*"],
         journal: "Nano Energy",
         year: 2021,
         selected: false,
@@ -132,7 +132,7 @@ export const publications: Publication[] = [
     }, {
         id: "p15",
         title: "Phosphine Oxide Derivative as a Passivating Agent to Enhance the Performance of Perovskite Solar Cells",
-        authors: ["A. A. Sutanto", "et al."],
+        authors: ["A. A. Sutanto, C. Igci, H. Kim*, H. Kanda, N. Shibayama, M. Mensi, V. I. Queloz, C. Momblona, H. J. Yun, H. J. Bolink, A. J. Huckaba, M. K. Nazeeruddin*"],
         journal: "ACS Applied Energy Materials",
         year: 2021,
         selected: false,
@@ -140,7 +140,7 @@ export const publications: Publication[] = [
     }, {
         id: "p16",
         title: "Molecular Design and Operational Stability: Toward Stable 3D/2D Perovskite Interlayers",
-        authors: ["S. Paek", "et al."],
+        authors: ["S. Paek, C. R. Carmona, K. T. Cho, M. Franckevičius, H. Kim, H. Kanda, N. Drigo, K.-H. Lin, M. Pei, R. Gegevičius, H. J. Yun, H. Yang, P. A. Schouwink, C. Corminboeuf, A. M. Asiri, and M. K. Nazeeruddin*"],
         journal: "Advanced Science",
         year: 2020,
         selected: false,
@@ -148,7 +148,7 @@ export const publications: Publication[] = [
     }, {
         id: "p17",
         title: "Gradient band structure: high performance perovskite solar cells using poly(bisphenol A anhydride-co-1,3-phenylenediamine)",
-        authors: ["H. Kanda", "et al."],
+        authors: ["H. Kanda, N. Shibayama, M. Abuhelaiqa, S. Paek, R. Kaneko, N. Klipfel, A. A. Sutanto, C. R. Carmona, A. J. Huckaba, H. Kim, C. Momblona, A. M. Asiri and M. K. Nazeeruddin*"],
         journal: "Journal of Materials Chemistry A",
         year: 2020,
         selected: false,
@@ -156,7 +156,7 @@ export const publications: Publication[] = [
     }, {
         id: "p18",
         title: "D‐π‐A Type Triazatruxene‐Based Dopant‐Free Hole Transporting Materials for Efficient and Stable Perovskite Solar Cells",
-        authors: ["C. Igci", "et al."],
+        authors: ["C. Igci, S. Paek, K. Rakstys, H. Kanda, N. Shibayama, V. Jankauskas, C. Roldán‐Carmona, H. Kim, A. M. Asiri, and M. K. Nazeeruddin*"],
         journal: "Solar RRL",
         year: 2020,
         selected: false,
@@ -164,7 +164,7 @@ export const publications: Publication[] = [
     }, {
         id: "p19",
         title: "Proton-transfer-induced 3D/2D hybrid perovskites suppress ion migration and reduce luminance overshoot",
-        authors: ["H. Kim", "et al."],
+        authors: ["H. Kim†, J. S. Kim†, J.-M. Heo†, M. Pei, I.-H. Park, Z. Liu, H. J. Yun, M.-H. Park, S.-H. Jeong, Y.-H. Kim, J.-W. Park, E. Oveisi, S. Nagane, A. Sadhanala, L. Zhang, J. J. Kweon, S. K. Lee, H. Yang, H. M. Jang, R. H. Friend, K. P. Loh, M. K. Nazeeruddin, N.-G. Park, and Tae-Woo Lee*"],
         journal: "Nature Communications",
         year: 2020,
         selected: true,
@@ -174,7 +174,7 @@ export const publications: Publication[] = [
     }, {
         id: "p20",
         title: "Self‐Crystallized Multifunctional 2D Perovskite for Efficient and Stable Perovskite Solar Cells",
-        authors: ["H. Kim", "et al."],
+        authors: ["H. Kim, M. Pei, Y. Lee, A. A. Sutanto, S. Paek, V. I. E. Queloz, A. J. Huckaba, K. T. Cho, H. J. Yun, H. Yang, and M. K. Nazeeruddin*"],
         journal: "Advanced Functional Materials",
         year: 2020,
         selected: true,
@@ -184,7 +184,7 @@ export const publications: Publication[] = [
     }, {
         id: "p21",
         title: "Doped but Stable: Spirobisacridine Hole Transporting Materials for Hysteresis-Free and Stable Perovskite Solar Cells",
-        authors: ["N. Drigo", "et al."],
+        authors: ["N. Drigo, C. Roldan-Carmona, M. Franckevicius, K.-H. Lin, R. Gegevicius, H. Kim, P. A. Schouwink, A. A. Sutanto, S. Olthof, M. Sohail, K. Meerholz, V. Gulbinas, C. Corminboeuf, S. Paek*, and M.K. Nazeeruddin*"],
         journal: "Journal of the American Chemical Society",
         year: 2020,
         selected: false,
@@ -192,7 +192,7 @@ export const publications: Publication[] = [
     }, {
         id: "p22",
         title: "Dimensionality-Dependent Plasticity in Halide Perovskite Artificial Synapses for Neuromorphic Computing",
-        authors: ["S.-I. Kim", "et al."],
+        authors: ["S.-I. Kim†, Y. Lee†, M.-H. Park, G.-T. Go, Y.-H. Kim, W. Xu, H. -D. Lee, H. Kim, D.-G. Seo, W. Lee, T.-W. Lee*"],
         journal: "Advanced Electronic Materials",
         year: 2019,
         selected: false,
@@ -200,7 +200,7 @@ export const publications: Publication[] = [
     }, {
         id: "p23",
         title: "Efficient Ruddlesden-Popper Perovskite Light-Emitting Diodes with Randomly-Oriented Nanocrystals",
-        authors: ["H. Kim", "et al."],
+        authors: ["H.-D. Lee†, H. Kim†, H. Cho†, W. Cha, YS Hong, Y.-H. Kim, A Sadhanala, V. Venugopalanm, J. S. Kim, J. W. Choi, C.-L. Lee, D Kim, H. Yang, R. H. Friend and T.-W. Lee*"],
         journal: "Advanced Functional Materials",
         year: 2019,
         selected: false,
@@ -208,7 +208,7 @@ export const publications: Publication[] = [
     }, {
         id: "p24",
         title: "Stable perovskite solar cells using tin acetylacetonate based electron transporting layers",
-        authors: ["M. Abuhelaiqa", "et al."],
+        authors: ["M. Abuhelaiqa, S. Paek, Y. Lee*, K. T. Cho, S. Heo, E. Oveisi, A. Huckaba, H. Kanda, H. Kim, Y. Zhang, R. Humphry-Baker, S. Kinge, A. M. Asiri and M. K. Nazeeruddin*"],
         journal: "Energy & Environmental Science",
         year: 2019,
         selected: false,
@@ -216,7 +216,7 @@ export const publications: Publication[] = [
     }, {
         id: "p25",
         title: "Ideal Conducting Polymer Anode for Highly Efficient Perovskite Light-Emitting Diodes by molecular interaction decoupling",
-        authors: ["S.-H. Jeong", "et al."],
+        authors: ["S.-H. Jeong, H. Kim, M.-H. Park, Y. Lee, N. Li, H.-K. Seo, T.-H. Han, S. Ahn, J.-M Heo, K. S. Kim and T.-W. Lee*"],
         journal: "Nano Energy",
         year: 2019,
         selected: false,
@@ -224,7 +224,7 @@ export const publications: Publication[] = [
     }, {
         id: "p26",
         title: "Efficient Perovskite Light-Emitting Diodes using Polycrystalline Core-Shell-Mimicked Nanograins",
-        authors: ["M.-H. Park", "et al."],
+        authors: ["M.-H. Park, J. Park, J. Lee, H.S. So, H. Kim, S.-H. Jeong, T.-H. Han, C. Wolf, H. Lee, S. Yoo, and T.-W. Lee*"],
         journal: "Advanced Functional Materials",
         year: 2019,
         selected: false,
@@ -232,7 +232,7 @@ export const publications: Publication[] = [
     }, {
         id: "p27",
         title: "Fine control of perovskite crystallization and reducing luminescence quenching using self-doped polyaniline hole injection layer for efficient perovskite light-emitting diodes",
-        authors: ["S. Ahn", "et al."],
+        authors: ["S. Ahn†, M.-H. Park†, S.-H. Jeong†, Y.-H. Kim, J. Park, S. Kim, H. Kim, H. Cho, C. Wolf, M. Pei, H. Yang, T.-W. Lee*"],
         journal: "Advanced Functional Materials",
         year: 2019,
         selected: false,
@@ -240,7 +240,7 @@ export const publications: Publication[] = [
     }, {
         id: "p28",
         title: "Charge Carrier Recombination and Ion Migration in Metal-Halide Perovskite Nanoparticle Films for Efficient Light-Emitting Diodes",
-        authors: ["Y.-H. Kim", "et al."],
+        authors: ["Y.-H. Kim, C. Wolf, H. Kim and T.-W. Lee*"],
         journal: "Nano Energy",
         year: 2018,
         selected: false,
@@ -248,7 +248,7 @@ export const publications: Publication[] = [
     }, {
         id: "p29",
         title: "Solution-Processed n-Type Graphene Doping for Cathode in Inverted Polymer Light-Emitting Diodes",
-        authors: ["S.-J. Kwon", "et al."],
+        authors: ["S.-J. Kwon, T.-H. Han, Y.-H. Kim, T. Ahmed, H.-K. Seo, H. Kim, D. J. Kim, W. Xu, B. H. Hong, J.-X. Zhu and T.-W. Lee*"],
         journal: "ACS Applied Materials & Interfaces",
         year: 2018,
         selected: false,
@@ -256,7 +256,7 @@ export const publications: Publication[] = [
     }, {
         id: "p30",
         title: "Unravelling Additive-based Nanocrystal Pinning for High Efficiency Organic-Inorganic Halide Perovskite Light-Emitting Diodes",
-        authors: ["M.-H. Park", "et al."],
+        authors: ["M.-H. Park, S.-H. Jeong, H.-K. Seo, C. Wolf, Y.-H. Kim, H. Kim, J. Byun, J. S. Kim, H. Cho and T.-W. Lee*"],
         journal: "Nano Energy",
         year: 2017,
         selected: false,
@@ -264,7 +264,7 @@ export const publications: Publication[] = [
     }, {
         id: "p31",
         title: "High-Efficiency Solution-Processed Inorganic Metal Halide Perovskite Light-Emitting Diodes",
-        authors: ["H. Cho", "et al."],
+        authors: ["H. Cho, C. Wolf, J. S. Kim, H. J. Yun, J. S. Bae, H. Kim, J.-M. Heo, S. Ahn and T.-W. Lee*"],
         journal: "Advanced Materials",
         year: 2017,
         selected: false,
@@ -272,7 +272,7 @@ export const publications: Publication[] = [
     }, {
         id: "p32",
         title: "Graphene-based Flexible Electronic Devices",
-        authors: ["H. Kim", "et al."],
+        authors: ["T.-H. Han†, H. Kim†, S.-J. Kwon†, and T.-W. Lee*"],
         journal: "Materials Science and Engineering: R: Reports",
         year: 2017,
         selected: false,
@@ -280,7 +280,7 @@ export const publications: Publication[] = [
     }, {
         id: "p33",
         title: "Universal high work function flexible anode for simplified ITO-Free organic and perovskite light-emitting diodes with ultra-high efficiency",
-        authors: ["S.-H. Jeong", "et al."],
+        authors: ["S.-H. Jeong, S.-H. Woo, T.-H. Han, M.-H. Park, H. Cho, Y.-H. Kim, H. Cho, H. Kim, S. Yoo, and T.-W. Lee*"],
         journal: "NPG Asia Materials",
         year: 2017,
         selected: false,
@@ -288,7 +288,7 @@ export const publications: Publication[] = [
     }, {
         id: "p34",
         title: "Efficient flexible organic/inorganic hybrid perovskite light-emitting diodes based on graphene anode",
-        authors: ["H. Kim", "et al."],
+        authors: ["H.-K. Seo†, H. Kim†, J. Lee, M.-H. Park, S.-H. Jeong, Y.-H Kim, S.-J. Kwon, T.-H. Han, S. Yoo and T.-W. Lee*"],
         journal: "Advanced Materials",
         year: 2017,
         selected: true,
@@ -298,7 +298,7 @@ export const publications: Publication[] = [
     }, {
         id: "p35",
         title: "Versatile metal nanowiring platform for large-scale nano- and opto-electronic devices",
-        authors: ["Y. Lee", "et al."],
+        authors: ["Y. Lee, S.-Y. Min, T.-S. Kim, S.-H. Jeong, J. Y. Won, H. Kim, W. Xu, J. K. Jeong, and T.-W. Lee*"],
         journal: "Advanced Materials",
         year: 2016,
         selected: false,
@@ -306,7 +306,7 @@ export const publications: Publication[] = [
     }, {
         id: "p36",
         title: "On-fabrication solid-state N-doping of graphene by an electron transporting metal oxide layer for efficient inverted organic solar cells",
-        authors: ["H. Kim", "et al."],
+        authors: ["H. Kim, J. Byun, S.-H. Bae, T. Ahmed, J.-X. Zhu, S.-J. Kwon, Y. Lee, S.-Y. Min, C. Wolf, H.-K. Seo, J.-H. Ahn, and T.-W. Lee*"],
         journal: "Advanced Energy Materials",
         year: 2016,
         selected: true,
@@ -316,7 +316,7 @@ export const publications: Publication[] = [
     }, {
         id: "p37",
         title: "Self-doped conducting polymer as a hole-extraction layer in organic-inorganic hybrid perovskite solar cells",
-        authors: ["K.-G. Lim", "et al."],
+        authors: ["K.-G. Lim, S. Ahn, H. Kim, M.-R. Choi, D. H. Huh, and T.-W. Lee*"],
         journal: "Advanced Materials Interfaces",
         year: 2016,
         selected: false,
@@ -324,7 +324,7 @@ export const publications: Publication[] = [
     }, {
         id: "p38",
         title: "Planar heterojunction organometal halide perovskite solar cells: Role of interfacial layers",
-        authors: ["H. Kim", "et al."],
+        authors: ["H. Kim†, K.-G. Lim†, and T.-W. Lee*"],
         journal: "Energy & Environmental Science",
         year: 2016,
         selected: true,
@@ -334,7 +334,7 @@ export const publications: Publication[] = [
     }, {
         id: "p39",
         title: "Flexible lamination encapsulation",
-        authors: ["M.‐H. Park", "et al."],
+        authors: ["M.‐H. Park, J.‐Y. Kim, T.‐H. Han, T.‐S. Kim, H. Kim, and T.‐W. Lee*"],
         journal: "Advanced Materials",
         year: 2015,
         selected: false,
@@ -342,7 +342,7 @@ export const publications: Publication[] = [
     }, {
         id: "p40",
         title: "Boosting the power conversion efficiency of perovskite solar cells using self-organized polymeric hole extraction layers with high work function",
-        authors: ["K.-G. Lim", "et al."],
+        authors: ["K.-G. Lim, H.-B. Kim, J. Jeong, H. Kim, J. Y. Kim, and T.-W. Lee*"],
         journal: "Advanced Materials",
         year: 2014,
         selected: false,
@@ -350,7 +350,7 @@ export const publications: Publication[] = [
     }, {
         id: "p41",
         title: "Ultrathin organic solar cells with graphene doped by ferroelectric polarization",
-        authors: ["K. Kim", "et al."],
+        authors: ["K. Kim, S.-H. Bae, C. T. Toh, H. Kim, J. H. Cho, D. Whang, T.-W. Lee, B. Ozyilmaz*, and J.-H. Ahn*"],
         journal: "ACS Applied Materials & Interfaces",
         year: 2014,
         selected: false,
@@ -358,7 +358,7 @@ export const publications: Publication[] = [
     }, {
         id: "p42",
         title: "Organic solar cells using CVD-grown graphene electrodes",
-        authors: ["H. Kim", "et al."],
+        authors: ["H. Kim, S.-H. Bae, T.-H. Han, K.-G. Lim, J.-H. Ahn, and T.-W. Lee*"],
         journal: "Nanotechnology",
         year: 2013,
         selected: false,
@@ -366,7 +366,7 @@ export const publications: Publication[] = [
     }, {
         id: "p43",
         title: "High-efficiency polymer photovoltaic cells using a solution-processable insulating interfacial nanolayer",
-        authors: ["K.-G. Lim", "et al."],
+        authors: ["K.-G. Lim, M.-R. Choi, H. Kim, J. H. Park, and T.-W. Lee*"],
         journal: "Journal of Materials Chemistry",
         year: 2012,
         selected: false,

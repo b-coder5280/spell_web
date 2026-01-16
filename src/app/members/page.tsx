@@ -4,6 +4,12 @@ import { MemberCard } from "@/components/people/member-card"
 
 const members = [
     {
+        role: "Post Doc.",
+        people: [
+            { name: "Somin Yoo", role: "Post Doc.", interest: "Highly efficient perovskite solar cells.", email: "yoosomin01@gist.ac.kr", image: "/images/sm.jpg" },
+        ]
+    },
+    {
         role: "M.S./Ph.D. Candidates",
         people: [
             { name: "Yeonji Son (Lab Manager 📌)", role: "M.S./Ph.D. Candidates", interest: "Perovskite defect engineering, Perovskite LEDs.", email: "sonyeonjz@gm.gist.ac.kr", image: "/images/yj.jpg" },

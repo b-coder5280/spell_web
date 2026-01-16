@@ -111,16 +111,20 @@ export default function ResearchPage() {
                                                 <X className="h-5 w-5" />
                                             </Button>
 
-                                            <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6 pointer-events-none">
-                                                <motion.h2 layoutId={`card-title-${thrust.id}`} className="text-3xl font-bold text-white shadow-black drop-shadow-md">
-                                                    {thrust.title}
-                                                </motion.h2>
-                                            </div>
                                         </div>
 
                                         <div className="flex-1 overflow-y-auto p-8">
+                                            <div className="mb-8">
+                                                <motion.h2
+                                                    layoutId={`card-title-${thrust.id}`}
+                                                    className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4"
+                                                >
+                                                    {thrust.title}
+                                                </motion.h2>
+                                                <div className="h-1.5 w-20 bg-sky-500 rounded-full" />
+                                            </div>
                                             <div className="prose prose-lg prose-invert max-w-none">
-                                                <p className="mb-6 text-xl leading-relaxed text-slate-300">
+                                                <p className="mb-8 text-xl leading-relaxed text-slate-300 font-medium">
                                                     {thrust.description}
                                                 </p>
 

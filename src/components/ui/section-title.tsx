@@ -22,7 +22,7 @@ export function SectionTitle({
             )}
             {...props}
         >
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
                 {title}
             </h2>
             {subtitle && (
