@@ -7,7 +7,16 @@ export function Footer() {
             <Container>
                 <div className="grid gap-8 md:grid-cols-3">
                     <div className="space-y-4">
-                        <h3 className="text-lg font-bold text-primary">Semiconductor Photonics and Electronics Lab</h3>
+                        <div className="flex flex-col gap-4">
+                            <div className="flex h-16 w-auto justify-start">
+                                <img
+                                    src="/images/logo2.png"
+                                    alt="SPELL Logo"
+                                    className="h-full w-auto object-contain"
+                                />
+                            </div>
+                            <h3 className="text-xl font-bold text-primary leading-tight">Semiconductor Photonics and Electronics Lab</h3>
+                        </div>
                         <p className="text-sm text-muted-foreground leading-relaxed">
                             Gwangju Institute of Science and Technology (GIST)
                         </p>
