@@ -8,9 +8,9 @@ export function Footer() {
                 <div className="grid gap-8 md:grid-cols-3">
                     <div className="space-y-4">
                         <div className="flex flex-col gap-4">
-                            <div className="flex h-16 w-auto justify-start">
+                            <div className="flex h-20 w-auto justify-start">
                                 <img
-                                    src="/images/logo2.png"
+                                    src="/images/logo3.png"
                                     alt="SPELL Logo"
                                     className="h-full w-auto object-contain"
                                 />

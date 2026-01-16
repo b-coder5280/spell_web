@@ -34,15 +34,14 @@ export function Header() {
             <Container>
                 <div className="flex h-16 items-center justify-between">
                     <div className="flex items-center gap-8">
-                        <Link href="/" className="flex items-center gap-4">
-                            <div className="flex items-center justify-center h-12 w-auto">
+                        <Link href="/" className="flex items-center">
+                            <div className="flex items-center justify-center h-14 w-auto">
                                 <img
-                                    src="/images/logo2.png"
+                                    src="/images/logo3.png"
                                     alt="SPELL Logo"
                                     className="h-full w-auto object-contain"
                                 />
                             </div>
-                            <span className="text-2xl font-bold tracking-tight text-white font-display">SPELL</span>
                         </Link>
                         <nav className="hidden md:flex items-center gap-6">
                             {navigation.map((item) => (
