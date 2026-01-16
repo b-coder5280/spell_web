@@ -35,20 +35,6 @@ export default function ResearchPage() {
                     </motion.p>
                 </div>
 
-                {/* Research Overview Image */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="mb-16 w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
-                >
-                    <img
-                        src="/images/research.png"
-                        alt="Research Overview"
-                        className="h-auto w-full object-cover"
-                    />
-                </motion.div>
-
                 {/* Thrusts Grid with Staggered Reveal */}
                 <StaggeredReveal className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {thrusts.map((thrust) => (
@@ -76,6 +62,21 @@ export default function ResearchPage() {
                         </StaggeredItem>
                     ))}
                 </StaggeredReveal>
+
+                {/* Research Overview Image */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                    className="mt-16 w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
+                >
+                    <img
+                        src="/images/research.png"
+                        alt="Research Overview"
+                        className="h-auto w-full object-cover"
+                    />
+                </motion.div>
 
                 {/* Details Modal */}
                 <AnimatePresence>
