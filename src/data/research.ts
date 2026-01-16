@@ -35,7 +35,7 @@ export const thrusts: ResearchThrust[] = [
     },
     {
         id: "laser",
-        title: "Perovskite-based lasers",
+        title: "Perovskite-based Lasers",
         description: "Perovskite-based lasing technologies.",
         details: "The development of compact and efficient lasing sources is essential for the advancement of next-generation integrated photonic technologies. Metal halide perovskites have emerged as a promising gain medium owing to their high optical gain, defect tolerance, and color tunability. However, despite their immense potential, perovskite lasing studies are limited to optically pumped lasing due to the challenges of maintaining stability under the high current densities required for laser operation. Our research aims to develop electrically driven perovskite lasers for integration into core components of diverse applications, including on-chip photonic circuits, high-sensitivity bio-sensing, and next-generation LiDAR systems.",
         tags: ["Energy", "Sustainability", "Photovoltaics"],
