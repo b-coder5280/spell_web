@@ -30,7 +30,7 @@ export function Header() {
     }, [pathname])
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
+        <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-slate-900/90 backdrop-blur-md">
             <Container>
                 <div className="flex h-16 items-center justify-between">
                     <div className="flex items-center gap-8">
@@ -42,7 +42,7 @@ export function Header() {
                                     className="h-full w-auto object-contain"
                                 />
                             </div>
-                            <span className="text-2xl font-bold tracking-tight text-white font-display">SPELL</span>
+                            <span className="text-2xl font-bold tracking-tight text-white font-display drop-shadow-sm">SPELL</span>
                         </Link>
                         <nav className="hidden md:flex items-center gap-6">
                             {navigation.map((item) => (
