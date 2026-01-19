@@ -28,7 +28,7 @@ export const thrusts: ResearchThrust[] = [
     {
         id: "neuromorphic",
         title: "Neuromorphics",
-        description: "Next-generation neuromorphic device: perovskite-based artificial synapses.",
+        description: "Next-generation neuromorphic devices: Perovskite-based artificial synapses.",
         details: "In the era of artificial intelligence, the demand for energy-efficient, high-speed data processing has driven the rise of neuromorphic computing as an alternative to conventional von Neumann architectures, which suffer from high energy consumption. Metal-halide perovskite memristors, with their low set voltage, high energy efficiency, tunable multilevel states, and multifunctional resistive switching, have emerged as key enablers of neuromorphic computing. Our research focuses on enhancing the stability, retention time, and reliability of these memristors through a detailed analysis of their structural and optoelectronic properties. Ultimately, we aim to integrate this technology into neuromorphic computing applications, including inference, classification, and optical image recognition.",
         tags: ["Wearables", "Stretchable", "Bio-integration"],
         image: "/images/sj_nc.png"
@@ -52,7 +52,7 @@ export const thrusts: ResearchThrust[] = [
     {
         id: "AI",
         title: "Artificial Intelligence",
-        description: "Machine learning modeling development for material and device design.",
+        description: "Development of machine learning models for materials and device design.",
         details: "Material development has traditionally been time-consuming and resource-intensive, requiring significant investment to discover and optimize new substances through experimental methods. Machine learning plays a crucial role in accelerating this process by predicting material properties and simulating device architectures. These models enable the rapid identification of high-performance devices, streamlining the design process and fostering the development of more efficient, reliable devices for various applications. Our research aims to utilize machine learning to accelerate the design of perovskite materials and devices. By learning from experimental and simulated data, ML models predict key properties and suggest design guidelines, thereby speeding up the development of high-performance perovskite-based devices.",
         tags: ["Photonics", "Communication", "Speed"],
         image: "/images/db_research.png"
