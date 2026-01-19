@@ -61,19 +61,15 @@ export default function ResearchPage() {
                     </div>
                 </div>
 
+
                 {/* Research Overview Image */}
                 <div className="mb-24">
-                    <SectionTitle
-                        title="Research Workflow"
-                        subtitle="From material synthesis to device integration."
-                        align="center"
-                    />
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="mt-12 w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
+                        className="w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
                     >
                         <img
                             src="/images/research.png"
