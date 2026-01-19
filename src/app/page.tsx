@@ -78,8 +78,10 @@ export default function Home() {
 
                         {/* Content Side - Right */}
                         <div className="relative flex flex-col justify-center p-4 sm:p-6 md:w-[55%] min-w-0 w-full md:h-full">
-                          <div className="mb-3 inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-0.5 text-[11px] font-medium text-blue-300 w-fit italic">
-                            {pub.journal} • {pub.year}
+                          <div className="mb-3 inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-0.5 text-[11px] font-medium text-blue-300 w-fit">
+                            <span className="italic">{pub.journal}</span>
+                            {pub.volume && <span className="ml-1 font-normal opacity-80">{pub.volume}</span>}
+                            <span className="mx-1">•</span> {pub.year}
                           </div>
                           <h3 className="mb-3 text-lg sm:text-xl font-semibold leading-tight text-white line-clamp-3">
                             {pub.title}
@@ -92,9 +94,9 @@ export default function Home() {
 
                           <div className="flex flex-wrap gap-3">
                             {pub.doi && (
-                              <Button asChild size="sm" className="bg-white text-black hover:bg-gray-200 shadow-lg shadow-white/5 transition-all hover:scale-105">
-                                <Link href={pub.doi} target="_blank" rel="noopener noreferrer">
-                                  View Paper <ExternalLink className="ml-2 h-3.5 w-3.5" />
+                              <Button asChild size="sm" className="bg-white text-black hover:bg-gray-200 shadow-lg shadow-white/5 transition-all hover:scale-105 whitespace-nowrap inline-flex items-center justify-center">
+                                <Link href={pub.doi} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                                  View Paper <ExternalLink className="h-3.5 w-3.5" />
                                 </Link>
                               </Button>
                             )}

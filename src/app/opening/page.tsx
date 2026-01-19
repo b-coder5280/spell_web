@@ -21,13 +21,13 @@ export default function OpeningPage() {
                         <div className="space-y-8">
                             <div className="border-b pb-8 last:border-0 last:pb-0">
                                 <h3 className="text-xl font-semibold">Ph.D. / M.S. Students</h3>
-                                <p className="mt-2 text-muted-foreground">
-                                    Semiconductor Photonics and Electronics Lab (SPELL) focuses on next-generation semiconductor and optoelectronic devices, encompassing
-                                    <p>1) perovskite material design,</p>
+                                <div className="mt-2 text-muted-foreground">
+                                    Semiconductor Photonics and Electronics Lab (SPELL) focuses on next-generation semiconductor and optoelectronic devices, encompassing:
+                                    <p className="mt-1">1) perovskite material design,</p>
                                     <p>2) perovskite-based device fabrication,</p>
                                     <p>3) AI/ML-driven performance optimization based on experimental and simulation data,</p>
-                                    <p>with the goal of establishing core technologies for future semiconductor and optoelectronic industries.</p>
-                                </p>
+                                    <p className="mt-1">with the goal of establishing core technologies for future semiconductor and optoelectronic industries.</p>
+                                </div>
                                 <div className="mt-2 text-muted-foreground">Please don't hesitate to contact me by email if you are interested to join us. </div>
                             </div>
 
@@ -39,8 +39,8 @@ export default function OpeningPage() {
                         <p className="mb-8 text-muted-foreground">
                             Please send your <strong>CV</strong> and a brief <strong>cover letter</strong> (or transcript for students) to Prof. Kim.
                         </p>
-                        <Button size="lg" className="gap-2" asChild>
-                            <Link href="mailto:email@gist.ac.kr">
+                        <Button size="lg" className="gap-2 whitespace-nowrap inline-flex items-center justify-center" asChild>
+                            <Link href="mailto:email@gist.ac.kr" className="inline-flex items-center gap-2">
                                 <Mail className="h-5 w-5" /> Apply via Email
                             </Link>
                         </Button>

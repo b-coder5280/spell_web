@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils"
 
 interface SectionTitleProps extends React.HTMLAttributes<HTMLDivElement> {
     title: string
-    subtitle?: string
+    subtitle?: React.ReactNode
     align?: "left" | "center"
 }
 
@@ -22,7 +22,7 @@ export function SectionTitle({
             )}
             {...props}
         >
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
                 {title}
             </h2>
             {subtitle && (

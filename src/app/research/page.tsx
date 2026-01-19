@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { thrusts } from "@/data/research"
 
 import { StaggeredReveal, StaggeredItem } from "@/components/ui/staggered-reveal"
+import { SectionTitle } from "@/components/ui/section-title"
 
 export default function ResearchPage() {
     const [selectedId, setSelectedId] = useState<string | null>(null)
@@ -16,67 +17,71 @@ export default function ResearchPage() {
     return (
         <div className="min-h-screen pb-24 pt-16 text-slate-200">
             <Container>
-                {/* Vision Section */}
-                <div className="mb-8 text-center">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mb-6 text-4xl font-extrabold tracking-tight lg:text-5xl"
-                    >
-                        Our Vision & Core Research
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="mx-auto max-w-3xl text-xl text-slate-400"
-                    >
-                        We aim to <span className="text-slate-200 font-semibold">redefine the limits of semiconductor technology</span> by leveraging novel materials and innovative device architectures.
-                    </motion.p>
+                {/* Research Thrusts Grid Section */}
+                <div className="mb-24 mt-12">
+                    <div className="mb-16 text-center">
+                        <h1 className="text-4xl font-extrabold tracking-tight">Our Vision & Core Research</h1>
+                        <p className="mt-4 text-xl text-muted-foreground max-w-3xl mx-auto">
+                            We aim to <span className="font-bold text-white">redefine the limits of semiconductor technology</span> by leveraging novel materials and innovative device architectures.
+                        </p>
+                    </div>
+                    <div className="mt-16">
+                        <StaggeredReveal className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                            {thrusts.map((thrust) => (
+                                <StaggeredItem key={thrust.id}>
+                                    <motion.div
+                                        onClick={() => setSelectedId(thrust.id)}
+                                        whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                                        className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900/60 shadow-xl backdrop-blur-xl transition-all hover:bg-slate-800/80 hover:border-cyan-500/50 hover:shadow-cyan-500/20"
+                                    >
+                                        <div className="relative aspect-[16/10] shrink-0 overflow-hidden">
+                                            <img
+                                                src={thrust.image}
+                                                alt={thrust.title}
+                                                className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90" />
+                                            <h3 className="absolute bottom-6 left-8 text-xl font-bold text-white tracking-tight leading-tight">
+                                                {thrust.title}
+                                            </h3>
+                                        </div>
+
+                                        <div className="flex flex-1 flex-col p-7">
+                                            <p className="line-clamp-3 text-sm text-slate-300 leading-relaxed font-medium mb-6">
+                                                {thrust.description}
+                                            </p>
+                                            <div className="mt-auto flex items-center text-cyan-400 text-xs font-bold tracking-[0.2em] uppercase transition-colors group-hover:text-cyan-300">
+                                                Exploration <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                </StaggeredItem>
+                            ))}
+                        </StaggeredReveal>
+                    </div>
                 </div>
 
-                {/* Thrusts Grid with Staggered Reveal */}
-                <StaggeredReveal className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    {thrusts.map((thrust) => (
-                        <StaggeredItem key={thrust.id}>
-                            <motion.div
-                                layoutId={`card-container-${thrust.id}`}
-                                onClick={() => setSelectedId(thrust.id)}
-                                whileHover={{ y: -8, scale: 1.02 }}
-                                className="flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg backdrop-blur-md transition-all hover:bg-white/10 hover:shadow-cyan-500/20"
-                            >
-                                <motion.div layoutId={`card-image-container-${thrust.id}`} className="relative aspect-[4/3] shrink-0 overflow-hidden">
-                                    <img src={thrust.image} alt={thrust.title} className="h-full w-full object-cover transition-transform duration-700 hover:scale-110" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                                    <motion.h3 layoutId={`card-title-${thrust.id}`} className="absolute bottom-4 left-4 text-xl font-bold text-white shadow-black drop-shadow-md">
-                                        {thrust.title}
-                                    </motion.h3>
-                                </motion.div>
-
-                                <motion.div className="flex flex-1 flex-col p-6">
-                                    <p className="line-clamp-3 text-sm text-gray-300">
-                                        {thrust.description}
-                                    </p>
-                                </motion.div>
-                            </motion.div>
-                        </StaggeredItem>
-                    ))}
-                </StaggeredReveal>
-
                 {/* Research Overview Image */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
-                    className="mt-16 w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
-                >
-                    <img
-                        src="/images/research.png"
-                        alt="Research Overview"
-                        className="h-auto w-full object-cover"
+                <div className="mb-24">
+                    <SectionTitle
+                        title="Research Workflow"
+                        subtitle="From material synthesis to device integration."
+                        align="center"
                     />
-                </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="mt-12 w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
+                    >
+                        <img
+                            src="/images/research.png"
+                            alt="Research Overview"
+                            className="h-auto w-full object-cover"
+                        />
+                    </motion.div>
+                </div>
 
                 {/* Details Modal */}
                 <AnimatePresence>
@@ -87,9 +92,9 @@ export default function ResearchPage() {
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 onClick={() => setSelectedId(null)}
-                                className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm"
+                                className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm"
                             />
-                            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+                            <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none">
                                 {thrusts.filter(t => t.id === selectedId).map(thrust => (
                                     <motion.div
                                         layoutId={`card-container-${thrust.id}`}

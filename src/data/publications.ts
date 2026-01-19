@@ -9,6 +9,7 @@ export interface Publication {
     pdf?: string
     image?: string
     description?: string
+    volume?: string
 }
 
 export const publications: Publication[] = [
@@ -17,7 +18,8 @@ export const publications: Publication[] = [
         title: "Review on Perovskite/Si Tandem Solar Cells: Internal and External Components toward High Efficiency, Long-term Durability, and Commercialization",
         authors: ["Y. Son†", "J. Lim†", "A. K. Lea", "B.-S. Kim*", "S. Song*", "H. Kim*"],
         journal: "Materials Chemistry Frontiers",
-        year: 2025,
+        year: 2026,
+        volume: ", 10, 21-51",
         selected: false,
         doi: "https://doi.org/10.1039/D5QM00637F",
     },
@@ -27,30 +29,34 @@ export const publications: Publication[] = [
         authors: ["Y. Lai", "C. Chen", "M. Yu", "H. Kuo", "I. Ni", "B. Lin", "H. Kim", "C. Kuo", "Y. Lu", "C. Chueh*"],
         journal: "Chemical Engineering Journal",
         year: 2025,
+        volume: ", 504, 158876",
         selected: false,
         doi: "https://doi.org/10.1016/j.cej.2024.158876",
     }, {
         id: "p3",
+        title: "Efficient Polycrystalline Single-Cation Perovskite Light-Emitting Diodes by Simultaneous Intracrystal and Interfacial Defect Passivation",
+        authors: ["H. Kim", "J.-M. Heo", "C. Wolf", "Y.-H. Kim", "S.-C. Lee", "E. Yoon", "G.-H. Lee", "K. Y. Jang", "J. Park", "J. S. Kim", "M.-H. Park", "S.-H. Jeong", "H. Cho", "T.-H. Han", "E. Oveisi", "M. K. Nazeeruddin", "T.-W. Lee*"],
+        journal: "Small",
+        year: 2025,
+        volume: ", 21, 2405272",
+        selected: false,
+        doi: "https://doi.org/10.1002/smll.202405272",
+    }, {
+        id: "p4",
         title: "Ultra-uniform perovskite crystals formed in the presence of tetrabutylammonium bistriflimide afford efficient and stable perovskite solar cells",
         authors: ["J. Lim†, A. I. Rafieh†, N. Shibayama, J. Xia, J.-N. Audinot, T. Wirtz, S. Kinge, S. W. Glunz, Y. Ding, B. Ding, H. Kim, M. Saliba*, Z. Fei*, P. J. Dyson*, M. K. Nazeeruddin*, and H. Kanda*"],
         journal: "Energy & Environmental Science",
         year: 2024,
+        volume: ", 17, 8209-8218",
         selected: false,
         doi: "https://doi.org/10.1039/d4ee01841a",
-    }, {
-        id: "p4",
-        title: "Efficient Polycrystalline Single-Cation Perovskite Light-Emitting Diodes by Simultaneous Intracrystal and Interfacial Defect Passivation",
-        authors: ["H. Kim", "J.-M. Heo", "C. Wolf", "Y.-H. Kim", "S.-C. Lee", "E. Yoon", "G.-H. Lee", "K. Y. Jang", "J. Park", "J. S. Kim", "M.-H. Park", "S.-H. Jeong", "H. Cho", "T.-H. Han", "E. Oveisi", "M. K. Nazeeruddin", "T.-W. Lee*"],
-        journal: "Small",
-        year: 2024,
-        selected: false,
-        doi: "https://doi.org/10.1002/smll.202405272",
     }, {
         id: "p5",
         title: "Shallow-level defect passivation by 6H perovskite polytype for highly efficient and stable perovskite solar cells",
         authors: ["H. Kim*, S.-M. Yoo†, B. Ding†, H. Kanda, N. Shibayama, M. A. Syzgantseva, F. Fadaei Tirani, P. Schouwink, H. J. Yun, B. Son, Y. Ding, B.-S. Kim, Y. Y. Kim, J. Park, O. A. Syzgantseva, N. J. Jeon*, P. J. Dyson*, M. K. Nazeeruddin*"],
         journal: "Nature Communications",
         year: 2024,
+        volume: ", 15, 5632",
         selected: true,
         doi: "https://doi.org/10.1038/s41467-024-50016-6",
         image: "/images/shallow.png",
@@ -61,6 +67,7 @@ export const publications: Publication[] = [
         authors: ["J. Xia, Y. Zhang, M. Cavazzini, S. Orlandi, B. Ding, H. Kanda, N. Klipfel, X. Gao, A. Qurat, V. Jankauskas, K. Rakstys, R. Hu, Z. Qiu,  A. Asiri, H. Kim*, P. J. Dyson*, G. Pozzi*, M. K. Nazeeruddin*"],
         journal: "Angewandte Chemie",
         year: 2022,
+        volume: ", 61, 48, e202212891",
         selected: false,
         doi: "https://doi.org/10.1002/anie.202212891",
     }, {
@@ -69,6 +76,7 @@ export const publications: Publication[] = [
         authors: ["B. Yang, D. Bogachuk, J. Suo*, L. Wagner, H. Kim, J. Lim, A. Hinsch, G. Boschloo, M. K. Nazeeruddin, A. Hagfeldt*"],
         journal: "Chemical Society Reviews",
         year: 2022,
+        volume: ", 51, 7509",
         selected: false,
         doi: "https://doi.org/10.1039/D2CS00278G",
     }, {
@@ -77,6 +85,7 @@ export const publications: Publication[] = [
         authors: ["J.-M. Heo†, H. Cho†, S.-C. Lee, M.-H. Park, J. S. Kim, H. Kim, J. Park, Y.-H. Kim, H. J. Yun, E. Yoon, D.-H. Kim, S. Ahn, S.-J. Kwon, C.-Y. Park, T.-W. Lee*"],
         journal: "ACS Energy Letters",
         year: 2022,
+        volume: ", 8, 2807",
         selected: false,
         doi: "https://doi.org/10.1021/acsenergylett.2c01010",
     }, {
@@ -85,6 +94,7 @@ export const publications: Publication[] = [
         authors: ["S. Zouhair†, S.-M. Yoo†, D. Bogachuk, J. P. Herterich, J. Lim, H. Kanda, B. Son, H. J. Yun, U. Würfel, A. Chahboun, M. K. Nazeeruddin, A. Hinsch*, L. Wagner*, H. Kim*"],
         journal: "Advanced Energy Materials",
         year: 2022,
+        volume: ", 12, 2200837",
         selected: true,
         doi: "https://doi.org/10.1002/aenm.202200837",
         description: "S. Zouhair†, S.-M. Yoo†, D. Bogachuk, J. P. Herterich, J. Lim, H. Kanda, B. Son, H. J. Yun, U. Würfel, A. Chahboun, M. K. Nazeeruddin, A. Hinsch*, L. Wagner*, H. Kim*",
@@ -95,6 +105,7 @@ export const publications: Publication[] = [
         authors: ["H. Kim*, J. Lim, A. M. Asiri, and M. K. Nazeeruddin*"],
         journal: "Solar RRL",
         year: 2022,
+        volume: ", 6, 2200013",
         selected: false,
         doi: "https://doi.org/10.1002/solr.202200013",
     }, {
@@ -103,6 +114,7 @@ export const publications: Publication[] = [
         authors: ["C. Igci, H. Kanda, S.-M. Yoo, A. A. Sutanto, O. A. Syzgantseva, M. A. Syzgantseva, V. Jankauskas, K. Rakstys, H. Kim*, A. M. Asiri, and M. K. Nazeeruddin*"],
         journal: "Solar RRL",
         year: 2022,
+        volume: ", 6, 2100667",
         selected: false,
         doi: "https://doi.org/10.1002/solr.202100667",
     }, {
@@ -111,6 +123,7 @@ export const publications: Publication[] = [
         authors: ["M. Dessimoz†, S.-M. Yoo†, H. Kanda, C. Igci, H. Kim*, M. K. Nazeeruddin*"],
         journal: "The Journal of Physical Chemistry Letters",
         year: 2021,
+        volume: ", 12, 11323",
         selected: false,
         doi: "https://doi.org/10.1021/acs.jpclett.1c03143",
     }, {
@@ -119,6 +132,7 @@ export const publications: Publication[] = [
         authors: ["M. Vasilopoulou*, A. Fakharuddin, F. P. G. Arquer, D. G. Georgiadou, H. Kim, A. R. M. Yusoff, F. Gao, M. K. Nazeeruddin, H. J. Bolink*, E. H. Sargent*"],
         journal: "Nature Photonics",
         year: 2021,
+        volume: ", 15, 656-669",
         selected: false,
         doi: "https://doi.org/10.1038/s41566-021-00855-2",
     }, {
@@ -127,6 +141,7 @@ export const publications: Publication[] = [
         authors: ["C. W. Jang†, H. Kim†, M. K. Nazeeruddin, D. H. Shin, S.-H. Choi*"],
         journal: "Nano Energy",
         year: 2021,
+        volume: ", 84, 105899",
         selected: false,
         doi: "https://doi.org/10.1016/j.nanoen.2021.105899",
     }, {
@@ -135,6 +150,7 @@ export const publications: Publication[] = [
         authors: ["A. A. Sutanto, C. Igci, H. Kim*, H. Kanda, N. Shibayama, M. Mensi, V. I. Queloz, C. Momblona, H. J. Yun, H. J. Bolink, A. J. Huckaba, M. K. Nazeeruddin*"],
         journal: "ACS Applied Energy Materials",
         year: 2021,
+        volume: ", 4, 1259",
         selected: false,
         doi: "https://doi.org/10.1021/acsaem.0c02472",
     }, {
@@ -143,6 +159,7 @@ export const publications: Publication[] = [
         authors: ["S. Paek, C. R. Carmona, K. T. Cho, M. Franckevičius, H. Kim, H. Kanda, N. Drigo, K.-H. Lin, M. Pei, R. Gegevičius, H. J. Yun, H. Yang, P. A. Schouwink, C. Corminboeuf, A. M. Asiri, and M. K. Nazeeruddin*"],
         journal: "Advanced Science",
         year: 2020,
+        volume: ",7, 19, 2001014",
         selected: false,
         doi: "https://doi.org/10.1002/advs.202001014",
     }, {
@@ -151,6 +168,7 @@ export const publications: Publication[] = [
         authors: ["H. Kanda, N. Shibayama, M. Abuhelaiqa, S. Paek, R. Kaneko, N. Klipfel, A. A. Sutanto, C. R. Carmona, A. J. Huckaba, H. Kim, C. Momblona, A. M. Asiri and M. K. Nazeeruddin*"],
         journal: "Journal of Materials Chemistry A",
         year: 2020,
+        volume: ", 8, 17113",
         selected: false,
         doi: "https://doi.org/10.1039/D0TA05496H",
     }, {
@@ -159,6 +177,7 @@ export const publications: Publication[] = [
         authors: ["C. Igci, S. Paek, K. Rakstys, H. Kanda, N. Shibayama, V. Jankauskas, C. Roldán‐Carmona, H. Kim, A. M. Asiri, and M. K. Nazeeruddin*"],
         journal: "Solar RRL",
         year: 2020,
+        volume: ", 4, 2000173",
         selected: false,
         doi: "https://doi.org/10.1002/solr.202000173",
     }, {
@@ -167,6 +186,7 @@ export const publications: Publication[] = [
         authors: ["H. Kim†, J. S. Kim†, J.-M. Heo†, M. Pei, I.-H. Park, Z. Liu, H. J. Yun, M.-H. Park, S.-H. Jeong, Y.-H. Kim, J.-W. Park, E. Oveisi, S. Nagane, A. Sadhanala, L. Zhang, J. J. Kweon, S. K. Lee, H. Yang, H. M. Jang, R. H. Friend, K. P. Loh, M. K. Nazeeruddin, N.-G. Park, and Tae-Woo Lee*"],
         journal: "Nature Communications",
         year: 2020,
+        volume: ", 11, 3378",
         selected: true,
         doi: "https://doi.org/10.1038/s41467-020-17072-0",
         description: "H. Kim†, J. S. Kim†, J.-M. Heo†, M. Pei, I.-H. Park, Z. Liu, H. J. Yun, M.-H. Park, S.-H. Jeong, Y.-H. Kim, J.-W. Park, E. Oveisi, S. Nagane, A. Sadhanala, L. Zhang, J. J. Kweon, S. K. Lee, H. Yang, H. M. Jang, R. H. Friend, K. P. Loh, M. K. Nazeeruddin, N.-G. Park, and Tae-Woo Lee*",
@@ -177,6 +197,7 @@ export const publications: Publication[] = [
         authors: ["H. Kim, M. Pei, Y. Lee, A. A. Sutanto, S. Paek, V. I. E. Queloz, A. J. Huckaba, K. T. Cho, H. J. Yun, H. Yang, and M. K. Nazeeruddin*"],
         journal: "Advanced Functional Materials",
         year: 2020,
+        volume: ", 30, 1910620",
         selected: true,
         doi: "https://doi.org/10.1002/adfm.201910620",
         description: "H. Kim, M. Pei, Y. Lee, A. A. Sutanto, S. Paek, V. I. E. Queloz, A. J. Huckaba, K. T. Cho, H. J. Yun, H. Yang, and M. K. Nazeeruddin*",
@@ -187,6 +208,7 @@ export const publications: Publication[] = [
         authors: ["N. Drigo, C. Roldan-Carmona, M. Franckevicius, K.-H. Lin, R. Gegevicius, H. Kim, P. A. Schouwink, A. A. Sutanto, S. Olthof, M. Sohail, K. Meerholz, V. Gulbinas, C. Corminboeuf, S. Paek*, and M.K. Nazeeruddin*"],
         journal: "Journal of the American Chemical Society",
         year: 2020,
+        volume: ", 142, 1792",
         selected: false,
         doi: "https://doi.org/10.1021/jacs.9b07166",
     }, {
@@ -195,6 +217,7 @@ export const publications: Publication[] = [
         authors: ["S.-I. Kim†, Y. Lee†, M.-H. Park, G.-T. Go, Y.-H. Kim, W. Xu, H. -D. Lee, H. Kim, D.-G. Seo, W. Lee, T.-W. Lee*"],
         journal: "Advanced Electronic Materials",
         year: 2019,
+        volume: ", 5, 1900008",
         selected: false,
         doi: "https://doi.org/10.1002/aelm.201900008",
     }, {
@@ -203,6 +226,7 @@ export const publications: Publication[] = [
         authors: ["H.-D. Lee†, H. Kim†, H. Cho†, W. Cha, YS Hong, Y.-H. Kim, A Sadhanala, V. Venugopalanm, J. S. Kim, J. W. Choi, C.-L. Lee, D Kim, H. Yang, R. H. Friend and T.-W. Lee*"],
         journal: "Advanced Functional Materials",
         year: 2019,
+        volume: ", 29, 1901225",
         selected: false,
         doi: "https://doi.org/10.1002/adfm.201901225",
     }, {
@@ -211,6 +235,7 @@ export const publications: Publication[] = [
         authors: ["M. Abuhelaiqa, S. Paek, Y. Lee*, K. T. Cho, S. Heo, E. Oveisi, A. Huckaba, H. Kanda, H. Kim, Y. Zhang, R. Humphry-Baker, S. Kinge, A. M. Asiri and M. K. Nazeeruddin*"],
         journal: "Energy & Environmental Science",
         year: 2019,
+        volume: ", 12, 1910-1917",
         selected: false,
         doi: "https://doi.org/10.1039/C9EE00453J",
     }, {
@@ -219,6 +244,7 @@ export const publications: Publication[] = [
         authors: ["S.-H. Jeong, H. Kim, M.-H. Park, Y. Lee, N. Li, H.-K. Seo, T.-H. Han, S. Ahn, J.-M Heo, K. S. Kim and T.-W. Lee*"],
         journal: "Nano Energy",
         year: 2019,
+        volume: ", 60, 324-331",
         selected: false,
         doi: "https://doi.org/10.1016/j.nanoen.2019.03.030",
     }, {
@@ -227,6 +253,7 @@ export const publications: Publication[] = [
         authors: ["M.-H. Park, J. Park, J. Lee, H.S. So, H. Kim, S.-H. Jeong, T.-H. Han, C. Wolf, H. Lee, S. Yoo, and T.-W. Lee*"],
         journal: "Advanced Functional Materials",
         year: 2019,
+        volume: ", 29, 1902017",
         selected: false,
         doi: "https://doi.org/10.1002/adfm.201902017",
     }, {
@@ -235,6 +262,7 @@ export const publications: Publication[] = [
         authors: ["S. Ahn†, M.-H. Park†, S.-H. Jeong†, Y.-H. Kim, J. Park, S. Kim, H. Kim, H. Cho, C. Wolf, M. Pei, H. Yang, T.-W. Lee*"],
         journal: "Advanced Functional Materials",
         year: 2019,
+        volume: ", 29, 1807535",
         selected: false,
         doi: "https://doi.org/10.1002/adfm.201807535",
     }, {
@@ -243,6 +271,7 @@ export const publications: Publication[] = [
         authors: ["Y.-H. Kim, C. Wolf, H. Kim and T.-W. Lee*"],
         journal: "Nano Energy",
         year: 2018,
+        volume: ", 52, 329-335",
         selected: false,
         doi: "https://doi.org/10.1016/j.nanoen.2018.07.030",
     }, {
@@ -251,6 +280,7 @@ export const publications: Publication[] = [
         authors: ["S.-J. Kwon, T.-H. Han, Y.-H. Kim, T. Ahmed, H.-K. Seo, H. Kim, D. J. Kim, W. Xu, B. H. Hong, J.-X. Zhu and T.-W. Lee*"],
         journal: "ACS Applied Materials & Interfaces",
         year: 2018,
+        volume: ", 10, 4874-4881",
         selected: false,
         doi: "https://doi.org/10.1021/acsami.7b15307",
     }, {
@@ -259,6 +289,7 @@ export const publications: Publication[] = [
         authors: ["M.-H. Park, S.-H. Jeong, H.-K. Seo, C. Wolf, Y.-H. Kim, H. Kim, J. Byun, J. S. Kim, H. Cho and T.-W. Lee*"],
         journal: "Nano Energy",
         year: 2017,
+        volume: ", 42, 157-165",
         selected: false,
         doi: "https://doi.org/10.1016/j.nanoen.2017.10.012",
     }, {
@@ -267,6 +298,7 @@ export const publications: Publication[] = [
         authors: ["H. Cho, C. Wolf, J. S. Kim, H. J. Yun, J. S. Bae, H. Kim, J.-M. Heo, S. Ahn and T.-W. Lee*"],
         journal: "Advanced Materials",
         year: 2017,
+        volume: ", 29, 1700579",
         selected: false,
         doi: "https://doi.org/10.1002/adma.201700579",
     }, {
@@ -275,6 +307,7 @@ export const publications: Publication[] = [
         authors: ["T.-H. Han†, H. Kim†, S.-J. Kwon†, and T.-W. Lee*"],
         journal: "Materials Science and Engineering: R: Reports",
         year: 2017,
+        volume: ", 118, 1-43",
         selected: false,
         doi: "https://doi.org/10.1016/j.mser.2017.05.001",
     }, {
@@ -283,6 +316,7 @@ export const publications: Publication[] = [
         authors: ["S.-H. Jeong, S.-H. Woo, T.-H. Han, M.-H. Park, H. Cho, Y.-H. Kim, H. Cho, H. Kim, S. Yoo, and T.-W. Lee*"],
         journal: "NPG Asia Materials",
         year: 2017,
+        volume: ", 9, e411",
         selected: false,
         doi: "https://doi.org/10.1038/am.2017.108",
     }, {
@@ -291,6 +325,7 @@ export const publications: Publication[] = [
         authors: ["H.-K. Seo†, H. Kim†, J. Lee, M.-H. Park, S.-H. Jeong, Y.-H Kim, S.-J. Kwon, T.-H. Han, S. Yoo and T.-W. Lee*"],
         journal: "Advanced Materials",
         year: 2017,
+        volume: ", 29, 1605587",
         selected: true,
         doi: "https://doi.org/10.1002/adma.201605587",
         description: "H.-K. Seo†, H. Kim†, J. Lee, M.-H. Park, S.-H. Jeong, Y.-H Kim, S.-J. Kwon, T.-H. Han, S. Yoo and T.-W. Lee*",
@@ -301,6 +336,7 @@ export const publications: Publication[] = [
         authors: ["Y. Lee, S.-Y. Min, T.-S. Kim, S.-H. Jeong, J. Y. Won, H. Kim, W. Xu, J. K. Jeong, and T.-W. Lee*"],
         journal: "Advanced Materials",
         year: 2016,
+        volume: ", 28, 9109-9116",
         selected: false,
         doi: "https://doi.org/10.1002/adma.201602855",
     }, {
@@ -309,6 +345,7 @@ export const publications: Publication[] = [
         authors: ["H. Kim, J. Byun, S.-H. Bae, T. Ahmed, J.-X. Zhu, S.-J. Kwon, Y. Lee, S.-Y. Min, C. Wolf, H.-K. Seo, J.-H. Ahn, and T.-W. Lee*"],
         journal: "Advanced Energy Materials",
         year: 2016,
+        volume: ", 6, 1600172",
         selected: true,
         doi: "https://doi.org/10.1002/aenm.201600172",
         description: "H. Kim, J. Byun, S.-H. Bae, T. Ahmed, J.-X. Zhu, S.-J. Kwon, Y. Lee, S.-Y. Min, C. Wolf, H.-K. Seo, J.-H. Ahn, and T.-W. Lee*",
@@ -319,6 +356,7 @@ export const publications: Publication[] = [
         authors: ["K.-G. Lim, S. Ahn, H. Kim, M.-R. Choi, D. H. Huh, and T.-W. Lee*"],
         journal: "Advanced Materials Interfaces",
         year: 2016,
+        volume: ", 3, 1500678",
         selected: false,
         doi: "https://doi.org/10.1002/admi.201500678",
     }, {
@@ -327,6 +365,7 @@ export const publications: Publication[] = [
         authors: ["H. Kim†, K.-G. Lim†, and T.-W. Lee*"],
         journal: "Energy & Environmental Science",
         year: 2016,
+        volume: ", 9, 12-30",
         selected: true,
         doi: "https://doi.org/10.1039/C5EE02194D",
         description: "H. Kim†, K.-G. Lim†, and T.-W. Lee*",
@@ -337,6 +376,7 @@ export const publications: Publication[] = [
         authors: ["M.‐H. Park, J.‐Y. Kim, T.‐H. Han, T.‐S. Kim, H. Kim, and T.‐W. Lee*"],
         journal: "Advanced Materials",
         year: 2015,
+        volume: ", 27, 4308-4314",
         selected: false,
         doi: "https://doi.org/10.1002/adma.201501856",
     }, {
@@ -345,6 +385,7 @@ export const publications: Publication[] = [
         authors: ["K.-G. Lim, H.-B. Kim, J. Jeong, H. Kim, J. Y. Kim, and T.-W. Lee*"],
         journal: "Advanced Materials",
         year: 2014,
+        volume: ", 26, 6461-6466",
         selected: false,
         doi: "https://doi.org/10.1002/adma.201401775",
     }, {
@@ -353,6 +394,7 @@ export const publications: Publication[] = [
         authors: ["K. Kim, S.-H. Bae, C. T. Toh, H. Kim, J. H. Cho, D. Whang, T.-W. Lee, B. Ozyilmaz*, and J.-H. Ahn*"],
         journal: "ACS Applied Materials & Interfaces",
         year: 2014,
+        volume: ", 6, 3299-3304",
         selected: false,
         doi: "https://doi.org/10.1021/am405270y",
     }, {
@@ -361,6 +403,7 @@ export const publications: Publication[] = [
         authors: ["H. Kim, S.-H. Bae, T.-H. Han, K.-G. Lim, J.-H. Ahn, and T.-W. Lee*"],
         journal: "Nanotechnology",
         year: 2013,
+        volume: ", 25, 014012",
         selected: false,
         doi: "https://iopscience.iop.org/article/10.1088/0957-4484/25/1/014012/meta",
     }, {
@@ -369,6 +412,7 @@ export const publications: Publication[] = [
         authors: ["K.-G. Lim, M.-R. Choi, H. Kim, J. H. Park, and T.-W. Lee*"],
         journal: "Journal of Materials Chemistry",
         year: 2012,
+        volume: ", 22, 25148-25153",
         selected: false,
         doi: "https://doi.org/10.1039/C2JM35016E",
     },

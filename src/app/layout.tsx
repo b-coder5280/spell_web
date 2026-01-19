@@ -1,8 +1,14 @@
-import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { AnimatedBackground } from "@/components/ui/animated-background";
+import { Metadata } from "next";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Semiconductor Photonics and Electronics Lab | GIST",
@@ -15,9 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="overflow-x-hidden">
+    <html lang="en" className={`${inter.variable} overflow-x-hidden`}>
       <body
-        className="antialiased min-h-screen flex flex-col font-sans overflow-x-hidden max-w-[100vw]"
+        className="antialiased min-h-screen flex flex-col overflow-x-hidden max-w-[100vw]"
       >
         <AnimatedBackground />
         <Header />

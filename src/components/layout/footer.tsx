@@ -35,7 +35,7 @@ export function Footer() {
                             <p>123 Cheomdan-gwagiro, Buk-gu, Gwangju 61005, Korea</p>
                             <p>Email: hobkim@gist.ac.kr </p>
                             <p>Tel: +82-62-715-2741 </p>
-                            <p>Office: Materials Science and Engineering Building (S5) Rm:909</p>
+                            <p>Office: Materials Science and Engineering Building (S5)</p>
                         </div>
                     </div>
                 </div>

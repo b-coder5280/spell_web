@@ -29,10 +29,17 @@ export default function ProfessorPage() {
 
 
 
-                            <div className="flex gap-2">
-                                <Button size="icon" variant="outline" title="Google Scholar" asChild>
-                                    <a href="https://scholar.google.com/citations?user=LuWKShkAAAAJ&hl=ko" target="_blank" rel="noopener noreferrer">
-                                        <GraduationCap className="h-4 w-4" />
+                            <div className="flex flex-wrap gap-2">
+                                <Button variant="outline" className="gap-2 px-4 py-2 h-auto whitespace-nowrap inline-flex items-center" asChild>
+                                    <a href="https://scholar.google.com/citations?user=LuWKShkAAAAJ&hl=ko" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            className="h-5 w-5 fill-current shrink-0"
+                                            aria-hidden="true"
+                                        >
+                                            <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.828 3.38L12 18.26l7.172-5.38L24 9.5z" />
+                                        </svg>
+                                        <span className="font-medium">Google Scholar</span>
                                     </a>
                                 </Button>
 

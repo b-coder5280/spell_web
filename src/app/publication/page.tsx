@@ -34,9 +34,6 @@ export default function PublicationPage() {
                 <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <h1 className="text-4xl font-extrabold tracking-tight">Publications</h1>
-                        <p className="mt-2 text-muted-foreground">
-                            Selected research outputs and academic contributions.
-                        </p>
                     </div>
 
                     <div className="flex bg-slate-800 p-1 rounded-lg">
@@ -70,7 +67,10 @@ export default function PublicationPage() {
                                     </div>
                                     <p className="text-muted-foreground">{pub.authors.join(", ")}</p>
                                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                        <span className="font-medium text-foreground italic">{pub.journal}</span>
+                                        <span className="font-medium text-foreground">
+                                            <span className="italic">{pub.journal}</span>
+                                            {pub.volume && <span className="ml-1 text-muted-foreground/80 font-normal">{pub.volume}</span>}
+                                        </span>
                                         <span>•</span>
                                         <span>{pub.year}</span>
                                     </div>

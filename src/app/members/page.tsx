@@ -6,7 +6,7 @@ const members = [
     {
         role: "Post Doc.",
         people: [
-            { name: "Somin Yoo", role: "Post Doc.", interest: "Highly efficient perovskite solar cells.", email: "yoosomin01@gist.ac.kr", image: "/images/sm.jpg" },
+            { name: "So-Min Yoo", role: "Post Doc.", interest: "Highly efficient perovskite solar cells.", email: "yoosomin01@gist.ac.kr", image: "/images/sm.jpg" },
         ]
     },
     {
