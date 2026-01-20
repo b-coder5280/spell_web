@@ -23,7 +23,7 @@ export const newsItems: NewsItem[] = [
         date: "2025.07",
         category: "Conference",
         image: "/images/nano2.jpg",
-        detailImages: ["/images/nano2.jpg", "/images/nano2.1.jpg", "/images/nano2.2.jpg", "/images/nano2.3.jpg", "/images/nano2.4.jpg"], // Example multi-image
+        detailImages: ["/images/nano2.jpg", "/images/nano2.1.jpg", "/images/nano2.2.jpg", "/images/nano2.3.jpg", "/images/nano2.4.png"], // Example multi-image
         description: "We organized a public session, “To the Dream Display! Showcasing the Future with Perovskite (꿈의 화면으로! 페로브스카이트 디스플레이로 미래를 보여주다)” at Nano Korea 2025. In this session, we demonstrated experiments on the fabrication and characterization of perovskite LEDs for high school students."
     },
     {
