@@ -74,7 +74,7 @@ export const newsItems: NewsItem[] = [
         date: "2024.09",
         category: "Published",
         image: "/images/Small.png",
-        description: "Prof. Hobeom Kim's paper, “Efficient Polycrystalline Single-Cation Perovskite Light-Emitting Diodes by Simultaneous Intracrystal and Interfacial Defect Passivation”  has been published in Small. This article also appears in Hot Topic: Surfaces and interfaces and Selected for Front cover"
+        description: "Prof. Hobeom Kim's paper, “Efficient Polycrystalline Single-Cation Perovskite Light-Emitting Diodes by Simultaneous Intracrystal and Interfacial Defect Passivation”  has been published in Small. This article also appears in Hot Topic: Surfaces and interfaces and selected for Front Cover"
     },
     {
         id: "n9",
@@ -91,7 +91,7 @@ export const newsItems: NewsItem[] = [
         date: "2024.07",
         category: "Published",
         image: "/images/paper2.jpg",
-        description: "Prof. Hobeom Kim's paper, “Shallow-level Defect Passivation by 6H Perovskite Polytype for Highly Efficient and Stable Perovskite Solar Cells”  has been published in Nature Communications. Featured in Editor’s highlights, 'Devices' and Behind the paper"
+        description: "Prof. Hobeom Kim's paper, “Shallow-level Defect Passivation by 6H Perovskite Polytype for Highly Efficient and Stable Perovskite Solar Cells”  has been published in Nature Communications. Featured in Editor’s Highlights, 'Devices' and Behind the Paper"
     },
     {
         id: "n7",
