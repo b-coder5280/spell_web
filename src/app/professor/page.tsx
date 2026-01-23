@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/container"
 import { SectionTitle } from "@/components/ui/section-title"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Image from "next/image"
-import { Mail, MapPin, Linkedin, GraduationCap, User } from "lucide-react"
+import { Mail, MapPin, Linkedin, GraduationCap, User, Award, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { image } from "framer-motion/client"
 
@@ -62,10 +62,34 @@ export default function ProfessorPage() {
                         </div>
 
                         <Tabs defaultValue="edu_exp" className="w-full">
-                            <TabsList className="grid w-full grid-cols-3">
-                                <TabsTrigger value="edu_exp">Education & Experience</TabsTrigger>
-                                <TabsTrigger value="grants">Grants</TabsTrigger>
-                                <TabsTrigger value="awards">Awards & Honors</TabsTrigger>
+                            <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 bg-transparent p-0 gap-4 h-auto">
+                                <TabsTrigger
+                                    value="edu_exp"
+                                    className="flex items-center justify-center rounded-xl py-6 px-4 text-base font-bold transition-all border-2
+                                    bg-muted/30 border-muted/50 text-muted-foreground
+                                    data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:border-primary data-[state=active]:shadow-xl 
+                                    hover:bg-muted/50 hover:border-muted-foreground/30 shadow-sm"
+                                >
+                                    Education & Experience
+                                </TabsTrigger>
+                                <TabsTrigger
+                                    value="grants"
+                                    className="flex items-center justify-center rounded-xl py-6 px-4 text-base font-bold transition-all border-2
+                                    bg-muted/30 border-muted/50 text-muted-foreground
+                                    data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:border-primary data-[state=active]:shadow-xl 
+                                    hover:bg-muted/50 hover:border-muted-foreground/30 shadow-sm"
+                                >
+                                    Grants
+                                </TabsTrigger>
+                                <TabsTrigger
+                                    value="awards"
+                                    className="flex items-center justify-center rounded-xl py-6 px-4 text-base font-bold transition-all border-2
+                                    bg-muted/30 border-muted/50 text-muted-foreground
+                                    data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:border-primary data-[state=active]:shadow-xl 
+                                    hover:bg-muted/50 hover:border-muted-foreground/30 shadow-sm"
+                                >
+                                    Awards & Honors
+                                </TabsTrigger>
                             </TabsList>
 
                             <TabsContent value="edu_exp" className="mt-8 space-y-8">
