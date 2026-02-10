@@ -14,6 +14,16 @@ export interface Publication {
 
 export const publications: Publication[] = [
     {
+        id: "p44",
+        title: "Thiocarboxylic Acids for Robust Passivation and Advanced Applications of Perovskite Nanocrystals",
+        authors: ["T. Kimura", "S. J. Song", "Y. Son", "S. Yoon", "T. Iizuka", "T. Nagata", "Y. Ito", "H. Kim", "D. R. Whang*", "A. Masuhara*"],
+        journal: "Chemical Communications",
+        year: 2026,
+        volume: ", Accepted",
+        selected: false,
+        doi: "https://pubs.rsc.org/en/content/articlelanding/2026/cc/d5cc07280h",
+    },
+    {
         id: "p1",
         title: "Review on Perovskite/Si Tandem Solar Cells: Internal and External Components toward High Efficiency, Long-term Durability, and Commercialization",
         authors: ["Y. Son†", "J. Lim†", "A. K. Lea", "B.-S. Kim*", "S. Song*", "H. Kim*"],

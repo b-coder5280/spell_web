@@ -20,7 +20,7 @@ export default function ResearchPage() {
                 {/* Research Thrusts Grid Section */}
                 <div className="mb-24 mt-12">
                     <div className="mb-16 text-center">
-                        <h1 className="text-4xl font-extrabold tracking-tight">Our Vision & Core Research</h1>
+                        <h1 className="text-4xl font-extrabold tracking-tight">Our Vision & Core Research Areas</h1>
                         <p className="mt-4 text-xl text-muted-foreground max-w-3xl mx-auto">
                             We aim to <span className="font-bold text-white">redefine the limits of semiconductor technology</span> by leveraging novel materials and innovative device architectures.
                         </p>
