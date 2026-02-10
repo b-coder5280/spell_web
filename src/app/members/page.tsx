@@ -22,9 +22,14 @@ const members = [
     {
         role: "M.S. Candidates",
         people: [
-            { name: "Suji Moon", role: "M.S. Candidates", interest: "Dry process silicon/perovskite tandem solar cell.", email: "moondduzy@gm.gist.ac.kr", image: "/images/sjm.jpg" },
             { name: "Sangjeung Park", role: "M.S. Candidates", interest: "Perovskite memristor.", email: "partist001@gm.gist.ac.kr", image: "/images/sj.jpg" },
             { name: "Seungwoo Song", role: "M.S. Candidates", interest: "Development of NIR PeLEDs.", email: "seungw00@gm.gist.ac.kr", image: "/images/sw.png" },
+        ]
+    },
+    {
+        role: "Alumni",
+        people: [
+            { name: "Suji Moon", role: "M.S.", interest: "Dry process silicon/perovskite tandem solar cell.", email: "moondduzy@gm.gist.ac.kr", image: "/images/sjm.jpg" }
         ]
     }
 ]
