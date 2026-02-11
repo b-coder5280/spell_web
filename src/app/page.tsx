@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/container"
 import { SectionTitle } from "@/components/ui/section-title"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { publications } from "@/data/publications"
-import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react"
+import { ExternalLink, ChevronLeft, ChevronRight, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import React, { useState, useCallback, useEffect } from "react"
@@ -46,6 +46,50 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-8 pb-12">
       <Hero />
+
+      {/* Recruitment Section */}
+      <Container>
+        <ScrollReveal>
+          <div className="relative overflow-hidden rounded-3xl bg-slate-900 border border-slate-800 p-8 md:p-12 mb-8">
+            <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]" />
+            <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-72 h-72 bg-indigo-500/10 rounded-full blur-[80px]" />
+
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="max-w-2xl text-left">
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                  Join Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Lab</span>
+                </h2>
+                <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+                  차세대 반도체/광반도체 소재 및 소자 (페로브스카이트 LED, 태양전지, 뉴로모픽 소자 등) 및 인공지능 기반 소재 탐색, 소자 성능 예측 및 최적화 연구에 관심있는 대학원생을 모집합니다. 신소재/화공/물리/화학/컴공/AI 등 이공계 전 분야 지원 가능하며 학부 전공보다 연구에 대한 몰입도와 기초 역량을 우선적으로 고려합니다.
+                  <br />
+                  <br />
+                  관심있는 학생들은 언제든지 김호범 교수님(e-mail: hobkim@gist.ac.kr, Tel: 062-715-2741)께 간단한 자기소개서(자유 양식)와 함께 컨택 바랍니다.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Button size="lg" variant="outline" className="h-12 px-8 border-slate-700 hover:bg-slate-800 text-white backdrop-blur-sm" asChild>
+                    <Link href="mailto:hobkim@gist.ac.kr" className="inline-flex items-center gap-2">
+                      <Mail className="h-5 w-5" /> Contact Prof. Kim
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+
+              <div className="hidden lg:block shrink-0">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
+                  <div className="relative w-48 h-48 rounded-full border border-blue-500/30 bg-blue-500/5 flex items-center justify-center backdrop-blur-sm">
+                    <div className="w-36 h-36 rounded-full border border-blue-500/20 bg-blue-500/10 flex items-center justify-center">
+                      <div className="w-24 h-24 rounded-full bg-blue-500/20 flex items-center justify-center">
+                        <Mail className="w-12 h-12 text-blue-400" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+      </Container>
 
       {/* Selected Publication Section */}
       {featuredPubs.length > 0 && (

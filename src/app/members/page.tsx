@@ -6,30 +6,30 @@ const members = [
     {
         role: "Post Doc.",
         people: [
-            { name: "So-Min Yoo", role: "Post Doc.", interest: "Highly efficient perovskite solar cells.", email: "yoosomin01@gist.ac.kr", image: "/images/sm.jpg" },
+            { name: "유소민 (So-Min Yoo)", role: "Post Doc.", interest: "Highly efficient perovskite solar cells.", email: "yoosomin01@gist.ac.kr", image: "/images/sm.jpg" },
         ]
     },
     {
         role: "M.S./Ph.D. Candidates",
         people: [
-            { name: "Yeonji Son (Lab Manager 📌)", role: "M.S./Ph.D. Candidates", interest: "Perovskite defect engineering, Perovskite LEDs.", email: "sonyeonjz@gm.gist.ac.kr", image: "/images/yj.jpg" },
-            { name: "Junmo Park", role: "M.S./Ph.D. Candidates", interest: "Synthesis of high-crystalline Perovskites, Perovskite LEDs.", email: "dtb06235@gm.gist.ac.kr", image: "/images/jm.jpg" },
-            { name: "Byungjun Yoo", role: "M.S./Ph.D. Candidates", interest: "Interfacial layer engineering of Perovskite LEDs.", email: "timdthy7@gm.gist.ac.kr", image: "/images/bj.png" },
-            { name: "Sunghwan Park", role: "M.S./Ph.D. Candidates", interest: "AI Digital-Twin based auto lab for developing high-efficiency.", email: "sung0630@gm.gist.ac.kr", image: "/images/sh.jpg" },
-            { name: "Dongbeen Lee", role: "M.S./Ph.D. Candidates", interest: "Artificial intelligence for material & device design.", email: "dongbeen@gm.gist.ac.kr", image: "/images/db.png" },
+            { name: "손연지 (Yeonji Son) Lab Manager 📌", role: "M.S./Ph.D. Candidates", interest: "Perovskite defect engineering, Perovskite LEDs.", email: "sonyeonjz@gm.gist.ac.kr", image: "/images/yj.jpg" },
+            { name: "박준모 (Junmo Park)", role: "M.S./Ph.D. Candidates", interest: "Synthesis of high-crystalline Perovskites, Perovskite LEDs.", email: "dtb06235@gm.gist.ac.kr", image: "/images/jm.jpg" },
+            { name: "유병준 (Byungjun Yoo)", role: "M.S./Ph.D. Candidates", interest: "Interfacial layer engineering of Perovskite LEDs.", email: "timdthy7@gm.gist.ac.kr", image: "/images/bj.png" },
+            { name: "박성환 (Sunghwan Park)", role: "M.S./Ph.D. Candidates", interest: "AI Digital-Twin based auto lab for developing high-efficiency.", email: "sung0630@gm.gist.ac.kr", image: "/images/sh.jpg" },
+            { name: "이동빈 (Dongbeen Lee)", role: "M.S./Ph.D. Candidates", interest: "Artificial intelligence for material & device design.", email: "dongbeen@gm.gist.ac.kr", image: "/images/db.png" },
         ]
     },
     {
         role: "M.S. Candidates",
         people: [
-            { name: "Sangjeung Park", role: "M.S. Candidates", interest: "Perovskite memristor.", email: "partist001@gm.gist.ac.kr", image: "/images/sj.jpg" },
-            { name: "Seungwoo Song", role: "M.S. Candidates", interest: "Development of NIR PeLEDs.", email: "seungw00@gm.gist.ac.kr", image: "/images/sw.png" },
+            { name: "박상증 (Sangjeung Park)", role: "M.S. Candidates", interest: "Perovskite memristor.", email: "partist001@gm.gist.ac.kr", image: "/images/sj.jpg" },
+            { name: "송승우 (Seungwoo Song)", role: "M.S. Candidates", interest: "Development of NIR PeLEDs.", email: "seungw00@gm.gist.ac.kr", image: "/images/sw.png" },
         ]
     },
     {
         role: "Alumni",
         people: [
-            { name: "Suji Moon", role: "M.S.", interest: "Dry process silicon/perovskite tandem solar cell.", email: "moondduzy@gm.gist.ac.kr", image: "/images/sjm.jpg" }
+            { name: "문수지 (Suji Moon)", role: "M.S.", interest: "Student Researcher in KRICT-Perovskite", email: "moondduzy@gm.gist.ac.kr", image: "/images/sjm.jpg" }
         ]
     }
 ]

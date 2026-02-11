@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Container } from "@/components/ui/container"
 import { X, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 import { thrusts } from "@/data/research"
 
@@ -35,10 +36,12 @@ export default function ResearchPage() {
                                         className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900/60 shadow-xl backdrop-blur-xl transition-all hover:bg-slate-800/80 hover:border-cyan-500/50 hover:shadow-cyan-500/20"
                                     >
                                         <div className="relative aspect-[16/10] shrink-0 overflow-hidden">
-                                            <img
+                                            <Image
                                                 src={thrust.image}
                                                 alt={thrust.title}
-                                                className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                                fill
+                                                className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90" />
                                             <h3 className="absolute bottom-6 left-8 text-xl font-bold text-white tracking-tight leading-tight">
@@ -61,20 +64,19 @@ export default function ResearchPage() {
                     </div>
                 </div>
 
-
-                {/* Research Overview Image */}
-                <div className="mb-24">
+                {/* Research Overview Image - Aligned with Grid */}
+                <div className="mb-24 mt-12">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
+                        transition={{ duration: 0.8 }}
+                        className="w-full overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl bg-slate-900/40 backdrop-blur-sm"
                     >
                         <img
                             src="/images/research.png"
                             alt="Research Overview"
-                            className="h-auto w-full object-cover"
+                            className="w-full h-auto block"
                         />
                     </motion.div>
                 </div>
@@ -98,12 +100,15 @@ export default function ResearchPage() {
                                         className="pointer-events-auto relative w-full max-w-5xl overflow-hidden rounded-2xl bg-[#0f172a] border border-slate-800 shadow-2xl flex flex-col max-h-[95vh]"
                                     >
                                         <div className="relative w-full bg-black/90 flex items-center justify-center overflow-hidden shrink-0">
-                                            <motion.img
-                                                layoutId={`card-image-container-${thrust.id}`}
-                                                src={thrust.detailImage || thrust.image}
-                                                alt={thrust.title}
-                                                className="max-h-[60vh] w-auto max-w-full object-contain"
-                                            />
+                                            <div className="relative w-full h-[60vh]">
+                                                <Image
+                                                    src={thrust.detailImage || thrust.image}
+                                                    alt={thrust.title}
+                                                    fill
+                                                    className="object-contain"
+                                                    sizes="100vw"
+                                                />
+                                            </div>
 
                                             <Button
                                                 size="icon"
