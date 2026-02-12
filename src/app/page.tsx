@@ -59,12 +59,20 @@ export default function Home() {
                 <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
                   Join Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Lab</span>
                 </h2>
-                <p className="text-lg text-slate-300 mb-8 leading-relaxed">
-                  차세대 반도체/광반도체 소재 및 소자 (페로브스카이트 LED, 태양전지, 뉴로모픽 소자 등) 및 인공지능 기반 소재 탐색, 소자 성능 예측 및 최적화 연구에 관심있는 대학원생을 모집합니다. 신소재/화공/물리/화학/컴공/AI 등 이공계 전 분야 지원 가능하며 학부 전공보다 연구에 대한 몰입도와 기초 역량을 우선적으로 고려합니다.
-                  <br />
-                  <br />
-                  관심있는 학생들은 언제든지 김호범 교수님(e-mail: hobkim@gist.ac.kr, Tel: 062-715-2741)께 간단한 자기소개서(자유 양식)와 함께 컨택 바랍니다.
-                </p>
+                <ul className="text-lg text-slate-300 mb-8 space-y-4 leading-relaxed">
+                  <li className="flex gap-3">
+                    <span className="text-blue-400 shrink-0 mt-1.5">•</span>
+                    <span>차세대 반도체/광반도체 소재 및 소자 (페로브스카이트 LED, 태양전지, 뉴로모픽 소자 등) 및 인공지능 기반 소재 탐색, 소자 성능 예측 및 최적화 연구에 관심있는 대학원생을 모집합니다.</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-blue-400 shrink-0 mt-1.5">•</span>
+                    <span>신소재/화공/물리/화학/컴공/AI 등 이공계 전 분야 지원 가능하며 학부 전공보다 연구에 대한 몰입도와 기초 역량을 우선적으로 고려합니다.</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-blue-400 shrink-0 mt-1.5">•</span>
+                    <span>관심있는 학생들은 언제든지 김호범 교수님(e-mail: <Link href="mailto:hobkim@gist.ac.kr" className="text-blue-400 hover:underline decoration-blue-400/30 underline-offset-4">hobkim@gist.ac.kr</Link>)께 간단한 자기소개서(자유 양식)와 함께 컨택 바랍니다.</span>
+                  </li>
+                </ul>
                 <div className="flex flex-wrap gap-4">
                   <Button size="lg" variant="outline" className="h-12 px-8 border-slate-700 hover:bg-slate-800 text-white backdrop-blur-sm" asChild>
                     <Link href="mailto:hobkim@gist.ac.kr" className="inline-flex items-center gap-2">
