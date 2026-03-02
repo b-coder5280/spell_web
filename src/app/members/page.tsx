@@ -2,7 +2,20 @@ import { Container } from "@/components/ui/container"
 import { SectionTitle } from "@/components/ui/section-title"
 import { MemberCard } from "@/components/people/member-card"
 
-const members = [
+interface Member {
+    name: string
+    role: string
+    interest?: string
+    email: string
+    image: string
+}
+
+interface MemberGroup {
+    role: string
+    people: Member[]
+}
+
+const members: MemberGroup[] = [
     {
         role: "Post Doc.",
         people: [

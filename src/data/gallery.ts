@@ -7,10 +7,22 @@ export interface GalleryItem {
 
 export const galleryItems: GalleryItem[] = [
     {
+        id: "g44",
+        title: "2026 2nd SPELL Workshop 진행! 😍 (with 클레이사격 🔫, 바베큐 파티 🍖, 레크레이션 🥳)",
+        date: "2026.02.27",
+        images: ["/images/ws.jpg", "/images/ws1.jpg", "/images/ws2.jpg", "/images/ws3.jpg", "/images/ws4.jpg", "/images/ws6.jpg", "/images/ws7.jpg"]
+    },
+    {
+        id: "g43",
+        title: "2026 2nd SPELL Workshop 세미나 개최! 🧑‍🏫",
+        date: "2026.02.27",
+        images: ["/images/sm0.jpg", "/images/sm1.jpg", "/images/sm2.jpg", "/images/sm3.jpg", "/images/sm4.jpg", "/images/sm5.jpg", "/images/sm6.jpg", "/images/sm7.jpg"]
+    },
+    {
         id: "g42",
         title: "연구실 점심 회식 후 기념 촬영 🥳",
         date: "2026.02.21",
-        images: ["/images/42.jpg"]
+        images: ["/images/42.png"]
     },
     {
         id: "g41",
