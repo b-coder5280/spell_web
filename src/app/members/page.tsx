@@ -29,14 +29,14 @@ const members = [
     {
         role: "Intern",
         people: [
-            { name: "정지호 (Jiho Chung)", role: "Intern", interest: "Lanthanide-based perovskite memristor.", email: "zeusregcjh@gm.gist.ac.kr", image: "/images/jh.jpg" },
-            { name: "Fatih", role: "Intern", interest: "Perovskite memristor.", email: "20255255@gm.gist.ac.kr", image: "/images/ft.jpg" },
+            { name: "정지호 (Jiho Chung)", role: "Intern", email: "zeusregcjh@gm.gist.ac.kr", image: "/images/jh.jpg" },
+            { name: "Mifzal Al Fatih Rahayudin", role: "Intern", email: "20255255@gm.gist.ac.kr", image: "/images/ft.jpg" },
         ]
     },
     {
         role: "Alumni",
         people: [
-            { name: "문수지 (Suji Moon)", role: "M.S.", interest: "Student Researcher in KRICT-Perovskite", email: "moondduzy@gm.gist.ac.kr", image: "/images/sjm.jpg" }
+            { name: "문수지 (Suji Moon)", role: "M.S.", interest: "한국화학연구원(KRICT)", email: "moondduzy@gm.gist.ac.kr", image: "/images/sjm.jpg" }
         ]
     }
 ]

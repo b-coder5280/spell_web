@@ -5,13 +5,15 @@ import { cn } from "@/lib/utils"
 interface MemberCardProps {
     name: string
     role: string
-    interest: string
+    interest?: string
     image?: string
     email?: string
     linkedin?: string
 }
 
 export function MemberCard({ name, role, interest, image, email, linkedin }: MemberCardProps) {
+    const showInterest = interest && interest.trim() !== "" && role !== "Intern"
+
     return (
         <div className="group flex flex-col space-y-4">
             <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800">
@@ -28,9 +30,11 @@ export function MemberCard({ name, role, interest, image, email, linkedin }: Mem
             <div className="space-y-1">
                 <h3 className="font-bold text-lg">{name}</h3>
                 <p className="text-sm font-medium text-primary">{role}</p>
-                <p className="text-sm text-muted-foreground line-clamp-2" title={interest}>
-                    "{interest}"
-                </p>
+                {showInterest && (
+                    <p className="text-sm text-muted-foreground line-clamp-2" title={interest}>
+                        "{interest}"
+                    </p>
+                )}
             </div>
 
             <div className="flex gap-3 pt-2">
