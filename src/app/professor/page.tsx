@@ -117,6 +117,7 @@ export default function ProfessorPage() {
 
                             <TabsContent value="grants" className="mt-8 space-y-4">
                                 <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+                                    <li><strong className="text-foreground">과학기술정보통신부 기초연구사업 - 신진연구자 인프라 지원 연구과제 선정</strong>, '차세대 반도체·발광 소재 및 소자 결함 분석을 위한 DLTS (Deep-Level Transient Spectroscopy) 장비 구축' (2026.03 - 2027.02)</li>
                                     <li><strong className="text-foreground">과학기술정보통신부 기초연구사업 글로벌 매칭형(독일) 연구과제 선정</strong>, '근적외선 발광 페로브스카이트의 결함-전하동역학 이해 기반 고효율·고안정성 근적외선 발광다이오드 개발' (2024.12 - 2027.11)</li>
                                     <li><strong className="text-foreground">이공분야 기초연구사업 - 우수신진연구 연구과제 선정</strong>, '단결정 페로브스카이트 결정다형체 기반 고효율 고안정성 적색 발광다이오드 개발' (2024.05 - 2029.04)</li>
                                     <li><strong className="text-foreground">다학제 융합클러스터사업 연구과제 선정</strong>, '미래 마이크로 디스플레이 기술 개발을 위한 융합클러스터' (2023.11 - 2025.10)</li>

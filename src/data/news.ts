@@ -10,6 +10,14 @@ export interface NewsItem {
 
 export const newsItems: NewsItem[] = [
     {
+        id: "n18",
+        title: "과학기술정보통신부 기초연구사업 - 신진연구자 인프라 지원 연구과제 선정",
+        date: "2026.02",
+        category: "Grant",
+        image: "/images/NRF.png",
+        description: " '차세대 반도체·발광 소재 및 소자 결함 분석을 위한 DLTS (Deep-Level Transient Spectroscopy) 장비 구축'을 주제로 연구과제 선정. 연구기간 : 2026.03.01 ~ 2027.02.28"
+    },
+    {
         id: "n17",
         title: "박상증 학생 2025년도 이공분야 학술연구지원사업 신규과제 선정",
         date: "2025.08",

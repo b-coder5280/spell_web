@@ -8,13 +8,13 @@ export interface GalleryItem {
 export const galleryItems: GalleryItem[] = [
     {
         id: "g44",
-        title: "2026 2nd SPELL Workshop 진행! 😍 (with 클레이사격 🔫, 바베큐 파티 🍖, 레크레이션 🥳)",
+        title: "2026 2nd SPELL Workshop 진행! (with 클레이사격 🔫, 바베큐 파티 🍖, 레크레이션 🥳)",
         date: "2026.02.27",
         images: ["/images/ws.jpg", "/images/ws1.jpg", "/images/ws2.jpg", "/images/ws3.jpg", "/images/ws4.jpg", "/images/ws6.jpg", "/images/ws7.jpg"]
     },
     {
         id: "g43",
-        title: "2026 2nd SPELL Workshop 세미나 개최! 🧑‍🏫",
+        title: "2026 2nd SPELL Workshop 세미나 개최 Less (non-radiative) Recombination. More Re-Combination 🧑‍🏫",
         date: "2026.02.27",
         images: ["/images/sm0.jpg", "/images/sm1.jpg", "/images/sm2.jpg", "/images/sm3.jpg", "/images/sm4.jpg", "/images/sm5.jpg", "/images/sm6.jpg", "/images/sm7.jpg"]
     },
@@ -119,12 +119,6 @@ export const galleryItems: GalleryItem[] = [
         title: "교수님께 감사한 마음 전달드렸습니다! 든든한 교수님 항상 감사드립니다 💐😍",
         date: "2024.05.14",
         images: ["/images/25.1.png", "/images/25.png"]
-    },
-    {
-        id: "g24",
-        title: "미팅 후 교수님과 맥주 파티 🥰🍺 (치맥! 그리고 이자카야!)",
-        date: "2024.05.13",
-        images: ["/images/24.1.png", "/images/24.png"]
     },
     {
         id: "g23",
