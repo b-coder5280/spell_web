@@ -7,6 +7,12 @@ export interface GalleryItem {
 
 export const galleryItems: GalleryItem[] = [
     {
+        id: "g45",
+        title: "벚꽃 기념 촬영 🌷",
+        date: "2026.03.31",
+        images: ["/images/벚꽃1.jpg", "/images/벚꽃3.jpg"]
+    },
+    {
         id: "g44",
         title: "2026 2nd SPELL Workshop 진행! (with 클레이사격 🔫, 바베큐 파티 🍖, 레크레이션 🥳)",
         date: "2026.02.27",

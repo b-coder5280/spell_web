@@ -1,78 +1,61 @@
 import { Container } from "@/components/ui/container"
-import { SectionTitle } from "@/components/ui/section-title"
 import { MemberCard } from "@/components/people/member-card"
+import { client } from "@/sanity/lib/client"
+import { membersQuery } from "@/sanity/lib/queries"
 
-interface Member {
-    name: string
-    role: string
-    interest?: string
-    email: string
-    image: string
-}
+export const revalidate = 60
 
-interface MemberGroup {
-    role: string
-    people: Member[]
-}
+// Desired order of roles
+const ROLE_ORDER = [
+    "Post Doc.",
+    "M.S./Ph.D. Candidates",
+    "M.S. Candidates",
+    "Intern",
+    "Alumni"
+];
 
-const members: MemberGroup[] = [
-    {
-        role: "Post Doc.",
-        people: [
-            { name: "유소민 (So-Min Yoo)", role: "Post Doc.", interest: "Perovskite solar cells", email: "yoosomin01@gist.ac.kr", image: "/images/sm.jpg" },
-        ]
-    },
-    {
-        role: "M.S./Ph.D. Candidates",
-        people: [
-            { name: "손연지 (Yeonji Son) Lab Manager 📌", role: "M.S./Ph.D. Candidates", interest: "Perovskite LEDs", email: "sonyeonjz@gm.gist.ac.kr", image: "/images/yj.jpg" },
-            { name: "박준모 (Junmo Park)", role: "M.S./Ph.D. Candidates", interest: "Single crystal perovskites", email: "dtb06235@gm.gist.ac.kr", image: "/images/jm.jpg" },
-            { name: "유병준 (Byungjun Yoo)", role: "M.S./Ph.D. Candidates", interest: "Perovskite LEDs", email: "timdthy7@gm.gist.ac.kr", image: "/images/bj.png" },
-            { name: "박성환 (Sunghwan Park)", role: "M.S./Ph.D. Candidates", interest: "Perovskite solar cells", email: "sung0630@gm.gist.ac.kr", image: "/images/sh.jpg" },
-            { name: "이동빈 (Dongbeen Lee)", role: "M.S./Ph.D. Candidates", interest: "AI for perovskite optoelectronics", email: "dongbeen@gm.gist.ac.kr", image: "/images/db.png" },
-        ]
-    },
-    {
-        role: "M.S. Candidates",
-        people: [
-            { name: "박상증 (Sangjeung Park)", role: "M.S. Candidates", interest: "Perovskite memristors", email: "partist001@gm.gist.ac.kr", image: "/images/sj.jpg" },
-            { name: "송승우 (Seungwoo Song)", role: "M.S. Candidates", interest: "NIR Perovskite LEDs", email: "seungw00@gm.gist.ac.kr", image: "/images/sw.png" },
-        ]
-    },
-    {
-        role: "Intern",
-        people: [
-            { name: "정지호 (Jiho Chung)", role: "Intern", email: "zeusregcjh@gm.gist.ac.kr", image: "/images/jh.jpg" },
-            { name: "Mifzal Al Fatih Rahayudin", role: "Intern", email: "20255255@gm.gist.ac.kr", image: "/images/ft.jpg" },
-            { name: "정주영 (Juyeong Jeong)", role: "Intern", email: "juyeong6255@gmail.com", image: "/images/jy.jpg" },
-        ]
-    },
-    {
-        role: "Alumni",
-        people: [
-            { name: "문수지 (Suji Moon)", role: "M.S.", interest: "한국화학연구원(KRICT)", email: "moondduzy@gm.gist.ac.kr", image: "/images/sjm.jpg" }
-        ]
-    }
-]
+export default async function MembersPage() {
+    const fetchedMembers = await client.fetch<any[]>(membersQuery) || [];
 
-export default function MembersPage() {
+    // Group fetched members by role
+    const sanityMembersGrouped = fetchedMembers.reduce((acc, member) => {
+        if (!acc[member.role]) acc[member.role] = [];
+        acc[member.role].push(member);
+        return acc;
+    }, {} as Record<string, any[]>);
+
+    // Sort roles according to predefined order, and append any new roles that aren't in the array
+    const roles = Object.keys(sanityMembersGrouped).sort((a, b) => {
+        const orderA = ROLE_ORDER.indexOf(a)
+        const orderB = ROLE_ORDER.indexOf(b)
+
+        if (orderA === -1 && orderB === -1) return 0
+        if (orderA === -1) return 1
+        if (orderB === -1) return -1
+        return orderA - orderB
+    })
+
+    const combinedMembers = roles.map(role => ({
+        role,
+        people: sanityMembersGrouped[role].sort((a: any, b: any) => (a.order || 0) - (b.order || 0))
+    }))
+
     return (
         <div className="pb-24 pt-16">
             <Container>
                 <div className="mb-16">
                     <h1 className="mb-6 text-4xl font-extrabold tracking-tight">Members</h1>
-
                 </div>
 
                 <div className="space-y-20">
-                    {members.map((group) => (
+                    {combinedMembers.map((group) => (
                         <section key={group.role}>
                             <h2 className="mb-8 text-2xl font-bold tracking-tight border-b pb-4">{group.role}</h2>
                             <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-10">
-                                {group.people.map((person) => (
+                                {group.people.map((person: any) => (
                                     <MemberCard
-                                        key={person.name}
-                                        name={person.name}
+                                        key={person.name || person._id}
+                                        name={person.position ? `${person.name} ${person.position}` : person.name}
                                         role={person.role}
                                         interest={person.interest}
                                         email={person.email}
