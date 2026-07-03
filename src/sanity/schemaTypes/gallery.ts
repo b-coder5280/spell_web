@@ -18,6 +18,11 @@ export const galleryType = defineType({
             description: 'Format: YYYY.MM.DD (e.g. 2026.02.27)',
         }),
         defineField({
+            name: 'description',
+            title: 'Description',
+            type: 'text',
+        }),
+        defineField({
             name: 'images',
             title: 'Images',
             type: 'array',

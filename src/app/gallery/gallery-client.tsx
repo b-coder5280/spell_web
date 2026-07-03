@@ -11,6 +11,7 @@ export type GalleryItemModel = {
     title: string
     images?: string[]
     date: string
+    description?: string
 }
 
 function imageCount(item: GalleryItemModel) {
@@ -149,11 +150,16 @@ export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel
                                     >
                                         <motion.h2
                                             layoutId={`gallery-title-${item._id}`}
-                                            className="text-2xl font-extrabold leading-tight tracking-tight text-slate-800 transition-colors group-hover/title:text-blue-600 sm:text-3xl"
+                                            className="text-xl font-extrabold leading-tight tracking-tight text-slate-800 transition-colors group-hover/title:text-blue-600 sm:text-2xl"
                                         >
                                             {item.title}
                                         </motion.h2>
                                     </button>
+                                    {item.description && (
+                                        <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                                            {item.description}
+                                        </p>
+                                    )}
                                     <div className="mt-auto flex justify-start pt-8">
                                         <button
                                             type="button"
@@ -234,10 +240,15 @@ export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel
                                             <div className="z-20 flex flex-col items-center gap-4 border-t bg-white p-6">
                                                 <motion.h2
                                                     layoutId={`gallery-title-${item._id}`}
-                                                    className="text-center text-2xl font-bold text-foreground sm:text-3xl"
+                                                    className="text-center text-xl font-bold text-foreground sm:text-2xl"
                                                 >
                                                     {item.title}
                                                 </motion.h2>
+                                                {item.description && (
+                                                    <p className="max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
+                                                        {item.description}
+                                                    </p>
+                                                )}
                                                 {imageCount(item) > 1 && (
                                                     <div className="flex justify-center gap-2">
                                                         {item.images?.map((_, dotIndex) => (

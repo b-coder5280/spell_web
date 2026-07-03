@@ -30,6 +30,7 @@ export const galleryQuery = groq`
     _id,
     title,
     date,
+    description,
     "images": images[].asset->url
   }
 `
