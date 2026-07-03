@@ -12,6 +12,7 @@ export interface PublicationItem {
     authors: string[]
     journal: string
     year: number
+    order?: number
     selected: boolean
     doi?: string
     pdf?: string
@@ -22,6 +23,11 @@ export function PublicationClient({ publications }: { publications: PublicationI
     const [filter, setFilter] = useState<"all" | "selected">("all")
 
     const sortedPublications = [...publications].sort((a, b) => {
+        const orderA = a.order ?? 9999
+        const orderB = b.order ?? 9999
+
+        if (orderA !== orderB) return orderA - orderB
+
         return b.year - a.year
     })
 

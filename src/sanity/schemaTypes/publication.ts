@@ -27,6 +27,12 @@ export const publicationType = defineType({
             type: 'number',
         }),
         defineField({
+            name: 'order',
+            title: 'Display Order',
+            type: 'number',
+            description: 'Smaller numbers appear first. Leave empty to sort by year.',
+        }),
+        defineField({
             name: 'volume',
             title: 'Volume',
             type: 'string',
