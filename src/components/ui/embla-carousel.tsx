@@ -38,7 +38,7 @@ export const EmblaCarousel: React.FC<PropType> = (props) => {
 
     return (
         <div className="relative group w-full">
-            <div className="overflow-hidden bg-black" ref={emblaRef}>
+            <div className="overflow-hidden bg-slate-50" ref={emblaRef}>
                 <div className="flex touch-pan-y -ml-4">
                     {slides.map((imgSrc, index) => (
                         <div className="flex-[0_0_100%] min-w-0 pl-4" key={index}>
@@ -58,7 +58,7 @@ export const EmblaCarousel: React.FC<PropType> = (props) => {
                 <Button
                     variant="ghost"
                     size="icon"
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white rounded-full transition-opacity z-10"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 text-slate-900 shadow-md transition-opacity hover:bg-white z-10"
                     onClick={(e) => { e.stopPropagation(); scrollPrev(); }}
                 >
                     <ChevronLeft className="h-8 w-8" />
@@ -69,7 +69,7 @@ export const EmblaCarousel: React.FC<PropType> = (props) => {
                 <Button
                     variant="ghost"
                     size="icon"
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white rounded-full transition-opacity z-10"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 text-slate-900 shadow-md transition-opacity hover:bg-white z-10"
                     onClick={(e) => { e.stopPropagation(); scrollNext(); }}
                 >
                     <ChevronRight className="h-8 w-8" />
@@ -79,7 +79,7 @@ export const EmblaCarousel: React.FC<PropType> = (props) => {
             {/* Dots (optional) */}
             <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 pointer-events-none">
                 {slides.map((_, idx) => (
-                    <div key={idx} className={`h-1.5 rounded-full transition-all ${idx === (emblaApi?.selectedScrollSnap() || 0) ? "w-6 bg-white" : "w-1.5 bg-white/50"}`} />
+                    <div key={idx} className={`h-1.5 rounded-full transition-all ${idx === (emblaApi?.selectedScrollSnap() || 0) ? "w-6 bg-slate-800" : "w-1.5 bg-slate-300"}`} />
                 ))}
             </div>
         </div>

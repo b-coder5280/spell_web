@@ -181,22 +181,22 @@ export function NewsClient({ newsItems }: { newsItems: NewsItemModel[] }) {
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 onClick={() => setSelectedId(null)}
-                                className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm"
+                                className="fixed inset-0 z-50 bg-white/80 backdrop-blur-md"
                             />
                             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
                                 {filteredNews.filter(item => item._id === selectedId).map(item => (
                                     <motion.div
                                         layoutId={`news-card-${item._id}`}
                                         key={item._id}
-                                        className="pointer-events-auto relative w-full max-w-5xl overflow-hidden rounded-2xl bg-card shadow-2xl flex flex-col max-h-[90vh]"
+                                        className="pointer-events-auto relative w-full max-w-5xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl flex flex-col max-h-[90vh]"
                                     >
-                                        <div className="relative w-full bg-black flex flex-col shrink-0">
+                                        <div className="relative w-full bg-white flex flex-col shrink-0">
                                             {/* Close Button */}
                                             <div className="absolute top-4 right-4 z-20 flex justify-end px-4 pointer-events-none">
                                                 <Button
                                                     size="icon"
-                                                    variant="secondary"
-                                                    className="pointer-events-auto rounded-full shadow-lg opacity-80 hover:opacity-100"
+                                                    variant="ghost"
+                                                    className="pointer-events-auto rounded-full bg-white/90 text-slate-900 shadow-lg backdrop-blur hover:bg-slate-100"
                                                     onClick={(e) => { e.stopPropagation(); setSelectedId(null); }}
                                                 >
                                                     <X className="h-5 w-5" />
@@ -204,11 +204,11 @@ export function NewsClient({ newsItems }: { newsItems: NewsItemModel[] }) {
                                             </div>
 
                                             {/* Image Logic */}
-                                            <div className="w-full bg-black">
+                                            <div className="w-full bg-slate-50">
                                                 {item.detailImages && item.detailImages.length > 0 ? (
                                                     <EmblaCarousel slides={item.detailImages} options={{ loop: true }} />
                                                 ) : (
-                                                    <div className="w-full flex justify-center bg-black min-h-[300px]">
+                                                    <div className="w-full flex justify-center bg-slate-50 min-h-[300px]">
                                                         {item.image ? (
                                                             <motion.img
                                                                 src={item.image}
@@ -216,7 +216,7 @@ export function NewsClient({ newsItems }: { newsItems: NewsItemModel[] }) {
                                                                 className="w-auto h-auto max-w-full max-h-[60vh] object-contain mx-auto"
                                                             />
                                                         ) : (
-                                                            <div className="h-64 w-full flex items-center justify-center text-white/50">
+                                                            <div className="h-64 w-full flex items-center justify-center text-muted-foreground">
                                                                 No Image
                                                             </div>
                                                         )}
@@ -226,7 +226,7 @@ export function NewsClient({ newsItems }: { newsItems: NewsItemModel[] }) {
 
                                         </div>
 
-                                        <div className="flex-1 overflow-y-auto p-6 md:p-8 bg-card">
+                                        <div className="flex-1 overflow-y-auto bg-white p-6 text-slate-900 md:p-8">
                                             <div className="mb-6">
                                                 <div className="mb-3 flex items-center gap-3">
                                                     {item.category && item.category !== "General" && (
@@ -241,16 +241,16 @@ export function NewsClient({ newsItems }: { newsItems: NewsItemModel[] }) {
                                                 </div>
                                                 <motion.h2
                                                     layoutId={`news-title-${item._id}`}
-                                                    className="text-2xl md:text-4xl font-extrabold tracking-tight"
+                                                    className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-950"
                                                 >
                                                     {item.title}
                                                 </motion.h2>
                                             </div>
-                                            <div className="prose prose-lg dark:prose-invert max-w-none text-muted-foreground border-t pt-6">
+                                            <div className="max-w-none border-t border-slate-200 pt-6 text-slate-700">
                                                 {item.description ? (
                                                     <p className="whitespace-pre-line leading-relaxed">{item.description}</p>
                                                 ) : (
-                                                    <p className="italic text-muted-foreground/60">No additional details available.</p>
+                                                    <p className="italic text-slate-500">No additional details available.</p>
                                                 )}
                                             </div>
                                         </div>
