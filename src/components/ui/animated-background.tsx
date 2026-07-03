@@ -50,7 +50,7 @@ export function AnimatedBackground() {
                 if (!ctx) return
                 ctx.beginPath()
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-                ctx.fillStyle = `rgba(100, 180, 255, ${this.alpha})` // Lighter Blue
+                ctx.fillStyle = `rgba(37, 99, 235, ${this.alpha})` // Darker Blue (Blue 600) for light background
                 ctx.fill()
             }
         }
@@ -85,8 +85,8 @@ export function AnimatedBackground() {
                         ctx.beginPath()
                         ctx.moveTo(p.x, p.y)
                         ctx.lineTo(p2.x, p2.y)
-                        // Brighter connections
-                        ctx.strokeStyle = `rgba(100, 180, 255, ${0.4 * (1 - distance / connectionDistance)})`
+                        // Darker connections for light background (lower max opacity for subtlety)
+                        ctx.strokeStyle = `rgba(37, 99, 235, ${0.15 * (1 - distance / connectionDistance)})`
                         ctx.lineWidth = 1
                         ctx.stroke()
                     }
@@ -115,7 +115,7 @@ export function AnimatedBackground() {
     return (
         <canvas
             ref={canvasRef}
-            className="fixed inset-0 -z-10 h-full w-full bg-slate-900 transition-colors duration-500"
+            className="fixed inset-0 -z-10 h-full w-full bg-white transition-colors duration-500"
         />
     )
 }

@@ -20,7 +20,7 @@ export default async function ProfessorPage() {
                 <div className="grid gap-16 lg:grid-cols-[1fr_2fr]">
                     {/* Profile Sidebar */}
                     <div className="space-y-8">
-                        <div className="relative aspect-[3/4] w-full max-w-sm overflow-hidden rounded-2xl bg-slate-800">
+                        <div className="relative aspect-[3/4] w-full max-w-sm overflow-hidden rounded-2xl bg-slate-100">
                             <Image
                                 src="/images/hb.jpg"
                                 alt="Hobeom Kim, Ph.D."
@@ -98,7 +98,7 @@ export default async function ProfessorPage() {
 
                             <TabsContent value="edu_exp" className="mt-8 space-y-8">
                                 {education.map((edu: any, i: number) => (
-                                    <div key={i} className={`border-l-2 ${edu.highlight ? 'border-primary' : 'border-slate-800'} pl-6 py-1`}>
+                                    <div key={i} className={`border-l-2 ${edu.highlight ? 'border-primary' : 'border-slate-200'} pl-6 py-1`}>
                                         <h3 className="font-bold">{edu.role}</h3>
                                         <p className="text-muted-foreground">{edu.description}</p>
                                     </div>

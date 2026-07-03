@@ -5,6 +5,9 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+:where(img, video, canvas, svg) {
   max-width: 100%;
 }
 
@@ -36,39 +39,40 @@ h6 {
 }
 
 :root {
-  /* High-End Midnight Blue Theme (Enforced Globally) */
-  --background: #0f172a;
-  /* Slate 900 base */
-  --foreground: #e2e8f0;
-  /* Slate 200 - Brighter text */
+  /* Premium Bright Gray Theme */
+  --background: #ffffff;
+  /* White base */
+  --foreground: #0f172a;
+  /* Slate 900 text */
 
-  --primary: #38bdf8;
-  /* Sky 400 - Electric Blue */
-  --primary-foreground: #0f172a;
+  --primary: #2563eb;
+  /* Blue 600 */
+  --primary-foreground: #ffffff;
 
-  --secondary: #818cf8;
-  /* Indigo 400 */
+  --secondary: #4f46e5;
+  /* Indigo 600 */
   --secondary-foreground: #ffffff;
 
-  --muted: #1e293b;
-  /* Slate 800 */
-  --muted-foreground: #94a3b8;
-  /* Slate 400 */
+  --muted: #f1f5f9;
+  /* Slate 100 */
+  --muted-foreground: #475569;
+  /* Slate 600 */
 
-  --accent: #22d3ee;
-  /* Cyan 400 */
-  --accent-foreground: #0f172a;
+  --accent: #0891b2;
+  /* Cyan 600 */
+  --accent-foreground: #ffffff;
 
-  --card: rgba(30, 41, 59, 0.7);
-  /* Glassmorphism Card Base */
-  --card-foreground: #f1f5f9;
+  --card: rgba(255, 255, 255, 0.7);
+  /* Light Glassmorphism Card Base */
+  --card-foreground: #0f172a;
 
-  --border: rgba(148, 163, 184, 0.2);
+  --border: rgba(15, 23, 42, 0.08);
 }
 
 html,
 body {
   font-family: var(--font-sans);
+  background: var(--background);
 }
 
 body {
@@ -80,20 +84,22 @@ body {
   word-break: break-word;
   overflow-wrap: break-word;
 }
+p,
+li {
+  overflow-wrap: break-word;
+}
 
 /* Glassmorphism Utilities managed via Tailwind but defaults here */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  /* Very subtle light toggle */
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .glass-dark {
-  background: rgba(15, 23, 42, 0.6);
-  /* Darker glass for better contrast */
+  background: rgba(15, 23, 42, 0.05);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }

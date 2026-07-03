@@ -37,16 +37,16 @@ export function PublicationClient({ publications }: { publications: PublicationI
                         <h1 className="text-4xl font-extrabold tracking-tight">Publications</h1>
                     </div>
 
-                    <div className="flex bg-slate-800 p-1 rounded-lg">
+                    <div className="flex bg-slate-200 p-1 rounded-lg">
                         <button
                             onClick={() => setFilter("all")}
-                            className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${filter === "all" ? "bg-slate-950 shadow text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                            className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${filter === "all" ? "bg-white shadow text-foreground" : "text-muted-foreground hover:text-foreground"}`}
                         >
                             All
                         </button>
                         <button
                             onClick={() => setFilter("selected")}
-                            className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${filter === "selected" ? "bg-slate-950 shadow text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+                            className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${filter === "selected" ? "bg-white shadow text-foreground" : "text-muted-foreground hover:text-foreground"}`}
                         >
                             Selected
                         </button>

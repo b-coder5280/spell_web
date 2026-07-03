@@ -32,24 +32,26 @@ export function Header() {
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
             <Container>
-                <div className="flex h-16 items-center justify-between">
-                    <div className="flex items-center gap-8">
-                        <Link href="/" className="flex items-center">
-                            <div className="flex items-center justify-center h-14 w-auto">
+                <div className="flex h-16 items-center justify-between gap-8">
+                    <div className="flex min-w-0 items-center">
+                        <Link href="/" className="flex shrink-0 items-center">
+                            <div className="flex h-14 w-auto items-center justify-center overflow-hidden">
                                 <img
-                                    src="/images/logo3.png"
+                                    src="/images/logo_2.jpg"
                                     alt="SPELL Logo"
-                                    className="h-full w-auto object-contain"
+                                    className="h-14 max-h-14 w-auto object-contain"
                                 />
                             </div>
                         </Link>
-                        <nav className="hidden md:flex items-center gap-6">
+                    </div>
+                    <div className="hidden min-w-0 items-center justify-end gap-6 lg:flex">
+                        <nav className="hidden min-w-0 items-center gap-6 lg:flex">
                             {navigation.map((item) => (
                                 <Link
                                     key={item.href}
                                     href={item.href}
                                     className={cn(
-                                        "text-sm font-medium transition-colors hover:text-primary",
+                                        "shrink-0 whitespace-nowrap text-sm font-medium transition-colors hover:text-primary",
                                         pathname === item.href
                                             ? "text-primary"
                                             : "text-muted-foreground"
@@ -59,14 +61,12 @@ export function Header() {
                                 </Link>
                             ))}
                         </nav>
-                    </div>
-                    <div className="hidden md:flex items-center gap-4">
                         <Button asChild size="sm">
                             <Link href="/opening">Join Us</Link>
                         </Button>
                     </div>
                     <button
-                        className="md:hidden"
+                        className="lg:hidden"
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label="Toggle menu"
                     >
@@ -82,7 +82,7 @@ export function Header() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden border-b bg-background"
+                        className="lg:hidden border-b bg-background"
                     >
                         <Container className="py-4 space-y-4">
                             {navigation.map((item) => (

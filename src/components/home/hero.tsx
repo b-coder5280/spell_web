@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
 import { useRef } from "react"
 
 export function Hero() {
@@ -18,11 +17,11 @@ export function Hero() {
     const opacityText = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
     return (
-        <section ref={ref} className="relative flex min-h-[90vh] items-center justify-center overflow-hidden pt-16">
+        <section ref={ref} className="relative flex min-h-[80vh] items-center justify-center overflow-hidden pt-16 sm:min-h-[90vh]">
             {/* Background Effects */}
             <div className="absolute inset-0 z-0">
                 {/* Animated Background is global, but we can add a hero-specific glow here */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-blue-500/20 blur-[120px]" />
+                <div className="absolute top-1/2 left-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/15 blur-[100px] sm:h-[500px] sm:w-[500px] sm:blur-[120px]" />
             </div>
 
             <Container className="relative z-10">
@@ -37,7 +36,7 @@ export function Hero() {
                         className="space-y-6"
                     >
 
-                        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl md:text-7xl leading-tight">
+                        <h1 className="text-3xl font-bold tracking-tight leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
                             Semiconductor <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 animate-gradient-x">Photonics and Electronics</span> Lab
                         </h1>
 
@@ -48,14 +47,14 @@ export function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2, duration: 0.8 }}
-                        className="mt-10 flex flex-col gap-4 sm:flex-row"
+                        className="mt-10 flex w-full flex-col gap-4 sm:w-auto sm:flex-row"
                     >
-                        <Button size="lg" className="h-12 px-8 text-base bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 border-0 shadow-lg shadow-blue-500/25" asChild>
+                        <Button size="lg" className="h-12 w-full px-8 text-base bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 border-0 shadow-lg shadow-blue-500/25 sm:w-auto" asChild>
                             <Link href="/research">
                                 Research Areas
                             </Link>
                         </Button>
-                        <Button size="lg" variant="outline" className="h-12 px-8 text-base backdrop-blur-sm bg-white/5 border-white/10 hover:bg-white/10 text-white" asChild>
+                        <Button size="lg" variant="outline" className="h-12 w-full px-8 text-base border-slate-300 bg-white/80 text-slate-900 backdrop-blur-sm hover:bg-slate-100 hover:text-slate-950 sm:w-auto" asChild>
                             <Link href="/opening">Join Us</Link>
                         </Button>
                     </motion.div>

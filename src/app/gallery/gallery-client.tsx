@@ -1,10 +1,9 @@
 "use client"
 
-import { EmblaCarousel } from "@/components/ui/embla-carousel"
-import { useState } from "react"
+import { type MouseEvent, useState } from "react"
 import { Container } from "@/components/ui/container"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Calendar } from "lucide-react"
+import { X, Calendar, Camera, ChevronLeft, ChevronRight, Images } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export type GalleryItemModel = {
@@ -14,64 +13,162 @@ export type GalleryItemModel = {
     date: string
 }
 
+function imageCount(item: GalleryItemModel) {
+    return item.images?.length || 0
+}
+
 export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel[] }) {
     const [selectedId, setSelectedId] = useState<string | null>(null)
+    const [imageIndexes, setImageIndexes] = useState<Record<string, number>>({})
+
+    const getImageIndex = (item: GalleryItemModel) => {
+        const count = imageCount(item)
+        if (count === 0) return 0
+        return Math.min(imageIndexes[item._id] || 0, count - 1)
+    }
+
+    const setImageIndex = (item: GalleryItemModel, index: number) => {
+        const count = imageCount(item)
+        if (count < 2) return
+        setImageIndexes(prev => ({
+            ...prev,
+            [item._id]: (index + count) % count,
+        }))
+    }
+
+    const stepImage = (event: MouseEvent<HTMLButtonElement>, item: GalleryItemModel, direction: -1 | 1) => {
+        event.stopPropagation()
+        setImageIndex(item, getImageIndex(item) + direction)
+    }
 
     return (
-        <div className="pb-24 pt-16">
+        <div className="overflow-hidden pb-24 pt-16">
             <Container>
-                {/* Header Section */}
-                <div className="mb-12">
-                    <h1 className="text-4xl font-extrabold tracking-tight">Gallery</h1>
-                    <p className="mt-2 text-muted-foreground">
-                        Moments from SPELL Lab.
-                    </p>
-                </div>
-
-                {/* Gallery Grid */}
-                <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                    {galleryItems.map((item) => (
-                        <motion.div
-                            layoutId={`gallery-card-${item._id}`}
-                            key={item._id}
-                            onClick={() => setSelectedId(item._id)}
-                            whileHover={{ y: -8, scale: 1.02 }}
-                            className="group cursor-pointer overflow-hidden rounded-2xl border bg-card text-card-foreground shadow-sm hover:shadow-xl transition-all"
-                        >
-                            {/* thumbnail Image */}
-                            <motion.div layoutId={`gallery-image-${item._id}`} className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
-                                {item.images && item.images.length > 0 ? (
-                                    <img
-                                        src={item.images[0]}
-                                        alt={item.title}
-                                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                    />
-                                ) : (
-                                    <div className="flex h-full w-full items-center justify-center bg-secondary/50 text-muted-foreground">
-                                        <span className="text-sm font-medium">No Image</span>
-                                    </div>
-                                )}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                            </motion.div>
-
-                            {/* Content Section (Title & Date) */}
-                            <div className="p-5 flex flex-col gap-2">
-                                <div className="flex items-center text-sm text-muted-foreground">
-                                    <Calendar className="mr-2 h-4 w-4" />
-                                    {item.date}
+                <div className="mx-auto max-w-6xl">
+                    <div className="mb-14 flex flex-col gap-5 border-b border-slate-200 pb-8 sm:flex-row sm:items-end sm:justify-between">
+                        <div className="max-w-3xl">
+                            <div className="mb-4 flex items-center gap-3">
+                                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-950 text-white shadow-sm">
+                                    <Camera className="h-5 w-5" />
                                 </div>
-                                <motion.h3
-                                    layoutId={`gallery-title-${item._id}`}
-                                    className="text-lg font-bold leading-tight tracking-tight group-hover:text-primary transition-colors"
-                                >
-                                    {item.title}
-                                </motion.h3>
+                                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-blue-600">SPELL Moments</p>
                             </div>
-                        </motion.div>
-                    ))}
+                            <h1 className="text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl">Gallery</h1>
+                            <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                                A clean visual journal of lab life, conferences, workshops, and shared memories.
+                            </p>
+                        </div>
+                        <div className="flex w-fit shrink-0 items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 shadow-sm">
+                            <Images className="h-4 w-4 text-blue-600" />
+                            {galleryItems.length} albums
+                        </div>
+                    </div>
+
+                    <div className="space-y-12 sm:space-y-16">
+                        {galleryItems.map((item) => (
+                            <motion.article
+                                key={item._id}
+                                className="grid gap-7 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.85fr)] lg:items-center lg:gap-12"
+                            >
+                                <div className="group min-w-0">
+                                    <motion.div
+                                        layoutId={`gallery-image-${item._id}`}
+                                        className="relative aspect-[5/4] overflow-hidden bg-slate-100 shadow-sm transition-shadow duration-500 group-hover:shadow-2xl sm:aspect-[4/3]"
+                                    >
+                                        <button
+                                            type="button"
+                                            onClick={() => setSelectedId(item._id)}
+                                            className="block h-full w-full text-left"
+                                        >
+                                            {item.images && item.images.length > 0 ? (
+                                                <img
+                                                    src={item.images[getImageIndex(item)]}
+                                                    alt={item.title}
+                                                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                                />
+                                            ) : (
+                                                <div className="flex h-full w-full items-center justify-center bg-secondary/30 text-muted-foreground">
+                                                    No Image
+                                                </div>
+                                            )}
+                                        </button>
+
+                                        {imageCount(item) > 1 && (
+                                            <>
+                                                <div className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-slate-950/65 px-2.5 py-1 text-xs font-semibold text-white shadow-sm backdrop-blur-md">
+                                                    <Camera className="h-3.5 w-3.5" />
+                                                    {getImageIndex(item) + 1}/{imageCount(item)}
+                                                </div>
+                                                <button
+                                                    type="button"
+                                                    aria-label="Previous image"
+                                                    onClick={(event) => stepImage(event, item, -1)}
+                                                    className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/88 text-slate-800 opacity-0 shadow-sm backdrop-blur transition-opacity hover:bg-white group-hover:opacity-100"
+                                                >
+                                                    <ChevronLeft className="h-5 w-5" />
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    aria-label="Next image"
+                                                    onClick={(event) => stepImage(event, item, 1)}
+                                                    className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/88 text-slate-800 opacity-0 shadow-sm backdrop-blur transition-opacity hover:bg-white group-hover:opacity-100"
+                                                >
+                                                    <ChevronRight className="h-5 w-5" />
+                                                </button>
+                                            </>
+                                        )}
+                                    </motion.div>
+
+                                    {imageCount(item) > 1 && (
+                                        <div className="mt-5 flex justify-center gap-2">
+                                            {Array.from({ length: Math.min(imageCount(item), 5) }).map((_, dotIndex) => (
+                                                <button
+                                                    type="button"
+                                                    key={`${item._id}-dot-${dotIndex}`}
+                                                    aria-label={`Show image ${dotIndex + 1}`}
+                                                    onClick={(event) => {
+                                                        event.stopPropagation()
+                                                        setImageIndex(item, dotIndex)
+                                                    }}
+                                                    className={`h-2 w-2 rounded-full transition-colors ${dotIndex === getImageIndex(item) ? "bg-slate-700" : "bg-slate-300 hover:bg-slate-400"}`}
+                                                />
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+
+                                <div className="flex min-w-0 flex-col lg:min-h-[320px] lg:pb-8">
+                                    <div className="mb-5 flex w-fit items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700">
+                                        <Calendar className="h-3.5 w-3.5" />
+                                        {item.date}
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={() => setSelectedId(item._id)}
+                                        className="group/title text-left"
+                                    >
+                                        <motion.h2
+                                            layoutId={`gallery-title-${item._id}`}
+                                            className="text-2xl font-extrabold leading-tight tracking-tight text-slate-800 transition-colors group-hover/title:text-blue-600 sm:text-3xl"
+                                        >
+                                            {item.title}
+                                        </motion.h2>
+                                    </button>
+                                    <div className="mt-auto flex justify-start pt-8">
+                                        <button
+                                            type="button"
+                                            onClick={() => setSelectedId(item._id)}
+                                            className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+                                        >
+                                            View album
+                                        </button>
+                                    </div>
+                                </div>
+                            </motion.article>
+                        ))}
+                    </div>
                 </div>
 
-                {/* Expanded Details Modal */}
                 <AnimatePresence>
                     {selectedId && (
                         <>
@@ -80,51 +177,83 @@ export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 onClick={() => setSelectedId(null)}
-                                className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm"
+                                className="fixed inset-0 z-50 bg-white/80 backdrop-blur-md"
                             />
                             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
                                 {galleryItems.filter(item => item._id === selectedId).map(item => (
                                     <motion.div
                                         layoutId={`gallery-card-${item._id}`}
                                         key={item._id}
-                                        className="pointer-events-auto relative w-full max-w-4xl overflow-hidden rounded-xl bg-card shadow-2xl flex flex-col max-h-[90vh]"
+                                        className="pointer-events-auto relative flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl"
                                     >
-                                        <div className="relative w-full bg-black flex flex-col shrink-0">
-                                            {/* Close Button */}
-                                            <div className="absolute top-4 right-4 z-20 flex justify-end">
-                                                <Button
-                                                    size="icon"
-                                                    variant="secondary"
-                                                    className="rounded-full shadow-lg opacity-80 hover:opacity-100"
-                                                    onClick={(e) => { e.stopPropagation(); setSelectedId(null); }}
-                                                >
-                                                    <X className="h-5 w-5" />
-                                                </Button>
-                                            </div>
+                                        <div className="relative flex w-full shrink-0 flex-col bg-white">
+                                            <Button
+                                                size="icon"
+                                                variant="ghost"
+                                                className="absolute right-4 top-4 z-20 rounded-full bg-white/90 text-slate-900 shadow-md backdrop-blur hover:bg-slate-100"
+                                                onClick={(e) => { e.stopPropagation(); setSelectedId(null); }}
+                                            >
+                                                <X className="h-5 w-5" />
+                                            </Button>
 
-                                            {/* Carousel or Single Image */}
-                                            <div className="w-full bg-black">
+                                            <div className="relative flex min-h-[52vh] w-full items-center justify-center bg-slate-50">
                                                 {item.images && item.images.length > 0 ? (
-                                                    <EmblaCarousel slides={item.images} options={{ loop: true }} />
+                                                    <img
+                                                        src={item.images[getImageIndex(item)]}
+                                                        alt={item.title}
+                                                        className="max-h-[68vh] w-auto max-w-full object-contain"
+                                                    />
                                                 ) : (
-                                                    <div className="h-[60vh] w-full flex items-center justify-center text-muted-foreground">
+                                                    <div className="flex h-[52vh] w-full items-center justify-center text-muted-foreground">
                                                         No Image
                                                     </div>
                                                 )}
+
+                                                {imageCount(item) > 1 && (
+                                                    <>
+                                                        <button
+                                                            type="button"
+                                                            aria-label="Previous image"
+                                                            onClick={(event) => stepImage(event, item, -1)}
+                                                            className="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow-md backdrop-blur hover:bg-white"
+                                                        >
+                                                            <ChevronLeft className="h-6 w-6" />
+                                                        </button>
+                                                        <button
+                                                            type="button"
+                                                            aria-label="Next image"
+                                                            onClick={(event) => stepImage(event, item, 1)}
+                                                            className="absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow-md backdrop-blur hover:bg-white"
+                                                        >
+                                                            <ChevronRight className="h-6 w-6" />
+                                                        </button>
+                                                    </>
+                                                )}
                                             </div>
 
-                                            {/* Title Overlay */}
-                                            <div className="bg-background/90 backdrop-blur p-6 border-t z-20 flex flex-col items-center gap-2">
-                                                <div className="flex items-center text-muted-foreground">
-                                                    <Calendar className="mr-2 h-4 w-4" />
-                                                    {item.date}
-                                                </div>
+                                            <div className="z-20 flex flex-col items-center gap-4 border-t bg-white p-6">
                                                 <motion.h2
                                                     layoutId={`gallery-title-${item._id}`}
-                                                    className="text-2xl font-bold text-foreground text-center"
+                                                    className="text-center text-2xl font-bold text-foreground sm:text-3xl"
                                                 >
                                                     {item.title}
                                                 </motion.h2>
+                                                {imageCount(item) > 1 && (
+                                                    <div className="flex justify-center gap-2">
+                                                        {item.images?.map((_, dotIndex) => (
+                                                            <button
+                                                                type="button"
+                                                                key={`${item._id}-modal-dot-${dotIndex}`}
+                                                                aria-label={`Show image ${dotIndex + 1}`}
+                                                                onClick={(event) => {
+                                                                    event.stopPropagation()
+                                                                    setImageIndex(item, dotIndex)
+                                                                }}
+                                                                className={`h-2 w-2 rounded-full transition-colors ${dotIndex === getImageIndex(item) ? "bg-slate-800" : "bg-slate-300 hover:bg-slate-400"}`}
+                                                            />
+                                                        ))}
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                     </motion.div>

@@ -51,7 +51,7 @@ export default async function MembersPage() {
                     {combinedMembers.map((group) => (
                         <section key={group.role}>
                             <h2 className="mb-8 text-2xl font-bold tracking-tight border-b pb-4">{group.role}</h2>
-                            <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:grid-cols-4 xl:gap-x-10">
+                            <div className="grid gap-7 lg:grid-cols-2">
                                 {group.people.map((person: any) => (
                                     <MemberCard
                                         key={person.name || person._id}

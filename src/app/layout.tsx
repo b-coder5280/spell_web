@@ -13,6 +13,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Semiconductor Photonics and Electronics Lab | GIST",
   description: "Pioneering semiconductor photonics and electronics for a sustainable future. Gwangju Institute of Science and Technology.",
+  icons: {
+    icon: "/images/logo_1.png",
+  },
 };
 
 export default function RootLayout({

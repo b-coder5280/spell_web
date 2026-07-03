@@ -53,13 +53,13 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
             {/* Recruitment Section */}
             <Container>
                 <ScrollReveal>
-                    <div className="relative overflow-hidden rounded-3xl bg-slate-900 border border-slate-800 p-8 md:p-12 mb-8">
+                    <div className="relative mb-8 overflow-hidden rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8 md:p-12">
                         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]" />
                         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-72 h-72 bg-indigo-500/10 rounded-full blur-[80px]" />
 
                         <div className="relative z-10 flex flex-col lg:flex-row items-start justify-between gap-12">
                             <div className="max-w-3xl text-left">
-                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">
+                                <h2 className="mb-8 text-3xl font-bold text-foreground md:text-5xl">
                                     Join Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Lab</span>
                                 </h2>
 
@@ -72,8 +72,8 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
                                                 if (emailMatch) {
                                                     const parts = desc.split(emailMatch[0]);
                                                     return (
-                                                        <li key={i} className="flex gap-2 text-left">
-                                                            <span className="text-blue-500 font-bold">•</span>
+                                                        <li key={i} className="flex min-w-0 gap-2 text-left">
+                                                            <span aria-hidden="true" className="shrink-0 font-bold text-blue-600">&bull;</span>
                                                             <span>
                                                                 {parts[0]}
                                                                 <Link href={`mailto:${emailMatch[0]}`} className="text-blue-500 hover:underline">{emailMatch[0]}</Link>
@@ -83,8 +83,8 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
                                                     )
                                                 }
                                                 return (
-                                                    <li key={i} className="flex gap-2 text-left">
-                                                        <span className="text-blue-500 font-bold">•</span>
+                                                    <li key={i} className="flex min-w-0 gap-2 text-left">
+                                                        <span aria-hidden="true" className="shrink-0 font-bold text-blue-600">&bull;</span>
                                                         <span>{desc}</span>
                                                     </li>
                                                 )
@@ -93,8 +93,8 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
                                     </div>
 
                                     {/* English Section */}
-                                    <div className="pt-8 border-t border-slate-800 space-y-6">
-                                        <p className="text-slate-300 leading-relaxed">
+                                    <div className="pt-8 border-t border-slate-200 space-y-6">
+                                        <p className="text-muted-foreground leading-relaxed">
                                             {englishIntro}
                                         </p>
 
@@ -135,12 +135,12 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
                                         </div>
 
                                         <div className="flex flex-wrap gap-4 pt-4">
-                                            <Button size="lg" variant="outline" className="h-12 px-8 border-slate-700 hover:bg-slate-800 text-white backdrop-blur-sm group/btn" asChild>
+                                            <Button size="lg" variant="outline" className="h-12 px-8 border-slate-200 hover:bg-slate-100 text-foreground backdrop-blur-sm group/btn" asChild>
                                                 <Link href="mailto:hobkim@gist.ac.kr" className="inline-flex items-center gap-2">
                                                     <Mail className="h-5 w-5 text-blue-500 group-hover/btn:scale-110 transition-transform" /> Contact Prof. Kim
                                                 </Link>
                                             </Button>
-                                            <Button size="lg" variant="ghost" className="h-12 px-8 text-slate-400 hover:text-white" asChild>
+                                            <Button size="lg" variant="ghost" className="h-12 px-8 text-muted-foreground hover:text-foreground" asChild>
                                                 <Link href="/opening">View Full Opening Details</Link>
                                             </Button>
                                         </div>
@@ -175,14 +175,14 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
                             align="center"
                         />
 
-                        <div className="relative group mt-8 w-full max-w-full overflow-hidden">
+                        <div className="relative group mt-8 w-full max-w-full overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
                             <div className="overflow-hidden" ref={emblaRef}>
                                 <div className="flex w-full">
                                     {featuredPubs.map((pub: any) => {
                                         const imageUrl = pub.image ? urlFor(pub.image).url() : "";
                                         return (
                                             <div className="flex-[0_0_100%] min-w-0 overflow-hidden" key={pub._id}>
-                                                <div className="flex flex-col md:flex-row w-full min-w-0 h-auto md:h-[350px]">
+                                                <div className="flex h-auto w-full min-w-0 flex-col md:min-h-[350px] md:flex-row">
                                                     {/* Image Side - Left */}
                                                     <div className="relative w-full md:w-[45%] flex items-center justify-center p-4 min-h-[220px] md:min-h-0 md:h-full shrink-0">
                                                         {imageUrl ? (
@@ -192,18 +192,18 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
                                                                 className="w-auto h-auto max-w-full max-h-[300px] md:max-h-full object-contain filter drop-shadow-2xl"
                                                             />
                                                         ) : (
-                                                            <div className="text-white/50">No Image Available</div>
+                                                            <div className="text-muted-foreground/50">No Image Available</div>
                                                         )}
                                                     </div>
 
                                                     {/* Content Side - Right */}
-                                                    <div className="relative flex flex-col justify-center p-4 sm:p-6 md:w-[55%] min-w-0 w-full md:h-full">
-                                                        <div className="mb-3 inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-0.5 text-[11px] font-medium text-blue-300 w-fit">
+                                                    <div className="relative flex w-full min-w-0 flex-col justify-center p-4 pb-2 sm:p-6 md:h-full md:w-[55%] md:pb-6">
+                                                        <div className="mb-3 inline-flex w-fit max-w-full flex-wrap items-center rounded-full border border-blue-600/25 bg-blue-50 px-2.5 py-0.5 text-[11px] font-medium text-blue-700">
                                                             <span className="italic">{pub.journal}</span>
                                                             {pub.volume && <span className="ml-1 font-normal opacity-80">{pub.volume}</span>}
-                                                            <span className="mx-1">•</span> {pub.year}
+                                                            <span className="mx-1">&middot;</span> {pub.year}
                                                         </div>
-                                                        <h3 className="mb-3 text-lg sm:text-xl font-semibold leading-tight text-white line-clamp-3">
+                                                        <h3 className="mb-3 text-lg sm:text-xl font-semibold leading-tight text-foreground line-clamp-3">
                                                             {pub.title}
                                                         </h3>
                                                         {pub.description && (
@@ -214,7 +214,7 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
 
                                                         <div className="flex flex-wrap gap-3">
                                                             {pub.doi && (
-                                                                <Button asChild size="sm" className="bg-white text-black hover:bg-gray-200 shadow-lg shadow-white/5 transition-all hover:scale-105 whitespace-nowrap inline-flex items-center justify-center">
+                                                                <Button asChild size="sm" className="inline-flex items-center justify-center whitespace-nowrap bg-slate-900 text-white shadow-sm transition-all hover:scale-105 hover:bg-slate-700">
                                                                     <Link href={pub.doi} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
                                                                         View Paper <ExternalLink className="h-3.5 w-3.5" />
                                                                     </Link>
@@ -249,12 +249,12 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
                             </Button>
 
                             {/* Dots Indicator */}
-                            <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 pointer-events-none z-20">
+                            <div className="static z-20 mt-4 flex justify-center gap-2 pb-4 pointer-events-none md:absolute md:bottom-4 md:left-0 md:right-0 md:mt-0 md:pb-0">
                                 {featuredPubs.map((_, idx) => (
                                     <button
                                         key={idx}
                                         onClick={() => emblaApi && emblaApi.scrollTo(idx)}
-                                        className={`h-1.5 rounded-full transition-all duration-300 pointer-events-auto ${idx === selectedIndex ? "w-8 bg-blue-500" : "w-1.5 bg-slate-600 hover:bg-slate-400"}`}
+                                        className={`h-1.5 rounded-full transition-all duration-300 pointer-events-auto ${idx === selectedIndex ? "w-8 bg-blue-500" : "w-1.5 bg-slate-300 hover:bg-slate-400"}`}
                                     />
                                 ))}
                             </div>
@@ -264,7 +264,7 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
             )}
 
             {/* Quick News Demo */}
-            <Container className="bg-slate-900/50 py-16 rounded-3xl backdrop-blur-md border border-slate-800">
+            <Container className="bg-white/50 py-16 rounded-3xl backdrop-blur-md border border-slate-200 shadow-sm">
                 <ScrollReveal className="w-full">
                     <SectionTitle title="Latest at SPELL" align="center" />
                     <div className="text-center text-muted-foreground">

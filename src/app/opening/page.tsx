@@ -98,9 +98,9 @@ export default async function OpeningPage() {
                             </div>
                         </div>
 
-                        <div className="rounded-2xl bg-slate-900 border border-slate-800 p-8 text-center mt-12">
-                            <h2 className="mb-4 text-2xl font-bold text-white">How to Apply</h2>
-                            <p className="mb-8 text-slate-400">
+                        <div className="rounded-2xl bg-slate-100 border border-slate-200 p-8 text-center mt-12">
+                            <h2 className="mb-4 text-2xl font-bold">How to Apply</h2>
+                            <p className="mb-8 text-muted-foreground">
                                 Please send your <strong>CV</strong> and a brief <strong>cover letter</strong> (or transcript for students) to Prof. Kim.
                             </p>
                             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white gap-2 whitespace-nowrap inline-flex items-center justify-center transition-all hover:scale-105" asChild>

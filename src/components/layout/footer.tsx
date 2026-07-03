@@ -10,7 +10,7 @@ export function Footer() {
                         <div className="flex flex-col gap-4">
                             <div className="flex h-20 w-auto justify-start">
                                 <img
-                                    src="/images/logo3.png"
+                                    src="/images/logo_2.jpg"
                                     alt="SPELL Logo"
                                     className="h-full w-auto object-contain"
                                 />
