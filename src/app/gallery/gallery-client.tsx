@@ -156,7 +156,7 @@ export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel
                                         </motion.h2>
                                     </button>
                                     {item.description && (
-                                        <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                                        <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-slate-600">
                                             {item.description}
                                         </p>
                                     )}
@@ -245,7 +245,7 @@ export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel
                                                     {item.title}
                                                 </motion.h2>
                                                 {item.description && (
-                                                    <p className="max-w-2xl text-center text-sm leading-relaxed text-muted-foreground">
+                                                    <p className="max-w-2xl whitespace-pre-line text-center text-sm leading-relaxed text-muted-foreground">
                                                         {item.description}
                                                     </p>
                                                 )}

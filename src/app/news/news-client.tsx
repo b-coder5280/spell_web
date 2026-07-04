@@ -145,7 +145,7 @@ export function NewsClient({ newsItems }: { newsItems: NewsItemModel[] }) {
 
                                         {/* Description preview */}
                                         {item.description && (
-                                            <p className="text-sm text-muted-foreground/80 line-clamp-2 leading-relaxed">
+                                            <p className="line-clamp-2 whitespace-pre-line text-sm leading-relaxed text-muted-foreground/80">
                                                 {item.description}
                                             </p>
                                         )}
