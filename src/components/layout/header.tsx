@@ -30,7 +30,7 @@ export function Header() {
     }, [pathname])
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
+        <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white text-slate-950 shadow-sm">
             <Container>
                 <div className="flex h-16 items-center justify-between gap-8">
                     <div className="flex min-w-0 items-center">
@@ -66,7 +66,7 @@ export function Header() {
                         </Button>
                     </div>
                     <button
-                        className="lg:hidden"
+                        className="text-slate-700 lg:hidden"
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label="Toggle menu"
                     >
@@ -82,7 +82,7 @@ export function Header() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="lg:hidden border-b bg-background"
+                        className="lg:hidden border-b border-slate-200 bg-white text-slate-950"
                     >
                         <Container className="py-4 space-y-4">
                             {navigation.map((item) => (

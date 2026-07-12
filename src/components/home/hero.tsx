@@ -17,7 +17,7 @@ export function Hero() {
     const opacityText = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
     return (
-        <section ref={ref} className="relative flex min-h-[80vh] items-center justify-center overflow-hidden pt-16 sm:min-h-[90vh]">
+        <section ref={ref} className="relative flex min-h-[80vh] items-center justify-center overflow-hidden bg-white pt-16 sm:min-h-[90vh]">
             {/* Background Effects */}
             <div className="absolute inset-0 z-0">
                 {/* Animated Background is global, but we can add a hero-specific glow here */}
@@ -36,8 +36,8 @@ export function Hero() {
                         className="space-y-6"
                     >
 
-                        <h1 className="text-3xl font-bold tracking-tight leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
-                            Semiconductor <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 animate-gradient-x">Photonics and Electronics</span> Lab
+                        <h1 className="text-3xl font-bold tracking-tight leading-tight text-slate-950 sm:text-5xl md:text-6xl lg:text-7xl">
+                            Semiconductor <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 animate-gradient-x">Photonics and Electronics</span> Lab
                         </h1>
 
 
@@ -54,7 +54,7 @@ export function Hero() {
                                 Research Areas
                             </Link>
                         </Button>
-                        <Button size="lg" variant="outline" className="h-12 w-full px-8 text-base border-slate-300 bg-white/80 text-slate-900 backdrop-blur-sm hover:bg-slate-100 hover:text-slate-950 sm:w-auto" asChild>
+                        <Button size="lg" variant="outline" className="h-12 w-full px-8 text-base border-slate-300 bg-white text-slate-900 shadow-sm hover:bg-slate-100 hover:text-slate-950 sm:w-auto" asChild>
                             <Link href="/opening">Join Us</Link>
                         </Button>
                     </motion.div>
