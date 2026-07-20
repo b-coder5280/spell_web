@@ -57,6 +57,7 @@ export default async function ProfessorPage() {
                             <h1 className="mb-6 text-4xl font-extrabold tracking-tight">Principal Investigator</h1>
                             <ul className="text-lg leading-relaxed text-muted-foreground list-none p-0">
                                 <li>Department of Materials Science and Engineering</li>
+                                <li>Graduate School of Advanced Semiconductor Engineering</li>
                                 <li>Gwangju Institute of Science and Technology (GIST)</li>
                                 <li>Tel: +82-62-715-2741</li>
                                 <li>E-mail: hobkim@gist.ac.kr, hobkim11@gmail.com</li>
