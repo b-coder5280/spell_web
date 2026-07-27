@@ -6,12 +6,13 @@ import { motion, AnimatePresence } from "framer-motion"
 import { X, Calendar, Tag, Newspaper } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { EmblaCarousel } from "@/components/ui/embla-carousel"
+import { defaultNewsPageSettings, NewsPageSettings } from "@/lib/site-content"
 
 export type NewsItemModel = {
     _id: string
     title: string
     date: string
-    category: "Award" | "Conference" | "Published" | "Grant" | "General" | ""
+    category: string
     image?: string
     detailImages?: string[]
     description?: string
@@ -40,11 +41,12 @@ const cardVariants = {
     },
 }
 
-export function NewsClient({ newsItems }: { newsItems: NewsItemModel[] }) {
-    const [filter, setFilter] = useState<"All" | NewsItemModel['category']>("All")
+export function NewsClient({ newsItems, page = defaultNewsPageSettings }: { newsItems: NewsItemModel[], page?: NewsPageSettings }) {
+    const allFilter = page.filters[0] || "All"
+    const [filter, setFilter] = useState<string>(allFilter)
     const [selectedId, setSelectedId] = useState<string | null>(null)
 
-    const filteredNews = filter === "All"
+    const filteredNews = filter === allFilter
         ? newsItems
         : newsItems.filter(item => item.category === filter)
 
@@ -58,16 +60,16 @@ export function NewsClient({ newsItems }: { newsItems: NewsItemModel[] }) {
                             <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
                                 <Newspaper className="h-5 w-5 text-primary" />
                             </div>
-                            <h1 className="text-4xl font-extrabold tracking-tight">News</h1>
+                            <h1 className="text-4xl font-extrabold tracking-tight">{page.title}</h1>
                         </div>
                         <p className="mt-2 text-muted-foreground text-lg">
-                            Latest updates and stories from SPELL Lab.
+                            {page.subtitle}
                         </p>
                     </div>
 
                     {/* Filter Pills */}
                     <div className="flex flex-wrap gap-2">
-                        {(["All", "Award", "Conference", "Published", "Grant"] as const).map((cat) => (
+                        {page.filters.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setFilter(cat)}
@@ -152,7 +154,7 @@ export function NewsClient({ newsItems }: { newsItems: NewsItemModel[] }) {
 
                                         {/* Read more indicator */}
                                         <div className="flex items-center text-sm text-primary/70 font-medium group-hover:text-primary transition-colors duration-300 mt-1">
-                                            <span>Read more</span>
+                                            <span>{page.readMoreLabel}</span>
                                             <svg className="ml-1.5 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                                             </svg>
@@ -168,7 +170,7 @@ export function NewsClient({ newsItems }: { newsItems: NewsItemModel[] }) {
                 {filteredNews.length === 0 && (
                     <div className="text-center py-20 text-muted-foreground">
                         <Newspaper className="h-12 w-12 mx-auto mb-4 opacity-30" />
-                        <p className="text-lg font-medium">No news found for this category.</p>
+                        <p className="text-lg font-medium">{page.emptyMessage}</p>
                     </div>
                 )}
 
@@ -206,7 +208,13 @@ export function NewsClient({ newsItems }: { newsItems: NewsItemModel[] }) {
                                             {/* Image Logic */}
                                             <div className="w-full bg-slate-50">
                                                 {item.detailImages && item.detailImages.length > 0 ? (
-                                                    <EmblaCarousel slides={item.detailImages} options={{ loop: true }} />
+                                                    <EmblaCarousel
+                                                        slides={item.detailImages}
+                                                        options={{ loop: true }}
+                                                        previousLabel={page.carouselPreviousLabel}
+                                                        nextLabel={page.carouselNextLabel}
+                                                        slideAltPrefix={page.slideAltPrefix}
+                                                    />
                                                 ) : (
                                                     <div className="w-full flex justify-center bg-slate-50 min-h-[300px]">
                                                         {item.image ? (
@@ -217,7 +225,7 @@ export function NewsClient({ newsItems }: { newsItems: NewsItemModel[] }) {
                                                             />
                                                         ) : (
                                                             <div className="h-64 w-full flex items-center justify-center text-muted-foreground">
-                                                                No Image
+                                                                {page.noImageLabel}
                                                             </div>
                                                         )}
                                                     </div>
@@ -250,7 +258,7 @@ export function NewsClient({ newsItems }: { newsItems: NewsItemModel[] }) {
                                                 {item.description ? (
                                                     <p className="whitespace-pre-line leading-relaxed">{item.description}</p>
                                                 ) : (
-                                                    <p className="italic text-slate-500">No additional details available.</p>
+                                                    <p className="italic text-slate-500">{page.noDetailsLabel}</p>
                                                 )}
                                             </div>
                                         </div>

@@ -6,6 +6,8 @@ import { Container } from "@/components/ui/container"
 import { X, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { defaultResearchPageSettings, ResearchPageSettings } from "@/lib/site-content"
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types"
 
 import { StaggeredReveal, StaggeredItem } from "@/components/ui/staggered-reveal"
 
@@ -15,13 +17,13 @@ export interface ResearchItem {
     description: string
     details: string
     tags: string[]
-    image: any // Sanity image
+    image?: SanityImageSource
 }
 
 // Helper to extract sanity image url
 import { urlFor } from "@/sanity/lib/image"
 
-export default function ResearchClient({ thrusts }: { thrusts: ResearchItem[] }) {
+export default function ResearchClient({ thrusts, page = defaultResearchPageSettings }: { thrusts: ResearchItem[], page?: ResearchPageSettings }) {
     const [selectedId, setSelectedId] = useState<string | null>(null)
 
     return (
@@ -30,9 +32,9 @@ export default function ResearchClient({ thrusts }: { thrusts: ResearchItem[] })
                 {/* Research Thrusts Grid Section */}
                 <div className="mb-24 mt-12">
                     <div className="mb-16 text-center">
-                        <h1 className="text-4xl font-extrabold tracking-tight">Our Vision & Core Research Areas</h1>
+                        <h1 className="text-4xl font-extrabold tracking-tight">{page.title}</h1>
                         <p className="mt-4 text-xl text-muted-foreground max-w-3xl mx-auto">
-                            We aim to <span className="font-bold text-primary">redefine the limits of semiconductor technology</span> by leveraging novel materials and innovative device architectures.
+                            {page.intro}
                         </p>
                     </div>
                     <div className="mt-16">
@@ -67,7 +69,7 @@ export default function ResearchClient({ thrusts }: { thrusts: ResearchItem[] })
                                                     {thrust.description}
                                                 </p>
                                                 <div className="mt-auto flex items-center text-cyan-400 text-xs font-bold tracking-[0.2em] uppercase transition-colors group-hover:text-cyan-300">
-                                                    Exploration <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                                                    {page.cardActionLabel} <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                                                 </div>
                                             </div>
                                         </motion.div>
@@ -88,8 +90,8 @@ export default function ResearchClient({ thrusts }: { thrusts: ResearchItem[] })
                         className="w-full overflow-hidden rounded-[2rem] border border-slate-200 shadow-2xl bg-white/40 backdrop-blur-sm"
                     >
                         <img
-                            src="/images/full.jpg"
-                            alt="Research Overview"
+                            src={page.overviewImageUrl || defaultResearchPageSettings.overviewImageUrl}
+                            alt={page.overviewImageAlt}
                             className="w-full h-auto block"
                         />
                     </motion.div>
@@ -156,7 +158,7 @@ export default function ResearchClient({ thrusts }: { thrusts: ResearchItem[] })
 
                                                     <div className="rounded-xl bg-slate-100 p-6 border border-slate-200">
                                                         <h4 className="mb-2 font-semibold flex items-center gap-2 text-foreground">
-                                                            <ArrowRight className="h-4 w-4 text-sky-500" /> Key Research Details
+                                                            <ArrowRight className="h-4 w-4 text-sky-500" /> {page.modalDetailsTitle}
                                                         </h4>
                                                         <p className="text-muted-foreground">
                                                             {thrust.details}

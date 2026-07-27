@@ -21,15 +21,7 @@ export const newsType = defineType({
             name: 'category',
             title: 'Category',
             type: 'string',
-            options: {
-                list: [
-                    { title: 'Award', value: 'Award' },
-                    { title: 'Conference', value: 'Conference' },
-                    { title: 'Published', value: 'Published' },
-                    { title: 'Grant', value: 'Grant' },
-                    { title: 'General', value: 'General' },
-                ],
-            },
+            description: 'Use values listed in News Page > Filter Buttons if you want this category to be filterable.',
         }),
         defineField({
             name: 'image',

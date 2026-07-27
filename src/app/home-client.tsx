@@ -9,16 +9,44 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import React, { useState, useCallback, useEffect } from "react"
 import useEmblaCarousel from 'embla-carousel-react'
+import type { EmblaCarouselType } from 'embla-carousel'
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types"
 import { urlFor } from "@/sanity/lib/image"
+import { defaultHomePageSettings, HomePageSettings } from "@/lib/site-content"
 
-export default function HomeClient({ opening, featuredPubs }: { opening: any, featuredPubs: any[] }) {
+type OpeningResearchArea = {
+    title?: string
+    description?: string
+}
+
+type OpeningContent = {
+    koreanDescription?: string[]
+    englishIntro?: string
+    researchAreas?: OpeningResearchArea[]
+    openingPositions?: string[]
+    eligibility?: string[]
+    howToApply?: string
+}
+
+type FeaturedPublication = {
+    _id: string
+    title: string
+    journal?: string
+    volume?: string
+    year?: number
+    description?: string
+    doi?: string
+    image?: SanityImageSource
+}
+
+export default function HomeClient({ opening, featuredPubs, homePage = defaultHomePageSettings }: { opening: OpeningContent, featuredPubs: FeaturedPublication[], homePage?: HomePageSettings }) {
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
     const [, setCanScrollPrev] = useState(false)
     const [, setCanScrollNext] = useState(false)
 
     const [selectedIndex, setSelectedIndex] = useState(0)
 
-    const onSelect = useCallback((api: any) => {
+    const onSelect = useCallback((api: EmblaCarouselType) => {
         setCanScrollPrev(api.canScrollPrev())
         setCanScrollNext(api.canScrollNext())
         setSelectedIndex(api.selectedScrollSnap())
@@ -26,7 +54,7 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
 
     useEffect(() => {
         if (!emblaApi) return
-        onSelect(emblaApi)
+        queueMicrotask(() => onSelect(emblaApi))
         emblaApi.on('reInit', onSelect)
         emblaApi.on('select', onSelect)
     }, [emblaApi, onSelect])
@@ -48,7 +76,7 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
 
     return (
         <div className="flex flex-col gap-8 pb-12">
-            <Hero />
+            <Hero settings={homePage} />
 
             {/* Recruitment Section */}
             <Container>
@@ -60,7 +88,7 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
                         <div className="relative z-10 flex flex-col lg:flex-row items-start justify-between gap-12">
                             <div className="max-w-3xl text-left">
                                 <h2 className="mb-8 text-3xl font-bold text-foreground md:text-5xl">
-                                    Join Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Lab</span>
+                                    {homePage.recruitmentTitleBefore} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">{homePage.recruitmentTitleHighlight}</span>
                                 </h2>
 
                                 <div className="space-y-8">
@@ -100,16 +128,16 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
 
                                         <div className="space-y-6">
                                             <div>
-                                                <h4 className="font-semibold text-blue-500 mb-2">Research Areas</h4>
+                                                <h4 className="font-semibold text-blue-500 mb-2">{homePage.researchAreasHeading}</h4>
                                                 <ul className="text-muted-foreground space-y-1 text-sm list-disc pl-5">
-                                                    {researchAreas.map((area: any, i: number) => (
+                                                    {researchAreas.map((area, i) => (
                                                         <li key={i}><span className="font-medium text-foreground">{area.title}</span> {area.description}</li>
                                                     ))}
                                                 </ul>
                                             </div>
 
                                             <div>
-                                                <h4 className="font-semibold text-blue-500 mb-2">Opening Positions</h4>
+                                                <h4 className="font-semibold text-blue-500 mb-2">{homePage.openingPositionsHeading}</h4>
                                                 <ul className="text-muted-foreground space-y-1 text-sm list-disc pl-5">
                                                     {positions.map((pos: string, i: number) => (
                                                         <li key={i}>{pos}</li>
@@ -118,7 +146,7 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
                                             </div>
 
                                             <div>
-                                                <h4 className="font-semibold text-blue-500 mb-2">Eligibility & Requirements</h4>
+                                                <h4 className="font-semibold text-blue-500 mb-2">{homePage.eligibilityHeading}</h4>
                                                 <ul className="text-muted-foreground space-y-1 text-sm list-disc pl-5">
                                                     {eligibility.map((req: string, i: number) => (
                                                         <li key={i}>{req}</li>
@@ -127,7 +155,7 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
                                             </div>
 
                                             <div>
-                                                <h4 className="font-semibold text-blue-500 mb-2">How to Apply</h4>
+                                                <h4 className="font-semibold text-blue-500 mb-2">{homePage.howToApplyHeading}</h4>
                                                 <p className="text-muted-foreground text-sm whitespace-pre-line">
                                                     {howToApply}
                                                 </p>
@@ -136,12 +164,12 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
 
                                         <div className="flex flex-wrap gap-4 pt-4">
                                             <Button size="lg" variant="outline" className="h-12 px-8 border-slate-200 hover:bg-slate-100 text-foreground backdrop-blur-sm group/btn" asChild>
-                                                <Link href="mailto:hobkim@gist.ac.kr" className="inline-flex items-center gap-2">
-                                                    <Mail className="h-5 w-5 text-blue-500 group-hover/btn:scale-110 transition-transform" /> Contact Prof. Kim
+                                                <Link href={`mailto:${homePage.contactEmail}`} className="inline-flex items-center gap-2">
+                                                    <Mail className="h-5 w-5 text-blue-500 group-hover/btn:scale-110 transition-transform" /> {homePage.contactButtonLabel}
                                                 </Link>
                                             </Button>
                                             <Button size="lg" variant="ghost" className="h-12 px-8 text-muted-foreground hover:text-foreground" asChild>
-                                                <Link href="/opening">View Full Opening Details</Link>
+                                                <Link href={homePage.openingDetailsButtonHref}>{homePage.openingDetailsButtonLabel}</Link>
                                             </Button>
                                         </div>
                                     </div>
@@ -170,15 +198,15 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
                 <Container>
                     <ScrollReveal className="w-full overflow-hidden">
                         <SectionTitle
-                            title="Selected Publication"
-                            subtitle="Highlighting our latest breakthroughs."
+                            title={homePage.selectedPublicationTitle}
+                            subtitle={homePage.selectedPublicationSubtitle}
                             align="center"
                         />
 
                         <div className="relative group mt-8 w-full max-w-full overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
                             <div className="overflow-hidden" ref={emblaRef}>
                                 <div className="flex w-full">
-                                    {featuredPubs.map((pub: any) => {
+                                    {featuredPubs.map((pub) => {
                                         const imageUrl = pub.image ? urlFor(pub.image).url() : "";
                                         return (
                                             <div className="flex-[0_0_100%] min-w-0 overflow-hidden" key={pub._id}>
@@ -192,7 +220,7 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
                                                                 className="w-auto h-auto max-w-full max-h-[300px] md:max-h-full object-contain filter drop-shadow-2xl"
                                                             />
                                                         ) : (
-                                                            <div className="text-muted-foreground/50">No Image Available</div>
+                                                            <div className="text-muted-foreground/50">{homePage.noPublicationImageLabel}</div>
                                                         )}
                                                     </div>
 
@@ -216,7 +244,7 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
                                                             {pub.doi && (
                                                                 <Button asChild size="sm" className="inline-flex items-center justify-center whitespace-nowrap bg-slate-900 text-white shadow-sm transition-all hover:scale-105 hover:bg-slate-700">
                                                                     <Link href={pub.doi} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
-                                                                        View Paper <ExternalLink className="h-3.5 w-3.5" />
+                                                                        {homePage.viewPaperLabel} <ExternalLink className="h-3.5 w-3.5" />
                                                                     </Link>
                                                                 </Button>
                                                             )}
@@ -233,6 +261,7 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
                             <Button
                                 variant="ghost"
                                 size="icon"
+                                aria-label={homePage.carouselPreviousLabel}
                                 className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white rounded-full h-10 w-10 z-10 hidden md:flex"
                                 onClick={scrollPrev}
                             >
@@ -242,6 +271,7 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
                             <Button
                                 variant="ghost"
                                 size="icon"
+                                aria-label={homePage.carouselNextLabel}
                                 className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white rounded-full h-10 w-10 z-10 hidden md:flex"
                                 onClick={scrollNext}
                             >
@@ -266,9 +296,9 @@ export default function HomeClient({ opening, featuredPubs }: { opening: any, fe
             {/* Quick News Demo */}
             <Container className="bg-white/50 py-16 rounded-3xl backdrop-blur-md border border-slate-200 shadow-sm">
                 <ScrollReveal className="w-full">
-                    <SectionTitle title="Latest at SPELL" align="center" />
+                    <SectionTitle title={homePage.latestTitle} align="center" />
                     <div className="text-center text-muted-foreground">
-                        (News content to be implemented)
+                        {homePage.latestPlaceholder}
                     </div>
                 </ScrollReveal>
             </Container>

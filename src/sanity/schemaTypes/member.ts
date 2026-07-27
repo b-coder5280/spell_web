@@ -15,15 +15,7 @@ export const memberType = defineType({
             name: 'role',
             title: 'Role Group',
             type: 'string',
-            options: {
-                list: [
-                    { title: 'Post Doc.', value: 'Post Doc.' },
-                    { title: 'M.S./Ph.D. Candidates', value: 'M.S./Ph.D. Candidates' },
-                    { title: 'M.S. Candidates', value: 'M.S. Candidates' },
-                    { title: 'Intern', value: 'Intern' },
-                    { title: 'Alumni', value: 'Alumni' },
-                ],
-            },
+            description: 'Use the same group names listed in Members Page > Role Group Display Order.',
             validation: (Rule) => Rule.required(),
         }),
         defineField({

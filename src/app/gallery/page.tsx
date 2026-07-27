@@ -1,16 +1,22 @@
 import { client } from "@/sanity/lib/client"
-import { galleryQuery } from "@/sanity/lib/queries"
+import { galleryPageSettingsQuery, galleryQuery } from "@/sanity/lib/queries"
 import { GalleryClient, GalleryItemModel } from "./gallery-client"
+import { defaultGalleryPageSettings, GalleryPageSettings, withDefaults } from "@/lib/site-content"
 
 export const revalidate = 60
 
-export default async function GalleryPage() {
-    const fetchedGallery = await client.fetch<GalleryItemModel[]>(galleryQuery) || [];
+type GalleryItemWithOptionalId = GalleryItemModel & {
+    id?: string
+}
 
-    const processedGallery = fetchedGallery.map((item: any) => ({
+export default async function GalleryPage() {
+    const fetchedGallery = await client.fetch<GalleryItemWithOptionalId[]>(galleryQuery) || [];
+    const page = withDefaults(defaultGalleryPageSettings, await client.fetch<Partial<GalleryPageSettings>>(galleryPageSettingsQuery));
+
+    const processedGallery = fetchedGallery.map((item, index) => ({
         ...item,
-        _id: item._id || item.id || Math.random().toString(36).substring(7)
+        _id: item._id || item.id || `gallery-${index}`
     }));
 
-    return <GalleryClient galleryItems={processedGallery as GalleryItemModel[]} />
+    return <GalleryClient galleryItems={processedGallery as GalleryItemModel[]} page={page} />
 }

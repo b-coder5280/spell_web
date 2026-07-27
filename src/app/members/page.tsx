@@ -1,33 +1,37 @@
 import { Container } from "@/components/ui/container"
 import { MemberCard } from "@/components/people/member-card"
 import { client } from "@/sanity/lib/client"
-import { membersQuery } from "@/sanity/lib/queries"
+import { membersPageQuery, membersQuery } from "@/sanity/lib/queries"
+import { defaultMembersPageSettings, MembersPageSettings, withDefaults } from "@/lib/site-content"
 
 export const revalidate = 60
 
-// Desired order of roles
-const ROLE_ORDER = [
-    "Post Doc.",
-    "M.S./Ph.D. Candidates",
-    "M.S. Candidates",
-    "Intern",
-    "Alumni"
-];
+type Member = {
+    _id: string
+    name: string
+    role: string
+    order?: number
+    interest?: string
+    email?: string
+    image?: string
+    position?: string
+}
 
 export default async function MembersPage() {
-    const fetchedMembers = await client.fetch<any[]>(membersQuery) || [];
+    const fetchedMembers = await client.fetch<Member[]>(membersQuery) || [];
+    const page = withDefaults(defaultMembersPageSettings, await client.fetch<Partial<MembersPageSettings>>(membersPageQuery));
 
     // Group fetched members by role
     const sanityMembersGrouped = fetchedMembers.reduce((acc, member) => {
         if (!acc[member.role]) acc[member.role] = [];
         acc[member.role].push(member);
         return acc;
-    }, {} as Record<string, any[]>);
+    }, {} as Record<string, Member[]>);
 
     // Sort roles according to predefined order, and append any new roles that aren't in the array
     const roles = Object.keys(sanityMembersGrouped).sort((a, b) => {
-        const orderA = ROLE_ORDER.indexOf(a)
-        const orderB = ROLE_ORDER.indexOf(b)
+        const orderA = page.roleOrder.indexOf(a)
+        const orderB = page.roleOrder.indexOf(b)
 
         if (orderA === -1 && orderB === -1) return 0
         if (orderA === -1) return 1
@@ -37,14 +41,14 @@ export default async function MembersPage() {
 
     const combinedMembers = roles.map(role => ({
         role,
-        people: sanityMembersGrouped[role].sort((a: any, b: any) => (a.order || 0) - (b.order || 0))
+        people: sanityMembersGrouped[role].sort((a, b) => (a.order || 0) - (b.order || 0))
     }))
 
     return (
         <div className="pb-24 pt-16">
             <Container>
                 <div className="mb-16">
-                    <h1 className="mb-6 text-4xl font-extrabold tracking-tight">Members</h1>
+                    <h1 className="mb-6 text-4xl font-extrabold tracking-tight">{page.title}</h1>
                 </div>
 
                 <div className="space-y-20">
@@ -52,7 +56,7 @@ export default async function MembersPage() {
                         <section key={group.role}>
                             <h2 className="mb-8 text-2xl font-bold tracking-tight border-b pb-4">{group.role}</h2>
                             <div className="grid gap-7 lg:grid-cols-2">
-                                {group.people.map((person: any) => (
+                                {group.people.map((person) => (
                                     <MemberCard
                                         key={person.name || person._id}
                                         name={person.position ? `${person.name} ${person.position}` : person.name}
@@ -60,6 +64,8 @@ export default async function MembersPage() {
                                         interest={person.interest}
                                         email={person.email}
                                         image={person.image}
+                                        photoPlaceholder={page.photoPlaceholder}
+                                        linkedinLabel={page.linkedinLabel}
                                     />
                                 ))}
                             </div>

@@ -1,7 +1,10 @@
 import Link from "next/link"
 import { Container } from "@/components/ui/container"
+import { defaultSiteSettings, SiteSettings } from "@/lib/site-content"
 
-export function Footer() {
+export function Footer({ settings = defaultSiteSettings }: { settings?: SiteSettings }) {
+    const copyright = settings.footerCopyright.replace("{year}", String(new Date().getFullYear()))
+
     return (
         <footer className="border-t bg-background py-12 md:py-16">
             <Container>
@@ -10,37 +13,38 @@ export function Footer() {
                         <div className="flex flex-col gap-4">
                             <div className="flex h-20 w-auto justify-start">
                                 <img
-                                    src="/images/logo_2.jpg"
-                                    alt="SPELL Logo"
+                                    src={settings.footerLogoUrl || defaultSiteSettings.footerLogoUrl}
+                                    alt={settings.footerLogoAlt}
                                     className="h-full w-auto object-contain"
                                 />
                             </div>
-                            <h3 className="text-xl font-bold text-primary leading-tight">Semiconductor Photonics and Electronics Lab</h3>
+                            <h3 className="text-xl font-bold text-primary leading-tight">{settings.footerLabName}</h3>
                         </div>
                         <p className="text-sm text-muted-foreground leading-relaxed">
-                            Gwangju Institute of Science and Technology (GIST)
+                            {settings.footerInstitution}
                         </p>
                     </div>
                     <div>
-                        <h4 className="mb-4 text-sm font-semibold">Links</h4>
+                        <h4 className="mb-4 text-sm font-semibold">{settings.footerLinksTitle}</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li><Link href="/research" className="hover:text-primary">Research</Link></li>
-                            <li><Link href="/publication" className="hover:text-primary">Publications</Link></li>
-                            <li><Link href="/members" className="hover:text-primary">Members</Link></li>
+                            {settings.footerLinks.map((link) => (
+                                <li key={`${link.name}-${link.href}`}>
+                                    <Link href={link.href} className="hover:text-primary">{link.name}</Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <div>
-                        <h4 className="mb-4 text-sm font-semibold">Contact</h4>
+                        <h4 className="mb-4 text-sm font-semibold">{settings.footerContactTitle}</h4>
                         <div className="space-y-2 text-sm text-muted-foreground">
-                            <p>123 Cheomdan-gwagiro, Buk-gu, Gwangju 61005, Korea</p>
-                            <p>Email: hobkim@gist.ac.kr </p>
-                            <p>Tel: +82-62-715-2741 </p>
-                            <p>Office: Materials Science and Engineering Building (S5)</p>
+                            {settings.footerContactLines.map((line) => (
+                                <p key={line}>{line}</p>
+                            ))}
                         </div>
                     </div>
                 </div>
                 <div className="mt-12 border-t pt-8 text-center text-sm text-muted-foreground">
-                    © {new Date().getFullYear()} SPELL Lab. All rights reserved.
+                    {copyright}
                 </div>
             </Container>
         </footer>

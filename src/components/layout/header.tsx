@@ -9,20 +9,12 @@ import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { Container } from "@/components/ui/container"
 import { Button } from "@/components/ui/button"
+import { defaultSiteSettings, SiteSettings } from "@/lib/site-content"
 
-const navigation = [
-    { name: "Research", href: "/research" },
-    { name: "Professor", href: "/professor" },
-    { name: "Members", href: "/members" },
-    { name: "Publications", href: "/publication" },
-    { name: "News", href: "/news" },
-    { name: "Gallery", href: "/gallery" },
-    { name: "Opening", href: "/opening" },
-]
-
-export function Header() {
+export function Header({ settings = defaultSiteSettings }: { settings?: SiteSettings }) {
     const [isOpen, setIsOpen] = React.useState(false)
     const pathname = usePathname()
+    const navigation = settings.navigation
 
     // Close mobile menu when route changes
     React.useEffect(() => {
@@ -37,8 +29,8 @@ export function Header() {
                         <Link href="/" className="flex shrink-0 items-center">
                             <div className="flex h-14 w-auto items-center justify-center overflow-hidden">
                                 <img
-                                    src="/images/logo_2.jpg"
-                                    alt="SPELL Logo"
+                                    src={settings.headerLogoUrl || defaultSiteSettings.headerLogoUrl}
+                                    alt={settings.headerLogoAlt}
                                     className="h-14 max-h-14 w-auto object-contain"
                                 />
                             </div>
@@ -62,13 +54,13 @@ export function Header() {
                             ))}
                         </nav>
                         <Button asChild size="sm">
-                            <Link href="/opening">Join Us</Link>
+                            <Link href={settings.joinButtonHref}>{settings.joinButtonLabel}</Link>
                         </Button>
                     </div>
                     <button
                         className="text-slate-700 lg:hidden"
                         onClick={() => setIsOpen(!isOpen)}
-                        aria-label="Toggle menu"
+                        aria-label={settings.mobileMenuLabel}
                     >
                         {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                     </button>
@@ -100,7 +92,7 @@ export function Header() {
                                 </Link>
                             ))}
                             <Button asChild className="w-full">
-                                <Link href="/opening">Join Us</Link>
+                                <Link href={settings.joinButtonHref}>{settings.joinButtonLabel}</Link>
                             </Button>
                         </Container>
                     </motion.div>

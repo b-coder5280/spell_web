@@ -8,9 +8,11 @@ interface MemberCardProps {
     image?: string
     email?: string
     linkedin?: string
+    photoPlaceholder?: string
+    linkedinLabel?: string
 }
 
-export function MemberCard({ name, role, interest, image, email, linkedin }: MemberCardProps) {
+export function MemberCard({ name, role, interest, image, email, linkedin, photoPlaceholder = "[Photo]", linkedinLabel = "LinkedIn" }: MemberCardProps) {
     const showInterest = interest && interest.trim() !== "" && role !== "Intern"
 
     return (
@@ -20,7 +22,7 @@ export function MemberCard({ name, role, interest, image, email, linkedin }: Mem
                     <img src={image} alt={name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 ) : (
                     <div className="flex h-full w-full items-center justify-center text-muted-foreground text-sm">
-                        [Photo]
+                        {photoPlaceholder}
                     </div>
                 )}
             </div>
@@ -45,7 +47,7 @@ export function MemberCard({ name, role, interest, image, email, linkedin }: Mem
                         {linkedin && (
                             <Link href={linkedin} className="inline-flex items-center gap-2 text-sm font-medium text-slate-950 transition-colors hover:text-blue-700">
                                 <Linkedin className="h-4 w-4 text-blue-950" />
-                                <span>LinkedIn</span>
+                                <span>{linkedinLabel}</span>
                             </Link>
                         )}
                     </div>

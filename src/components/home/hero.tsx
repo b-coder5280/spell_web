@@ -5,8 +5,9 @@ import { Container } from "@/components/ui/container"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 import { useRef } from "react"
+import { defaultHomePageSettings, HomePageSettings } from "@/lib/site-content"
 
-export function Hero() {
+export function Hero({ settings = defaultHomePageSettings }: { settings?: HomePageSettings }) {
     const ref = useRef(null)
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -37,7 +38,7 @@ export function Hero() {
                     >
 
                         <h1 className="text-3xl font-bold tracking-tight leading-tight text-slate-950 sm:text-5xl md:text-6xl lg:text-7xl">
-                            Semiconductor <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 animate-gradient-x">Photonics and Electronics</span> Lab
+                            {settings.heroTitleBefore} <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 animate-gradient-x">{settings.heroTitleHighlight}</span> {settings.heroTitleAfter}
                         </h1>
 
 
@@ -50,12 +51,12 @@ export function Hero() {
                         className="mt-10 flex w-full flex-col gap-4 sm:w-auto sm:flex-row"
                     >
                         <Button size="lg" className="h-12 w-full px-8 text-base bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 border-0 shadow-lg shadow-blue-500/25 sm:w-auto" asChild>
-                            <Link href="/research">
-                                Research Areas
+                            <Link href={settings.heroPrimaryButtonHref}>
+                                {settings.heroPrimaryButtonLabel}
                             </Link>
                         </Button>
                         <Button size="lg" variant="outline" className="h-12 w-full px-8 text-base border-slate-300 bg-white text-slate-900 shadow-sm hover:bg-slate-100 hover:text-slate-950 sm:w-auto" asChild>
-                            <Link href="/opening">Join Us</Link>
+                            <Link href={settings.heroSecondaryButtonHref}>{settings.heroSecondaryButtonLabel}</Link>
                         </Button>
                     </motion.div>
                 </motion.div>
@@ -68,7 +69,7 @@ export function Hero() {
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
             >
-                <span className="text-xs uppercase tracking-widest">Scroll</span>
+                <span className="text-xs uppercase tracking-widest">{settings.scrollLabel}</span>
                 <div className="h-12 w-[1px] bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
             </motion.div>
         </section>

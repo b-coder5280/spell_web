@@ -1,0 +1,173 @@
+import { defineField, defineType } from 'sanity'
+import { defaultHomePageSettings } from '../../lib/site-content'
+
+export const homePageType = defineType({
+    name: 'homePage',
+    title: 'Home Page',
+    type: 'document',
+    groups: [
+        { name: 'hero', title: 'Hero' },
+        { name: 'recruitment', title: 'Recruitment Section' },
+        { name: 'publications', title: 'Selected Publications' },
+        { name: 'latest', title: 'Latest Section' },
+    ],
+    initialValue: defaultHomePageSettings,
+    fields: [
+        defineField({
+            name: 'heroTitleBefore',
+            title: 'Hero Title Before Highlight',
+            type: 'string',
+            group: 'hero',
+        }),
+        defineField({
+            name: 'heroTitleHighlight',
+            title: 'Hero Title Highlight',
+            type: 'string',
+            group: 'hero',
+        }),
+        defineField({
+            name: 'heroTitleAfter',
+            title: 'Hero Title After Highlight',
+            type: 'string',
+            group: 'hero',
+        }),
+        defineField({
+            name: 'heroPrimaryButtonLabel',
+            title: 'Primary Button Label',
+            type: 'string',
+            group: 'hero',
+        }),
+        defineField({
+            name: 'heroPrimaryButtonHref',
+            title: 'Primary Button Link',
+            type: 'string',
+            group: 'hero',
+        }),
+        defineField({
+            name: 'heroSecondaryButtonLabel',
+            title: 'Secondary Button Label',
+            type: 'string',
+            group: 'hero',
+        }),
+        defineField({
+            name: 'heroSecondaryButtonHref',
+            title: 'Secondary Button Link',
+            type: 'string',
+            group: 'hero',
+        }),
+        defineField({
+            name: 'scrollLabel',
+            title: 'Scroll Indicator Label',
+            type: 'string',
+            group: 'hero',
+        }),
+        defineField({
+            name: 'recruitmentTitleBefore',
+            title: 'Recruitment Title Before Highlight',
+            type: 'string',
+            group: 'recruitment',
+        }),
+        defineField({
+            name: 'recruitmentTitleHighlight',
+            title: 'Recruitment Title Highlight',
+            type: 'string',
+            group: 'recruitment',
+        }),
+        defineField({
+            name: 'researchAreasHeading',
+            title: 'Research Areas Heading',
+            type: 'string',
+            group: 'recruitment',
+        }),
+        defineField({
+            name: 'openingPositionsHeading',
+            title: 'Opening Positions Heading',
+            type: 'string',
+            group: 'recruitment',
+        }),
+        defineField({
+            name: 'eligibilityHeading',
+            title: 'Eligibility Heading',
+            type: 'string',
+            group: 'recruitment',
+        }),
+        defineField({
+            name: 'howToApplyHeading',
+            title: 'How to Apply Heading',
+            type: 'string',
+            group: 'recruitment',
+        }),
+        defineField({
+            name: 'contactButtonLabel',
+            title: 'Contact Button Label',
+            type: 'string',
+            group: 'recruitment',
+        }),
+        defineField({
+            name: 'contactEmail',
+            title: 'Contact Button Email',
+            type: 'string',
+            group: 'recruitment',
+        }),
+        defineField({
+            name: 'openingDetailsButtonLabel',
+            title: 'Opening Details Button Label',
+            type: 'string',
+            group: 'recruitment',
+        }),
+        defineField({
+            name: 'openingDetailsButtonHref',
+            title: 'Opening Details Button Link',
+            type: 'string',
+            group: 'recruitment',
+        }),
+        defineField({
+            name: 'selectedPublicationTitle',
+            title: 'Selected Publication Section Title',
+            type: 'string',
+            group: 'publications',
+        }),
+        defineField({
+            name: 'selectedPublicationSubtitle',
+            title: 'Selected Publication Section Subtitle',
+            type: 'string',
+            group: 'publications',
+        }),
+        defineField({
+            name: 'viewPaperLabel',
+            title: 'View Paper Button Label',
+            type: 'string',
+            group: 'publications',
+        }),
+        defineField({
+            name: 'noPublicationImageLabel',
+            title: 'No Publication Image Label',
+            type: 'string',
+            group: 'publications',
+        }),
+        defineField({
+            name: 'carouselPreviousLabel',
+            title: 'Previous Publication Button Label',
+            type: 'string',
+            group: 'publications',
+        }),
+        defineField({
+            name: 'carouselNextLabel',
+            title: 'Next Publication Button Label',
+            type: 'string',
+            group: 'publications',
+        }),
+        defineField({
+            name: 'latestTitle',
+            title: 'Latest Section Title',
+            type: 'string',
+            group: 'latest',
+        }),
+        defineField({
+            name: 'latestPlaceholder',
+            title: 'Latest Section Placeholder Text',
+            type: 'string',
+            group: 'latest',
+        }),
+    ],
+})

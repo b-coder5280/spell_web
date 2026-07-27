@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/container"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Calendar, Camera, ChevronLeft, ChevronRight, Images } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { defaultGalleryPageSettings, GalleryPageSettings } from "@/lib/site-content"
 
 export type GalleryItemModel = {
     _id: string
@@ -18,7 +19,7 @@ function imageCount(item: GalleryItemModel) {
     return item.images?.length || 0
 }
 
-export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel[] }) {
+export function GalleryClient({ galleryItems, page = defaultGalleryPageSettings }: { galleryItems: GalleryItemModel[], page?: GalleryPageSettings }) {
     const [selectedId, setSelectedId] = useState<string | null>(null)
     const [imageIndexes, setImageIndexes] = useState<Record<string, number>>({})
 
@@ -52,16 +53,16 @@ export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel
                                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-950 text-white shadow-sm">
                                     <Camera className="h-5 w-5" />
                                 </div>
-                                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-blue-600">SPELL Moments</p>
+                                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-blue-600">{page.eyebrow}</p>
                             </div>
-                            <h1 className="text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl">Gallery</h1>
+                            <h1 className="text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl">{page.title}</h1>
                             <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                                A clean visual journal of lab life, conferences, workshops, and shared memories.
+                                {page.description}
                             </p>
                         </div>
                         <div className="flex w-fit shrink-0 items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 shadow-sm">
                             <Images className="h-4 w-4 text-blue-600" />
-                            {galleryItems.length} albums
+                            {galleryItems.length} {page.albumsLabel}
                         </div>
                     </div>
 
@@ -89,7 +90,7 @@ export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel
                                                 />
                                             ) : (
                                                 <div className="flex h-full w-full items-center justify-center bg-secondary/30 text-muted-foreground">
-                                                    No Image
+                                                    {page.noImageLabel}
                                                 </div>
                                             )}
                                         </button>
@@ -102,7 +103,7 @@ export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel
                                                 </div>
                                                 <button
                                                     type="button"
-                                                    aria-label="Previous image"
+                                                    aria-label={page.previousImageLabel}
                                                     onClick={(event) => stepImage(event, item, -1)}
                                                     className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/88 text-slate-800 opacity-0 shadow-sm backdrop-blur transition-opacity hover:bg-white group-hover:opacity-100"
                                                 >
@@ -110,7 +111,7 @@ export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel
                                                 </button>
                                                 <button
                                                     type="button"
-                                                    aria-label="Next image"
+                                                    aria-label={page.nextImageLabel}
                                                     onClick={(event) => stepImage(event, item, 1)}
                                                     className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/88 text-slate-800 opacity-0 shadow-sm backdrop-blur transition-opacity hover:bg-white group-hover:opacity-100"
                                                 >
@@ -126,7 +127,7 @@ export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel
                                                 <button
                                                     type="button"
                                                     key={`${item._id}-dot-${dotIndex}`}
-                                                    aria-label={`Show image ${dotIndex + 1}`}
+                                                    aria-label={`${page.showImageLabel} ${dotIndex + 1}`}
                                                     onClick={(event) => {
                                                         event.stopPropagation()
                                                         setImageIndex(item, dotIndex)
@@ -166,7 +167,7 @@ export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel
                                             onClick={() => setSelectedId(item._id)}
                                             className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
                                         >
-                                            View album
+                                            {page.viewAlbumLabel}
                                         </button>
                                     </div>
                                 </div>
@@ -211,7 +212,7 @@ export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel
                                                     />
                                                 ) : (
                                                     <div className="flex h-[52vh] w-full items-center justify-center text-muted-foreground">
-                                                        No Image
+                                                        {page.noImageLabel}
                                                     </div>
                                                 )}
 
@@ -219,7 +220,7 @@ export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel
                                                     <>
                                                         <button
                                                             type="button"
-                                                            aria-label="Previous image"
+                                                            aria-label={page.previousImageLabel}
                                                             onClick={(event) => stepImage(event, item, -1)}
                                                             className="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow-md backdrop-blur hover:bg-white"
                                                         >
@@ -227,7 +228,7 @@ export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel
                                                         </button>
                                                         <button
                                                             type="button"
-                                                            aria-label="Next image"
+                                                            aria-label={page.nextImageLabel}
                                                             onClick={(event) => stepImage(event, item, 1)}
                                                             className="absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow-md backdrop-blur hover:bg-white"
                                                         >
@@ -255,7 +256,7 @@ export function GalleryClient({ galleryItems }: { galleryItems: GalleryItemModel
                                                             <button
                                                                 type="button"
                                                                 key={`${item._id}-modal-dot-${dotIndex}`}
-                                                                aria-label={`Show image ${dotIndex + 1}`}
+                                                                aria-label={`${page.showImageLabel} ${dotIndex + 1}`}
                                                                 onClick={(event) => {
                                                                     event.stopPropagation()
                                                                     setImageIndex(item, dotIndex)

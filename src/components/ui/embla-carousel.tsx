@@ -2,28 +2,32 @@
 
 import React, { useCallback, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
+import type { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from './button'
 
 type PropType = {
     slides: string[]
-    options?: any
+    options?: EmblaOptionsType
+    previousLabel?: string
+    nextLabel?: string
+    slideAltPrefix?: string
 }
 
 export const EmblaCarousel: React.FC<PropType> = (props) => {
-    const { slides, options } = props
+    const { slides, options, previousLabel = "Previous image", nextLabel = "Next image", slideAltPrefix = "Slide" } = props
     const [emblaRef, emblaApi] = useEmblaCarousel(options)
     const [canScrollPrev, setCanScrollPrev] = useState(false)
     const [canScrollNext, setCanScrollNext] = useState(false)
 
-    const onSelect = useCallback((api: any) => {
+    const onSelect = useCallback((api: EmblaCarouselType) => {
         setCanScrollPrev(api.canScrollPrev())
         setCanScrollNext(api.canScrollNext())
     }, [])
 
     useEffect(() => {
         if (!emblaApi) return
-        onSelect(emblaApi)
+        queueMicrotask(() => onSelect(emblaApi))
         emblaApi.on('reInit', onSelect)
         emblaApi.on('select', onSelect)
     }, [emblaApi, onSelect])
@@ -46,7 +50,7 @@ export const EmblaCarousel: React.FC<PropType> = (props) => {
                                 <img
                                     className="block max-h-full max-w-full object-contain"
                                     src={imgSrc}
-                                    alt={`Slide ${index + 1}`}
+                                    alt={`${slideAltPrefix} ${index + 1}`}
                                 />
                             </div>
                         </div>
@@ -60,6 +64,7 @@ export const EmblaCarousel: React.FC<PropType> = (props) => {
                     size="icon"
                     className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 text-slate-900 shadow-md transition-opacity hover:bg-white z-10"
                     onClick={(e) => { e.stopPropagation(); scrollPrev(); }}
+                    aria-label={previousLabel}
                 >
                     <ChevronLeft className="h-8 w-8" />
                 </Button>
@@ -71,6 +76,7 @@ export const EmblaCarousel: React.FC<PropType> = (props) => {
                     size="icon"
                     className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 text-slate-900 shadow-md transition-opacity hover:bg-white z-10"
                     onClick={(e) => { e.stopPropagation(); scrollNext(); }}
+                    aria-label={nextLabel}
                 >
                     <ChevronRight className="h-8 w-8" />
                 </Button>
