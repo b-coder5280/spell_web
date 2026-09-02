@@ -14,9 +14,11 @@ import { membersPageType } from './membersPage'
 import { newsPageType } from './newsPage'
 import { galleryPageType } from './galleryPage'
 import { publicationPageType } from './publicationPage'
+import { pageBuilderTypes } from './pageBuilder'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    ...pageBuilderTypes,
     siteSettingsType,
     homePageType,
     researchPageType,

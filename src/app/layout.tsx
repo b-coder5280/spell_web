@@ -4,6 +4,8 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { AnimatedBackground } from "@/components/ui/animated-background";
 import { Metadata } from "next";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity/visual-editing";
 import { client } from "@/sanity/lib/client";
 import { siteSettingsQuery } from "@/sanity/lib/queries";
 import { defaultSiteSettings, SiteSettings, withDefaults } from "@/lib/site-content";
@@ -14,7 +16,17 @@ const inter = Inter({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const settings = withDefaults(defaultSiteSettings, await client.fetch<Partial<SiteSettings>>(siteSettingsQuery))
+  let fetchedSettings: Partial<SiteSettings> | null = null
+
+  try {
+    fetchedSettings = await client.fetch<Partial<SiteSettings>>(siteSettingsQuery)
+  } catch (error) {
+    if (process.env.NODE_ENV !== "production") {
+      console.warn("Failed to load site metadata settings. Using defaults.", error)
+    }
+  }
+
+  const settings = withDefaults(defaultSiteSettings, fetchedSettings)
 
   return {
     title: settings.metadataTitle,
@@ -30,7 +42,18 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const siteSettings = withDefaults(defaultSiteSettings, await client.fetch<Partial<SiteSettings>>(siteSettingsQuery))
+  let fetchedSettings: Partial<SiteSettings> | null = null
+
+  try {
+    fetchedSettings = await client.fetch<Partial<SiteSettings>>(siteSettingsQuery)
+  } catch (error) {
+    if (process.env.NODE_ENV !== "production") {
+      console.warn("Failed to load site settings. Using defaults.", error)
+    }
+  }
+
+  const siteSettings = withDefaults(defaultSiteSettings, fetchedSettings)
+  const draft = await draftMode()
 
   return (
     <html lang="en" className={`${inter.variable} overflow-x-hidden`}>
@@ -43,6 +66,7 @@ export default async function RootLayout({
           {children}
         </main>
         <Footer settings={siteSettings} />
+        {draft.isEnabled ? <VisualEditing /> : null}
       </body>
     </html>
   );

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { defaultResearchPageSettings, ResearchPageSettings } from "@/lib/site-content"
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types"
+import { getRenderableResearchPageParts, type ResearchPagePart } from "@/lib/research-page-layout"
 
 import { StaggeredReveal, StaggeredItem } from "@/components/ui/staggered-reveal"
 
@@ -25,47 +26,46 @@ import { urlFor } from "@/sanity/lib/image"
 
 export default function ResearchClient({ thrusts, page = defaultResearchPageSettings }: { thrusts: ResearchItem[], page?: ResearchPageSettings }) {
     const [selectedId, setSelectedId] = useState<string | null>(null)
+    const pageParts = getRenderableResearchPageParts(page.pageParts)
+    const overviewImageUrl = "/images/research3.jpg"
 
-    return (
-        <div className="min-h-screen pb-24 pt-16 text-foreground">
-            <Container>
-                {/* Research Thrusts Grid Section */}
-                <div className="mb-24 mt-12">
-                    <div className="mb-16 text-center">
-                        <h1 className="text-4xl font-extrabold tracking-tight">{page.title}</h1>
-                        <p className="mt-4 text-xl text-muted-foreground max-w-3xl mx-auto">
-                            {page.intro}
-                        </p>
-                    </div>
-                    <div className="mt-16">
-                        <StaggeredReveal className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    const renderResearchCards = (part: ResearchPagePart) => {
+        const layout = part.layout || "grid"
+        const columns = part.columns === 2 ? 2 : 3
+
+        return (
+            <div className="mb-24" key={part._key || "research-cards"}>
+                <div className={layout === "featuredIntro" ? "grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start" : ""}>
+                    <div>
+                        <StaggeredReveal className={`grid items-stretch gap-8 md:grid-cols-2 ${columns === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3"}`}>
                             {thrusts.map((thrust) => {
                                 const imageUrl = thrust.image ? urlFor(thrust.image).url() : "";
                                 return (
-                                    <StaggeredItem key={thrust._id}>
+                                    <StaggeredItem key={thrust._id} className="h-full">
                                         <motion.div
                                             onClick={() => setSelectedId(thrust._id)}
-                                            whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                                            className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white/70 shadow-xl backdrop-blur-xl transition-all hover:bg-white/90 hover:border-cyan-500/50 hover:shadow-cyan-500/10"
+                                            whileHover={{ y: layout === "compact" ? -4 : -10, transition: { duration: 0.3 } }}
+                                            className={`group flex h-[430px] cursor-pointer flex-col overflow-hidden border border-slate-200 bg-white/70 shadow-xl backdrop-blur-xl transition-all hover:bg-white/90 hover:border-cyan-500/50 hover:shadow-cyan-500/10 sm:h-[460px] lg:h-[500px] ${layout === "compact" ? "rounded-2xl" : "rounded-[2rem]"}`}
                                         >
-                                            <div className="relative aspect-[16/10] shrink-0 overflow-hidden">
-                                                {imageUrl && (
-                                                    <Image
-                                                        src={imageUrl}
-                                                        alt={thrust.title}
-                                                        fill
-                                                        className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                                    />
-                                                )}
-                                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-90" />
-                                                <h3 className="absolute bottom-6 left-8 text-xl font-bold text-white tracking-tight leading-tight">
+                                            {layout !== "compact" && (
+                                                <div className="relative h-64 shrink-0 overflow-hidden bg-white sm:h-72 lg:h-80">
+                                                    {imageUrl && (
+                                                        <Image
+                                                            src={imageUrl}
+                                                            alt={thrust.title}
+                                                            fill
+                                                            className="object-contain p-3 transition-transform duration-1000 group-hover:scale-105"
+                                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                        />
+                                                    )}
+                                                </div>
+                                            )}
+
+                                            <div className={`flex flex-1 flex-col ${layout === "compact" ? "p-5" : "p-7"}`}>
+                                                <h3 className="mb-3 text-lg font-bold leading-tight text-slate-950">
                                                     {thrust.title}
                                                 </h3>
-                                            </div>
-
-                                            <div className="flex flex-1 flex-col p-7">
-                                                <p className="line-clamp-3 text-sm text-muted-foreground leading-relaxed font-medium mb-6">
+                                                <p className={`${layout === "compact" ? "line-clamp-2" : "line-clamp-3"} text-sm text-muted-foreground leading-relaxed font-medium mb-6`}>
                                                     {thrust.description}
                                                 </p>
                                                 <div className="mt-auto flex items-center text-cyan-400 text-xs font-bold tracking-[0.2em] uppercase transition-colors group-hover:text-cyan-300">
@@ -79,23 +79,43 @@ export default function ResearchClient({ thrusts, page = defaultResearchPageSett
                         </StaggeredReveal>
                     </div>
                 </div>
+            </div>
+        )
+    }
 
-                {/* Research Overview Image - Aligned with Grid */}
-                <div className="mb-24 mt-12">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="w-full overflow-hidden rounded-[2rem] border border-slate-200 shadow-2xl bg-white/40 backdrop-blur-sm"
-                    >
-                        <img
-                            src={page.overviewImageUrl || defaultResearchPageSettings.overviewImageUrl}
-                            alt={page.overviewImageAlt}
-                            className="w-full h-auto block"
-                        />
-                    </motion.div>
+    const renderOverviewImage = (part: ResearchPagePart) => {
+        const imageLayout = part.imageLayout || "contained"
+
+        return (
+            <div className="mb-16" key={part._key || "research-overview-image"}>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className={`w-full overflow-hidden border border-slate-200 shadow-2xl bg-white/40 backdrop-blur-sm ${imageLayout === "full" ? "rounded-xl" : "rounded-[2rem]"}`}
+                >
+                    <img
+                        src={overviewImageUrl}
+                        alt={page.overviewImageAlt}
+                        className="w-full h-auto block"
+                    />
+                </motion.div>
+            </div>
+        )
+    }
+
+    return (
+        <div className="min-h-screen pb-24 pt-16 text-foreground">
+            <Container>
+                <div className="mx-auto mb-12 mt-12 max-w-3xl text-center">
+                    <h1 className="text-4xl font-extrabold tracking-tight">{page.title}</h1>
+                    <p className="mx-auto mt-4 text-xl text-muted-foreground">
+                        {page.intro}
+                    </p>
                 </div>
+
+                {pageParts.map((part) => part.partType === "overviewImage" ? renderOverviewImage(part) : renderResearchCards(part))}
 
                 {/* Details Modal */}
                 <AnimatePresence>

@@ -5,22 +5,11 @@ export const structure: StructureResolver = (S) =>
     .title('SPELL Website Content')
     .items([
       S.listItem()
-        .title('Site Settings')
-        .id('siteSettings')
-        .child(
-          S.document()
-            .schemaType('siteSettings')
-            .documentId('siteSettings')
-            .title('Site Settings')
-        ),
-
-      S.divider(),
-
-      S.listItem()
-        .title('Page Settings')
+        .title('Website')
+        .id('website')
         .child(
           S.list()
-            .title('Page Settings')
+            .title('Website')
             .items([
               S.listItem()
                 .title('Home Page')
@@ -31,6 +20,42 @@ export const structure: StructureResolver = (S) =>
                     .documentId('homePage')
                     .title('Home Page')
                 ),
+              S.listItem()
+                .title('Site Settings')
+                .id('siteSettings')
+                .child(
+                  S.document()
+                    .schemaType('siteSettings')
+                    .documentId('siteSettings')
+                    .title('Site Settings')
+                ),
+            ])
+        ),
+
+      S.divider(),
+
+      S.listItem()
+        .title('Content')
+        .child(
+          S.list()
+            .title('Content')
+            .items([
+              S.documentTypeListItem('publication').title('Publications'),
+              S.documentTypeListItem('member').title('Members'),
+              S.documentTypeListItem('news').title('News'),
+              S.documentTypeListItem('gallery').title('Gallery'),
+              S.documentTypeListItem('research').title('Research'),
+            ])
+        ),
+
+      S.divider(),
+
+      S.listItem()
+        .title('Page Settings')
+        .child(
+          S.list()
+            .title('Page Settings')
+            .items([
               S.listItem()
                 .title('Professor Page')
                 .id('professor')
@@ -94,23 +119,6 @@ export const structure: StructureResolver = (S) =>
                     .documentId('publicationPage')
                     .title('Publications Page')
                 ),
-            ])
-        ),
-
-      S.divider(),
-
-      // --- COLLECTIONS ---
-      S.listItem()
-        .title('Content Collections')
-        .child(
-          S.list()
-            .title('Content Collections')
-            .items([
-              S.documentTypeListItem('news').title('News'),
-              S.documentTypeListItem('member').title('Members'),
-              S.documentTypeListItem('gallery').title('Gallery'),
-              S.documentTypeListItem('publication').title('Publications'),
-              S.documentTypeListItem('research').title('Research'),
             ])
         ),
     ])

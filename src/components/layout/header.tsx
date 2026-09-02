@@ -10,11 +10,13 @@ import { cn } from "@/lib/utils"
 import { Container } from "@/components/ui/container"
 import { Button } from "@/components/ui/button"
 import { defaultSiteSettings, SiteSettings } from "@/lib/site-content"
+import { resolveSiteNavigation } from "@/lib/page-builder"
 
 export function Header({ settings = defaultSiteSettings }: { settings?: SiteSettings }) {
     const [isOpen, setIsOpen] = React.useState(false)
     const pathname = usePathname()
-    const navigation = settings.navigation
+    const navigation = resolveSiteNavigation(settings.navigation, defaultSiteSettings.navigation)
+    const sticky = settings.headerSticky !== false
 
     // Close mobile menu when route changes
     React.useEffect(() => {
@@ -22,7 +24,7 @@ export function Header({ settings = defaultSiteSettings }: { settings?: SiteSett
     }, [pathname])
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white text-slate-950 shadow-sm">
+        <header className={cn(sticky ? "sticky top-0" : "relative", "z-50 w-full border-b border-slate-200 bg-white text-slate-950 shadow-sm")}>
             <Container>
                 <div className="flex h-16 items-center justify-between gap-8">
                     <div className="flex min-w-0 items-center">
@@ -42,6 +44,8 @@ export function Header({ settings = defaultSiteSettings }: { settings?: SiteSett
                                 <Link
                                     key={item.href}
                                     href={item.href}
+                                    target={item.target}
+                                    rel={item.rel}
                                     className={cn(
                                         "shrink-0 whitespace-nowrap text-sm font-medium transition-colors hover:text-primary",
                                         pathname === item.href
@@ -81,6 +85,8 @@ export function Header({ settings = defaultSiteSettings }: { settings?: SiteSett
                                 <Link
                                     key={item.href}
                                     href={item.href}
+                                    target={item.target}
+                                    rel={item.rel}
                                     className={cn(
                                         "block text-sm font-medium transition-colors hover:text-primary",
                                         pathname === item.href

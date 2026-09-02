@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import { defaultHomeBuilderSections, homeBuilderSetupGuide } from '../../lib/home-builder-defaults'
 import { defaultHomePageSettings } from '../../lib/site-content'
 
 export const homePageType = defineType({
@@ -6,13 +7,89 @@ export const homePageType = defineType({
     title: 'Home Page',
     type: 'document',
     groups: [
+        { name: 'builder', title: 'Page Builder' },
         { name: 'hero', title: 'Hero' },
         { name: 'recruitment', title: 'Recruitment Section' },
         { name: 'publications', title: 'Selected Publications' },
         { name: 'latest', title: 'Latest Section' },
+        { name: 'seo', title: 'SEO' },
     ],
-    initialValue: defaultHomePageSettings,
+    initialValue: {
+        pageTitle: 'SPELL Home Page',
+        ...defaultHomePageSettings,
+        pageBuilderEnabled: false,
+        builderSetupGuide: homeBuilderSetupGuide.join('\n'),
+        sections: defaultHomeBuilderSections,
+    },
     fields: [
+        defineField({
+            name: 'pageTitle',
+            title: 'Page Name',
+            type: 'string',
+            group: 'builder',
+            readOnly: true,
+            description: 'Singleton document for the public homepage.',
+            initialValue: 'SPELL Home Page',
+        }),
+        defineField({
+            name: 'builderSetupGuide',
+            title: 'How to Edit the Home Page',
+            type: 'text',
+            rows: 6,
+            group: 'builder',
+            readOnly: true,
+            description: 'Quick guide. The public website does not switch to these sections until the enable switch below is turned on and published.',
+            initialValue: homeBuilderSetupGuide.join('\n'),
+        }),
+        defineField({
+            name: 'pageBuilderEnabled',
+            title: 'Publish Page Builder on the Live Home Page',
+            type: 'boolean',
+            description: 'Keep this OFF while editing. OFF always shows the current legacy homepage. Turn ON only after preview/review.',
+            group: 'builder',
+            initialValue: false,
+        }),
+        defineField({
+            name: 'sections',
+            title: 'Sections - Add, Edit, Hide, Reorder',
+            type: 'array',
+            group: 'builder',
+            description: 'Open a section to edit content and presets. Drag sections to reorder. Use Section Settings > Enabled to hide a section without deleting it.',
+            initialValue: defaultHomeBuilderSections,
+            of: [
+                { type: 'heroSection' },
+                { type: 'researchSection' },
+                { type: 'joinSection' },
+                { type: 'publicationSection' },
+                { type: 'newsSection' },
+                { type: 'gallerySection' },
+                { type: 'memberSection' },
+                { type: 'textSection' },
+                { type: 'textImageSection' },
+                { type: 'statsSection' },
+                { type: 'ctaSection' },
+            ],
+        }),
+        defineField({
+            name: 'seoTitle',
+            title: 'SEO Title',
+            type: 'string',
+            group: 'seo',
+        }),
+        defineField({
+            name: 'seoDescription',
+            title: 'SEO Description',
+            type: 'text',
+            rows: 3,
+            group: 'seo',
+        }),
+        defineField({
+            name: 'seoImage',
+            title: 'Social Image',
+            type: 'image',
+            options: { hotspot: true },
+            group: 'seo',
+        }),
         defineField({
             name: 'heroTitleBefore',
             title: 'Hero Title Before Highlight',
@@ -170,4 +247,17 @@ export const homePageType = defineType({
             group: 'latest',
         }),
     ],
+    preview: {
+        select: {
+            title: 'pageTitle',
+            enabled: 'pageBuilderEnabled',
+            sections: 'sections',
+        },
+        prepare({ title, enabled, sections }: { title?: string; enabled?: boolean; sections?: unknown[] }) {
+            return {
+                title: title || 'SPELL Home Page',
+                subtitle: `${enabled ? 'Page Builder live' : 'Legacy homepage live'} - ${sections?.length || 0} builder sections`,
+            }
+        },
+    },
 })

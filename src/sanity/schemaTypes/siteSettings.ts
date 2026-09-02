@@ -7,6 +7,7 @@ export const siteSettingsType = defineType({
     type: 'document',
     groups: [
         { name: 'seo', title: 'SEO / Browser' },
+        { name: 'brand', title: 'Brand' },
         { name: 'header', title: 'Header' },
         { name: 'footer', title: 'Footer' },
     ],
@@ -14,6 +15,9 @@ export const siteSettingsType = defineType({
         metadataTitle: defaultSiteSettings.metadataTitle,
         metadataDescription: defaultSiteSettings.metadataDescription,
         headerLogoAlt: defaultSiteSettings.headerLogoAlt,
+        labName: defaultSiteSettings.labName,
+        headerStylePreset: defaultSiteSettings.headerStylePreset,
+        headerSticky: defaultSiteSettings.headerSticky,
         navigation: defaultSiteSettings.navigation,
         joinButtonLabel: defaultSiteSettings.joinButtonLabel,
         joinButtonHref: defaultSiteSettings.joinButtonHref,
@@ -47,6 +51,19 @@ export const siteSettingsType = defineType({
             group: 'seo',
         }),
         defineField({
+            name: 'seoSocialImage',
+            title: 'Default Social Image',
+            type: 'image',
+            options: { hotspot: true },
+            group: 'seo',
+        }),
+        defineField({
+            name: 'labName',
+            title: 'Lab Name',
+            type: 'string',
+            group: 'brand',
+        }),
+        defineField({
             name: 'headerLogo',
             title: 'Header Logo',
             type: 'image',
@@ -70,6 +87,26 @@ export const siteSettingsType = defineType({
                     fields: [
                         { name: 'name', title: 'Menu Label', type: 'string' },
                         { name: 'href', title: 'Link Path', type: 'string' },
+                        { name: 'enabled', title: 'Enabled', type: 'boolean', initialValue: true },
+                        { name: 'order', title: 'Order', type: 'number' },
+                        {
+                            name: 'linkType',
+                            title: 'Link Type',
+                            type: 'string',
+                            options: {
+                                list: [
+                                    { title: 'Internal route', value: 'internal' },
+                                    { title: 'External URL', value: 'external' },
+                                    { title: 'Email', value: 'email' },
+                                ],
+                                layout: 'radio',
+                            },
+                            initialValue: 'internal',
+                        },
+                        { name: 'internalRoute', title: 'Internal Route', type: 'string' },
+                        { name: 'externalUrl', title: 'External URL', type: 'url' },
+                        { name: 'email', title: 'Email Address', type: 'string' },
+                        { name: 'openInNewTab', title: 'Open External Links in New Tab', type: 'boolean', initialValue: false },
                     ],
                     preview: {
                         select: {
@@ -79,6 +116,26 @@ export const siteSettingsType = defineType({
                     },
                 },
             ],
+        }),
+        defineField({
+            name: 'headerStylePreset',
+            title: 'Header Style',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'Current', value: 'current' },
+                    { title: 'Quiet', value: 'quiet' },
+                    { title: 'Brand', value: 'brand' },
+                ],
+                layout: 'radio',
+            },
+            group: 'header',
+        }),
+        defineField({
+            name: 'headerSticky',
+            title: 'Sticky Header',
+            type: 'boolean',
+            group: 'header',
         }),
         defineField({
             name: 'joinButtonLabel',
@@ -140,6 +197,26 @@ export const siteSettingsType = defineType({
                     fields: [
                         { name: 'name', title: 'Link Label', type: 'string' },
                         { name: 'href', title: 'Link Path', type: 'string' },
+                        { name: 'enabled', title: 'Enabled', type: 'boolean', initialValue: true },
+                        { name: 'order', title: 'Order', type: 'number' },
+                        {
+                            name: 'linkType',
+                            title: 'Link Type',
+                            type: 'string',
+                            options: {
+                                list: [
+                                    { title: 'Internal route', value: 'internal' },
+                                    { title: 'External URL', value: 'external' },
+                                    { title: 'Email', value: 'email' },
+                                ],
+                                layout: 'radio',
+                            },
+                            initialValue: 'internal',
+                        },
+                        { name: 'internalRoute', title: 'Internal Route', type: 'string' },
+                        { name: 'externalUrl', title: 'External URL', type: 'url' },
+                        { name: 'email', title: 'Email Address', type: 'string' },
+                        { name: 'openInNewTab', title: 'Open External Links in New Tab', type: 'boolean', initialValue: false },
                     ],
                     preview: {
                         select: {
@@ -161,6 +238,31 @@ export const siteSettingsType = defineType({
             title: 'Contact Lines',
             type: 'array',
             of: [{ type: 'string' }],
+            group: 'footer',
+        }),
+        defineField({
+            name: 'footerAddress',
+            title: 'Address',
+            type: 'string',
+            group: 'footer',
+        }),
+        defineField({
+            name: 'footerEmail',
+            title: 'Email',
+            type: 'string',
+            group: 'footer',
+            validation: (Rule) => Rule.email().warning(),
+        }),
+        defineField({
+            name: 'footerTelephone',
+            title: 'Telephone',
+            type: 'string',
+            group: 'footer',
+        }),
+        defineField({
+            name: 'footerOffice',
+            title: 'Office',
+            type: 'string',
             group: 'footer',
         }),
         defineField({

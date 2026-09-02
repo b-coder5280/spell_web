@@ -9,7 +9,7 @@ interface ScrollRevealProps {
     width?: "fit-content" | "100%"
 }
 
-export function ScrollReveal({ children, width = "fit-content", className }: ScrollRevealProps) {
+export function ScrollReveal({ children, width = "100%", className }: ScrollRevealProps) {
     return (
         <div style={{ width, overflow: "hidden" }} className={className}>
             <motion.div

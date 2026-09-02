@@ -81,13 +81,13 @@ export default function HomeClient({ opening, featuredPubs, homePage = defaultHo
             {/* Recruitment Section */}
             <Container>
                 <ScrollReveal>
-                    <div className="relative mb-8 overflow-hidden rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8 md:p-12">
+                    <div className="relative mx-auto mb-8 max-w-5xl overflow-hidden rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8 md:p-12">
                         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]" />
                         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-72 h-72 bg-indigo-500/10 rounded-full blur-[80px]" />
 
-                        <div className="relative z-10 flex flex-col lg:flex-row items-start justify-between gap-12">
-                            <div className="max-w-3xl text-left">
-                                <h2 className="mb-8 text-3xl font-bold text-foreground md:text-5xl">
+                        <div className="relative z-10 flex flex-col items-center justify-center gap-12 xl:flex-row xl:items-start">
+                            <div className="mx-auto max-w-3xl text-left xl:mx-0">
+                                <h2 className="mb-8 text-center text-3xl font-bold text-foreground md:text-5xl xl:text-left">
                                     {homePage.recruitmentTitleBefore} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">{homePage.recruitmentTitleHighlight}</span>
                                 </h2>
 
@@ -162,7 +162,7 @@ export default function HomeClient({ opening, featuredPubs, homePage = defaultHo
                                             </div>
                                         </div>
 
-                                        <div className="flex flex-wrap gap-4 pt-4">
+                                        <div className="flex flex-wrap justify-center gap-4 pt-4 xl:justify-start">
                                             <Button size="lg" variant="outline" className="h-12 px-8 border-slate-200 hover:bg-slate-100 text-foreground backdrop-blur-sm group/btn" asChild>
                                                 <Link href={`mailto:${homePage.contactEmail}`} className="inline-flex items-center gap-2">
                                                     <Mail className="h-5 w-5 text-blue-500 group-hover/btn:scale-110 transition-transform" /> {homePage.contactButtonLabel}
@@ -294,11 +294,13 @@ export default function HomeClient({ opening, featuredPubs, homePage = defaultHo
             )}
 
             {/* Quick News Demo */}
-            <Container className="bg-white/50 py-16 rounded-3xl backdrop-blur-md border border-slate-200 shadow-sm">
+            <Container>
                 <ScrollReveal className="w-full">
-                    <SectionTitle title={homePage.latestTitle} align="center" />
-                    <div className="text-center text-muted-foreground">
-                        {homePage.latestPlaceholder}
+                    <div className="flex min-h-[350px] flex-col items-center justify-center rounded-3xl border border-slate-200 bg-white/50 py-16 shadow-sm backdrop-blur-md">
+                        <SectionTitle title={homePage.latestTitle} align="center" />
+                        <div className="text-center text-muted-foreground">
+                            {homePage.latestPlaceholder}
+                        </div>
                     </div>
                 </ScrollReveal>
             </Container>

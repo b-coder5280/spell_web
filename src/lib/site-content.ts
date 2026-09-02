@@ -1,6 +1,16 @@
+import type { ResearchPagePart } from "./research-page-layout"
+import { defaultResearchPageParts } from "./research-page-layout"
+
 export type LinkItem = {
     name: string
-    href: string
+    href?: string
+    linkType?: "internal" | "external" | "email"
+    internalRoute?: string
+    externalUrl?: string
+    email?: string
+    enabled?: boolean
+    order?: number
+    openInNewTab?: boolean
 }
 
 export type SiteSettings = {
@@ -9,6 +19,9 @@ export type SiteSettings = {
     faviconUrl?: string
     headerLogoUrl?: string
     headerLogoAlt: string
+    labName?: string
+    headerStylePreset?: string
+    headerSticky?: boolean
     navigation: LinkItem[]
     joinButtonLabel: string
     joinButtonHref: string
@@ -22,6 +35,11 @@ export type SiteSettings = {
     footerContactLines: string[]
     footerCopyright: string
     mobileMenuLabel: string
+    footerAddress?: string
+    footerEmail?: string
+    footerTelephone?: string
+    footerOffice?: string
+    seoSocialImageUrl?: string
 }
 
 export type HomePageSettings = {
@@ -86,6 +104,8 @@ export type ResearchPageSettings = {
     overviewImageUrl?: string
     overviewImageAlt: string
     modalDetailsTitle: string
+    layoutGuide?: string
+    pageParts?: ResearchPagePart[]
 }
 
 export type MembersPageSettings = {
@@ -135,6 +155,9 @@ export const defaultSiteSettings: SiteSettings = {
     faviconUrl: "/images/logo_1.png",
     headerLogoUrl: "/images/logo_2.jpg",
     headerLogoAlt: "SPELL Logo",
+    labName: "SPELL Lab",
+    headerStylePreset: "current",
+    headerSticky: true,
     navigation: [
         { name: "Research", href: "/research" },
         { name: "Professor", href: "/professor" },
@@ -234,9 +257,11 @@ export const defaultResearchPageSettings: ResearchPageSettings = {
     title: "Our Vision & Core Research Areas",
     intro: "We aim to redefine the limits of semiconductor technology by leveraging novel materials and innovative device architectures.",
     cardActionLabel: "Exploration",
-    overviewImageUrl: "/images/full.jpg",
+    overviewImageUrl: "/images/research3.jpg",
     overviewImageAlt: "Research Overview",
     modalDetailsTitle: "Key Research Details",
+    layoutGuide: "Drag Research Cards and Overview Image to change the /research page order.",
+    pageParts: defaultResearchPageParts,
 }
 
 export const defaultMembersPageSettings: MembersPageSettings = {

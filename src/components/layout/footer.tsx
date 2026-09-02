@@ -1,9 +1,18 @@
 import Link from "next/link"
 import { Container } from "@/components/ui/container"
 import { defaultSiteSettings, SiteSettings } from "@/lib/site-content"
+import { resolveSiteNavigation } from "@/lib/page-builder"
 
 export function Footer({ settings = defaultSiteSettings }: { settings?: SiteSettings }) {
     const copyright = settings.footerCopyright.replace("{year}", String(new Date().getFullYear()))
+    const footerLinks = resolveSiteNavigation(settings.footerLinks, defaultSiteSettings.footerLinks)
+    const structuredContactLines = [
+        settings.footerAddress,
+        settings.footerEmail ? `Email: ${settings.footerEmail}` : undefined,
+        settings.footerTelephone ? `Tel: ${settings.footerTelephone}` : undefined,
+        settings.footerOffice ? `Office: ${settings.footerOffice}` : undefined,
+    ].filter(Boolean) as string[]
+    const contactLines = structuredContactLines.length > 0 ? structuredContactLines : settings.footerContactLines
 
     return (
         <footer className="border-t bg-background py-12 md:py-16">
@@ -27,9 +36,9 @@ export function Footer({ settings = defaultSiteSettings }: { settings?: SiteSett
                     <div>
                         <h4 className="mb-4 text-sm font-semibold">{settings.footerLinksTitle}</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
-                            {settings.footerLinks.map((link) => (
+                            {footerLinks.map((link) => (
                                 <li key={`${link.name}-${link.href}`}>
-                                    <Link href={link.href} className="hover:text-primary">{link.name}</Link>
+                                    <Link href={link.href} target={link.target} rel={link.rel} className="hover:text-primary">{link.name}</Link>
                                 </li>
                             ))}
                         </ul>
@@ -37,7 +46,7 @@ export function Footer({ settings = defaultSiteSettings }: { settings?: SiteSett
                     <div>
                         <h4 className="mb-4 text-sm font-semibold">{settings.footerContactTitle}</h4>
                         <div className="space-y-2 text-sm text-muted-foreground">
-                            {settings.footerContactLines.map((line) => (
+                            {contactLines.map((line) => (
                                 <p key={line}>{line}</p>
                             ))}
                         </div>
