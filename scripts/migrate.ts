@@ -5,7 +5,16 @@ import * as dotenv from 'dotenv'
 
 // We need to read the raw files because `members` is inside a component, not exported cleanly as JSON/data.
 // To keep the script simple, we'll manually define the member data here as it was inside `page.tsx`.
-const membersData = [
+type MemberSeed = {
+    name: string
+    role: string
+    interest?: string
+    email?: string
+    image?: string
+    position?: string
+}
+
+const membersData: Array<{ role: string; people: MemberSeed[] }> = [
     {
         role: "Post Doc.",
         people: [
@@ -49,6 +58,19 @@ const membersData = [
 import { newsItems } from '../src/data/news'
 import { galleryItems } from '../src/data/gallery'
 
+type SanityImageReference = {
+    _type: 'image'
+    asset: {
+        _type: 'reference'
+        _ref: string
+    }
+}
+
+type SanitySeedDocument = {
+    _type: string
+    [key: string]: unknown
+}
+
 // Load environment variables from .env.local
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') })
 
@@ -69,7 +91,7 @@ const client = createClient({
     apiVersion: '2024-03-11' // use current date
 })
 
-async function uploadImage(imagePath: string) {
+async function uploadImage(imagePath: string): Promise<SanityImageReference | null> {
     if (!imagePath) return null;
 
     try {
@@ -115,7 +137,7 @@ async function migrateNews() {
             }
         }
 
-        const doc: any = {
+        const doc: SanitySeedDocument = {
             _type: 'news',
             title: item.title,
             date: item.date,
@@ -164,16 +186,15 @@ async function migrateMembers() {
         for (const person of group.people) {
             const imageAsset = person.image ? await uploadImage(person.image) : null;
 
-            const doc: any = {
+            const doc: SanitySeedDocument = {
                 _type: 'member',
                 name: person.name,
                 role: group.role,
                 order: order++,
             }
 
-            const p = person as any;
-            if (p.position) doc.position = p.position; // Custom property not strictly in schema but safe
-            if (p.interest) doc.interest = p.interest;
+            if (person.position) doc.position = person.position; // Custom property not strictly in schema but safe
+            if (person.interest) doc.interest = person.interest;
             if (person.email) doc.email = person.email;
             if (imageAsset) doc.image = imageAsset;
 

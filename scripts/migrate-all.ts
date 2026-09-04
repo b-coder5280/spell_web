@@ -5,6 +5,11 @@ import * as dotenv from 'dotenv'
 import { publications } from '../src/data/publications'
 import { thrusts } from '../src/data/research'
 
+type SanitySeedDocument = {
+    _type: string
+    [key: string]: unknown
+}
+
 // Load environment variables
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') })
 
@@ -47,7 +52,7 @@ async function migrate() {
     console.log('--- Migrating Publications ---')
     for (const pub of publications) {
         try {
-            const pubDoc: any = {
+            const pubDoc: SanitySeedDocument = {
                 _type: 'publication',
                 title: pub.title,
                 authors: pub.authors,
@@ -80,7 +85,7 @@ async function migrate() {
     console.log('\n--- Migrating Research ---')
     for (const r of thrusts) {
         try {
-            const researchDoc: any = {
+            const researchDoc: SanitySeedDocument = {
                 _type: 'research',
                 title: r.title,
                 description: r.description,

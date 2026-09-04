@@ -2,8 +2,13 @@ import { client } from "@/sanity/lib/client"
 import { newsPageQuery, newsQuery } from "@/sanity/lib/queries"
 import { NewsClient, NewsItemModel } from "./news-client"
 import { defaultNewsPageSettings, NewsPageSettings, withDefaults } from "@/lib/site-content"
+import type { Metadata } from "next"
 
 export const revalidate = 60
+export const metadata: Metadata = {
+    title: "News",
+    description: "Latest updates and stories from SPELL Lab.",
+}
 
 type NewsItemWithOptionalId = NewsItemModel & {
     id?: string

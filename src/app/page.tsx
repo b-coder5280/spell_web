@@ -74,5 +74,5 @@ export default async function Home() {
     (pub): pub is BuilderPublication & { _id: string; title: string } => Boolean(pub?._id && pub?.title)
   )
 
-  return <LegacyHome opening={data?.opening || {}} featuredPubs={featuredPubs} homePage={homePage} />
+  return <LegacyHome opening={data?.opening || {}} featuredPubs={featuredPubs} latestNews={data?.latestNews || []} homePage={homePage} />
 }

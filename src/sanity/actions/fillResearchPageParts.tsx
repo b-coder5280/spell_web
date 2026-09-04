@@ -3,7 +3,7 @@ import { useDocumentOperation, type DocumentActionComponent, type DocumentAction
 
 import { defaultResearchPageParts } from '../../lib/research-page-layout'
 
-export const fillResearchPagePartsAction: DocumentActionComponent = (props: DocumentActionProps) => {
+const FillResearchPagePartsAction: DocumentActionComponent = (props: DocumentActionProps) => {
     const { patch } = useDocumentOperation(props.id, props.type)
     const [dialogOpen, setDialogOpen] = useState(false)
     const pageParts = Array.isArray(props.draft?.pageParts)
@@ -44,4 +44,6 @@ export const fillResearchPagePartsAction: DocumentActionComponent = (props: Docu
     }
 }
 
-fillResearchPagePartsAction.displayName = 'FillResearchPagePartsAction'
+FillResearchPagePartsAction.displayName = 'FillResearchPagePartsAction'
+
+export const fillResearchPagePartsAction = FillResearchPagePartsAction

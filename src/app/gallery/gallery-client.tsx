@@ -19,9 +19,15 @@ function imageCount(item: GalleryItemModel) {
     return item.images?.length || 0
 }
 
+const INITIAL_ALBUM_COUNT = 9
+const ALBUM_INCREMENT = 9
+
 export function GalleryClient({ galleryItems, page = defaultGalleryPageSettings }: { galleryItems: GalleryItemModel[], page?: GalleryPageSettings }) {
     const [selectedId, setSelectedId] = useState<string | null>(null)
     const [imageIndexes, setImageIndexes] = useState<Record<string, number>>({})
+    const [visibleCount, setVisibleCount] = useState(INITIAL_ALBUM_COUNT)
+    const visibleItems = galleryItems.slice(0, visibleCount)
+    const hasMoreItems = visibleCount < galleryItems.length
 
     const getImageIndex = (item: GalleryItemModel) => {
         const count = imageCount(item)
@@ -67,7 +73,7 @@ export function GalleryClient({ galleryItems, page = defaultGalleryPageSettings 
                     </div>
 
                     <div className="space-y-12 sm:space-y-16">
-                        {galleryItems.map((item) => (
+                        {visibleItems.map((item, index) => (
                             <motion.article
                                 key={item._id}
                                 className="grid gap-7 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.85fr)] lg:items-center lg:gap-12"
@@ -87,6 +93,8 @@ export function GalleryClient({ galleryItems, page = defaultGalleryPageSettings 
                                                     src={item.images[getImageIndex(item)]}
                                                     alt={item.title}
                                                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                                    loading={index < 3 ? "eager" : "lazy"}
+                                                    decoding="async"
                                                 />
                                             ) : (
                                                 <div className="flex h-full w-full items-center justify-center bg-secondary/30 text-muted-foreground">
@@ -174,6 +182,17 @@ export function GalleryClient({ galleryItems, page = defaultGalleryPageSettings 
                             </motion.article>
                         ))}
                     </div>
+                    {hasMoreItems && (
+                        <div className="mt-14 flex justify-center">
+                            <Button
+                                type="button"
+                                variant="outline"
+                                onClick={() => setVisibleCount((count) => Math.min(count + ALBUM_INCREMENT, galleryItems.length))}
+                            >
+                                Load more
+                            </Button>
+                        </div>
+                    )}
                 </div>
 
                 <AnimatePresence>

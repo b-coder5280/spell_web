@@ -29,7 +29,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const settings = withDefaults(defaultSiteSettings, fetchedSettings)
 
   return {
-    title: settings.metadataTitle,
+    title: {
+      default: settings.metadataTitle,
+      template: "%s | SPELL",
+    },
     description: settings.metadataDescription,
     icons: {
       icon: settings.faviconUrl,

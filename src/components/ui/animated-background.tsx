@@ -2,6 +2,39 @@
 
 import { useEffect, useRef } from "react"
 
+class Particle {
+    x: number
+    y: number
+    vx: number
+    vy: number
+    size: number
+    alpha: number
+
+    constructor(width: number, height: number) {
+        this.x = Math.random() * width
+        this.y = Math.random() * height
+        this.vx = (Math.random() - 0.5) * 0.8
+        this.vy = (Math.random() - 0.5) * 0.8
+        this.size = Math.random() * 2.5 + 1
+        this.alpha = Math.random() * 0.5 + 0.3
+    }
+
+    update(width: number, height: number) {
+        this.x += this.vx
+        this.y += this.vy
+
+        if (this.x < 0 || this.x > width) this.vx *= -1
+        if (this.y < 0 || this.y > height) this.vy *= -1
+    }
+
+    draw(ctx: CanvasRenderingContext2D) {
+        ctx.beginPath()
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(37, 99, 235, ${this.alpha})`
+        ctx.fill()
+    }
+}
+
 export function AnimatedBackground() {
     const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -19,45 +52,10 @@ export function AnimatedBackground() {
         const particles: Particle[] = []
         const particleCount = 100 // Increased density
         const connectionDistance = 180 // Increased connection range
-        const pulseSpeed = 2
-
-        class Particle {
-            x: number
-            y: number
-            vx: number
-            vy: number
-            size: number
-            alpha: number
-
-            constructor() {
-                this.x = Math.random() * width
-                this.y = Math.random() * height
-                this.vx = (Math.random() - 0.5) * 0.8 // Faster movement
-                this.vy = (Math.random() - 0.5) * 0.8
-                this.size = Math.random() * 2.5 + 1
-                this.alpha = Math.random() * 0.5 + 0.3 // Brighter particles
-            }
-
-            update() {
-                this.x += this.vx
-                this.y += this.vy
-
-                if (this.x < 0 || this.x > width) this.vx *= -1
-                if (this.y < 0 || this.y > height) this.vy *= -1
-            }
-
-            draw() {
-                if (!ctx) return
-                ctx.beginPath()
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-                ctx.fillStyle = `rgba(37, 99, 235, ${this.alpha})` // Darker Blue (Blue 600) for light background
-                ctx.fill()
-            }
-        }
 
         // Initialize particles
         for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle())
+            particles.push(new Particle(width, height))
         }
 
         // Animation Loop
@@ -71,8 +69,8 @@ export function AnimatedBackground() {
 
             // Update and draw particles
             particles.forEach((p, index) => {
-                p.update()
-                p.draw()
+                p.update(width, height)
+                p.draw(ctx)
 
                 // Draw connections
                 for (let j = index + 1; j < particles.length; j++) {

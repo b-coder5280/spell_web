@@ -5,8 +5,13 @@ import { Button } from "@/components/ui/button"
 import { client } from "@/sanity/lib/client"
 import { professorPageQuery } from "@/sanity/lib/queries"
 import { defaultProfessorPageSettings, ProfessorPageSettings, withDefaults } from "@/lib/site-content"
+import type { Metadata } from "next"
 
 export const revalidate = 60
+export const metadata: Metadata = {
+    title: "Professor",
+    description: "Principal investigator profile for SPELL Lab.",
+}
 
 type EducationItem = {
     role?: string

@@ -36,25 +36,24 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, variant, size, asChild = false, ...props }, ref) => {
-        // Note: To use motion.button, we need to handle 'asChild' carefully or just wrap it.
-        // For simplicity in this project without full Radix Slot composition with Motion, 
-        // we will just add a simple active scale class or use motion.button if not asChild.
+    ({ className, variant, size, asChild = false, children, ...props }, ref) => {
+        const classes = buttonVariants({ variant, size, className })
 
-        // If asChild is true, we are delegating to the child (Link), so we can't easily wrap with motion 
-        // without breaking the 'asChild' contract of passing refs. 
-        // Instead, let's use a class-based transform for active state for now to be safe,
-        // or wrap the Slot. 
-        // User asked for "Sophisticated motion".
+        if (asChild && React.isValidElement<{ className?: string }>(children)) {
+            return React.cloneElement(children, {
+                ...props,
+                className: cn(classes, children.props.className),
+            } as React.HTMLAttributes<HTMLElement>)
+        }
 
-        // Let's us transition-transform active:scale-95 which is already standard in Tailwind/Shadcn buttons usually.
-        // I will add 'active:scale-95' to the base variants if not present.
         return (
             <button
-                className={cn(buttonVariants({ variant, size, className }))}
+                className={cn(classes)}
                 ref={ref}
                 {...props}
-            />
+            >
+                {children}
+            </button>
         )
     }
 )

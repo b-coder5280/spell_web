@@ -4,8 +4,13 @@ import { Mail } from "lucide-react"
 import Link from "next/link"
 import { client } from "@/sanity/lib/client"
 import { defaultOpeningPageSettings, OpeningPageSettings, withDefaults } from "@/lib/site-content"
+import type { Metadata } from "next"
 
 export const revalidate = 60
+export const metadata: Metadata = {
+    title: "Opening",
+    description: "Open positions and application information for SPELL Lab.",
+}
 
 type OpeningResearchArea = {
     title?: string
@@ -21,6 +26,23 @@ type OpeningDocument = Partial<OpeningPageSettings> & {
     howToApply?: string
 }
 
+function EmailLinkedText({ text }: { text: string }) {
+    const emailMatch = text.match(/([\w.-]+@[\w.-]+\.\w+)/)
+    if (!emailMatch) return <span>{text}</span>
+
+    const parts = text.split(emailMatch[0])
+
+    return (
+        <span>
+            {parts[0]}
+            <Link href={`mailto:${emailMatch[0]}`} className="font-medium text-blue-600 hover:underline">
+                {emailMatch[0]}
+            </Link>
+            {parts[1]}
+        </span>
+    )
+}
+
 export default async function OpeningPage() {
     const opening = await client.fetch<OpeningDocument | null>(`*[_type == "opening"][0]`)
     const page = withDefaults(defaultOpeningPageSettings, opening as Partial<OpeningPageSettings>)
@@ -30,7 +52,7 @@ export default async function OpeningPage() {
     const researchAreas = opening?.researchAreas || []
     const positions = opening?.openingPositions || []
     const eligibility = opening?.eligibility || []
-    const howToApply = opening?.howToApply || ""
+    const freeFormHowToApply = `Interested candidates can email Prof. Kim at ${page.applyEmail} in a free format. Please briefly introduce your background, research interests, and the position or program you are interested in.`
 
     return (
         <div className="pb-24 pt-16">
@@ -43,29 +65,12 @@ export default async function OpeningPage() {
                             <div className="border-b pb-8 last:border-0 last:pb-0">
                                 <h3 className="text-xl font-semibold">{page.positionTitle}</h3>
                                 <ul className="mt-4 text-muted-foreground space-y-3">
-                                    {korDesc.map((desc: string, i: number) => {
-                                        const emailMatch = desc.match(/([\w.-]+@[\w.-]+\.\w+)/)
-                                        if (emailMatch) {
-                                            const parts = desc.split(emailMatch[0])
-                                            return (
-                                                <li key={i} className="flex gap-2 text-left">
-                                                    <span className="text-blue-500 font-bold">&bull;</span>
-                                                    <span>
-                                                        {parts[0]}
-                                                        <Link href={`mailto:${emailMatch[0]}`} className="text-blue-500 hover:underline">{emailMatch[0]}</Link>
-                                                        {parts[1]}
-                                                    </span>
-                                                </li>
-                                            )
-                                        }
-
-                                        return (
-                                            <li key={i} className="flex gap-2 text-left">
-                                                <span className="text-blue-500 font-bold">&bull;</span>
-                                                <span>{desc}</span>
-                                            </li>
-                                        )
-                                    })}
+                                    {korDesc.map((desc, index) => (
+                                        <li key={`${desc}-${index}`} className="flex gap-2 text-left">
+                                            <span className="text-blue-500 font-bold">&bull;</span>
+                                            <EmailLinkedText text={desc} />
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
 
@@ -78,8 +83,8 @@ export default async function OpeningPage() {
                                     <div>
                                         <h4 className="font-semibold text-blue-500 mb-2">{page.researchAreasHeading}</h4>
                                         <ul className="text-muted-foreground space-y-1 text-sm list-disc pl-5">
-                                            {researchAreas.map((area, i) => (
-                                                <li key={i}><span className="font-medium text-foreground">{area.title}</span> {area.description}</li>
+                                            {researchAreas.map((area, index) => (
+                                                <li key={`${area.title}-${index}`}><span className="font-medium text-foreground">{area.title}</span> {area.description}</li>
                                             ))}
                                         </ul>
                                     </div>
@@ -87,8 +92,8 @@ export default async function OpeningPage() {
                                     <div>
                                         <h4 className="font-semibold text-blue-500 mb-2">{page.openingPositionsHeading}</h4>
                                         <ul className="text-muted-foreground space-y-1 text-sm list-disc pl-5">
-                                            {positions.map((pos: string, i: number) => (
-                                                <li key={i}>{pos}</li>
+                                            {positions.map((position, index) => (
+                                                <li key={`${position}-${index}`}>{position}</li>
                                             ))}
                                         </ul>
                                     </div>
@@ -96,8 +101,8 @@ export default async function OpeningPage() {
                                     <div>
                                         <h4 className="font-semibold text-blue-500 mb-2">{page.eligibilityHeading}</h4>
                                         <ul className="text-muted-foreground space-y-1 text-sm list-disc pl-5">
-                                            {eligibility.map((req: string, i: number) => (
-                                                <li key={i}>{req}</li>
+                                            {eligibility.map((requirement, index) => (
+                                                <li key={`${requirement}-${index}`}>{requirement}</li>
                                             ))}
                                         </ul>
                                     </div>
@@ -105,17 +110,20 @@ export default async function OpeningPage() {
                                     <div>
                                         <h4 className="font-semibold text-blue-500 mb-2">{page.howToApplyHeading}</h4>
                                         <p className="text-muted-foreground text-sm whitespace-pre-line">
-                                            {howToApply}
+                                            {freeFormHowToApply}
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="rounded-2xl bg-slate-100 border border-slate-200 p-8 text-center mt-12">
+                        <div className="rounded-2xl bg-gradient-to-br from-blue-50 via-white to-cyan-50 border border-blue-100 p-8 text-center mt-12 shadow-sm">
+                            <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-600/20">
+                                <Mail className="h-5 w-5" />
+                            </div>
                             <h2 className="mb-4 text-2xl font-bold">{page.applyBoxTitle}</h2>
-                            <p className="mb-8 text-muted-foreground">
-                                {page.applyBoxDescription}
+                            <p className="mx-auto mb-8 max-w-2xl text-muted-foreground">
+                                {freeFormHowToApply}
                             </p>
                             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white gap-2 whitespace-nowrap inline-flex items-center justify-center transition-all hover:scale-105" asChild>
                                 <Link href={`mailto:${page.applyEmail}`} className="inline-flex items-center gap-2">

@@ -225,9 +225,9 @@ export const defaultOpeningPageSettings: OpeningPageSettings = {
     researchAreasHeading: "Research Areas",
     openingPositionsHeading: "Opening Positions",
     eligibilityHeading: "Eligibility & Requirements",
-    howToApplyHeading: "How to Apply",
-    applyBoxTitle: "How to Apply",
-    applyBoxDescription: "Please send your CV and a brief cover letter (or transcript for students) to Prof. Kim.",
+    howToApplyHeading: "Free-Form Email",
+    applyBoxTitle: "Submit Your Application",
+    applyBoxDescription: "Email Prof. Kim in a free format. Briefly introduce your background, research interests, and the position or program you are interested in.",
     applyButtonLabel: "Apply via Email",
     applyEmail: "hobkim@gist.ac.kr",
 }
@@ -256,7 +256,7 @@ export const defaultProfessorPageSettings: ProfessorPageSettings = {
 export const defaultResearchPageSettings: ResearchPageSettings = {
     title: "Our Vision & Core Research Areas",
     intro: "We aim to redefine the limits of semiconductor technology by leveraging novel materials and innovative device architectures.",
-    cardActionLabel: "Exploration",
+    cardActionLabel: "Explore",
     overviewImageUrl: "/images/research3.jpg",
     overviewImageAlt: "Research Overview",
     modalDetailsTitle: "Key Research Details",

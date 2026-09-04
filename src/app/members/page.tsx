@@ -3,8 +3,13 @@ import { MemberCard } from "@/components/people/member-card"
 import { client } from "@/sanity/lib/client"
 import { membersPageQuery, membersQuery } from "@/sanity/lib/queries"
 import { defaultMembersPageSettings, MembersPageSettings, withDefaults } from "@/lib/site-content"
+import type { Metadata } from "next"
 
 export const revalidate = 60
+export const metadata: Metadata = {
+    title: "Members",
+    description: "Members of Semiconductor Photonics and Electronics Lab.",
+}
 
 type Member = {
     _id: string

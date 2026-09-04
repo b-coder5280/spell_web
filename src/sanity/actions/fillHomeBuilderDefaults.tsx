@@ -3,7 +3,7 @@ import { useDocumentOperation, type DocumentActionComponent, type DocumentAction
 
 import { defaultHomeBuilderSections } from '../../lib/home-builder-defaults'
 
-export const fillHomeBuilderDefaultsAction: DocumentActionComponent = (props: DocumentActionProps) => {
+const FillHomeBuilderDefaultsAction: DocumentActionComponent = (props: DocumentActionProps) => {
     const { patch } = useDocumentOperation(props.id, props.type)
     const [dialogOpen, setDialogOpen] = useState(false)
     const sections = Array.isArray(props.draft?.sections)
@@ -46,4 +46,6 @@ export const fillHomeBuilderDefaultsAction: DocumentActionComponent = (props: Do
     }
 }
 
-fillHomeBuilderDefaultsAction.displayName = 'FillHomeBuilderDefaultsAction'
+FillHomeBuilderDefaultsAction.displayName = 'FillHomeBuilderDefaultsAction'
+
+export const fillHomeBuilderDefaultsAction = FillHomeBuilderDefaultsAction

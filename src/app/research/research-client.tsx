@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { type KeyboardEvent, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Container } from "@/components/ui/container"
 import { X, ArrowRight } from "lucide-react"
@@ -28,6 +28,12 @@ export default function ResearchClient({ thrusts, page = defaultResearchPageSett
     const [selectedId, setSelectedId] = useState<string | null>(null)
     const pageParts = getRenderableResearchPageParts(page.pageParts)
     const overviewImageUrl = "/images/research3.jpg"
+    const openResearch = (id: string) => setSelectedId(id)
+    const handleResearchKeyDown = (event: KeyboardEvent<HTMLDivElement>, id: string) => {
+        if (event.key !== "Enter" && event.key !== " ") return
+        event.preventDefault()
+        openResearch(id)
+    }
 
     const renderResearchCards = (part: ResearchPagePart) => {
         const layout = part.layout || "grid"
@@ -43,9 +49,13 @@ export default function ResearchClient({ thrusts, page = defaultResearchPageSett
                                 return (
                                     <StaggeredItem key={thrust._id} className="h-full">
                                         <motion.div
-                                            onClick={() => setSelectedId(thrust._id)}
+                                            onClick={() => openResearch(thrust._id)}
+                                            onKeyDown={(event) => handleResearchKeyDown(event, thrust._id)}
+                                            role="button"
+                                            tabIndex={0}
+                                            aria-label={`View details for ${thrust.title}`}
                                             whileHover={{ y: layout === "compact" ? -4 : -10, transition: { duration: 0.3 } }}
-                                            className={`group flex h-[430px] cursor-pointer flex-col overflow-hidden border border-slate-200 bg-white/70 shadow-xl backdrop-blur-xl transition-all hover:bg-white/90 hover:border-cyan-500/50 hover:shadow-cyan-500/10 sm:h-[460px] lg:h-[500px] ${layout === "compact" ? "rounded-2xl" : "rounded-[2rem]"}`}
+                                            className={`group flex h-[430px] cursor-pointer flex-col overflow-hidden border border-slate-200 bg-white/70 shadow-xl backdrop-blur-xl transition-all hover:bg-white/90 hover:border-cyan-500/50 hover:shadow-cyan-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4 sm:h-[460px] lg:h-[500px] ${layout === "compact" ? "rounded-2xl" : "rounded-[2rem]"}`}
                                         >
                                             {layout !== "compact" && (
                                                 <div className="relative h-64 shrink-0 overflow-hidden bg-white sm:h-72 lg:h-80">
