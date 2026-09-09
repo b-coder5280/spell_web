@@ -22,8 +22,8 @@ function imageCount(item: GalleryItemModel) {
 const INITIAL_ALBUM_COUNT = 9
 const ALBUM_INCREMENT = 9
 
-export function GalleryClient({ galleryItems, page = defaultGalleryPageSettings }: { galleryItems: GalleryItemModel[], page?: GalleryPageSettings }) {
-    const [selectedId, setSelectedId] = useState<string | null>(null)
+export function GalleryClient({ initialStoryId, galleryItems, page = defaultGalleryPageSettings }: { initialStoryId?: string; galleryItems: GalleryItemModel[], page?: GalleryPageSettings }) {
+    const [selectedId, setSelectedId] = useState<string | null>(() => galleryItems.some(item => item._id === initialStoryId) ? initialStoryId! : null)
     const [imageIndexes, setImageIndexes] = useState<Record<string, number>>({})
     const [visibleCount, setVisibleCount] = useState(INITIAL_ALBUM_COUNT)
     const visibleItems = galleryItems.slice(0, visibleCount)

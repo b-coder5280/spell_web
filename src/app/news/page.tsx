@@ -14,7 +14,7 @@ type NewsItemWithOptionalId = NewsItemModel & {
     id?: string
 }
 
-export default async function NewsPage() {
+export default async function NewsPage({ searchParams }: { searchParams: Promise<{ story?: string }> }) {
     const fetchedNews = await client.fetch<NewsItemWithOptionalId[]>(newsQuery) || [];
     const page = withDefaults(defaultNewsPageSettings, await client.fetch<Partial<NewsPageSettings>>(newsPageQuery));
 
@@ -24,5 +24,7 @@ export default async function NewsPage() {
         _id: item._id || item.id || `news-${index}`
     }));
 
-    return <NewsClient newsItems={processedNews as NewsItemModel[]} page={page} />
+    const { story } = await searchParams
+
+    return <NewsClient initialStoryId={story} newsItems={processedNews as NewsItemModel[]} page={page} />
 }

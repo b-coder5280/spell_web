@@ -14,7 +14,7 @@ type GalleryItemWithOptionalId = GalleryItemModel & {
     id?: string
 }
 
-export default async function GalleryPage() {
+export default async function GalleryPage({ searchParams }: { searchParams: Promise<{ story?: string }> }) {
     const fetchedGallery = await client.fetch<GalleryItemWithOptionalId[]>(galleryQuery) || [];
     const page = withDefaults(defaultGalleryPageSettings, await client.fetch<Partial<GalleryPageSettings>>(galleryPageSettingsQuery));
 
@@ -23,5 +23,7 @@ export default async function GalleryPage() {
         _id: item._id || item.id || `gallery-${index}`
     }));
 
-    return <GalleryClient galleryItems={processedGallery as GalleryItemModel[]} page={page} />
+    const { story } = await searchParams
+
+    return <GalleryClient initialStoryId={story} galleryItems={processedGallery as GalleryItemModel[]} page={page} />
 }

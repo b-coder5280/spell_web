@@ -41,10 +41,10 @@ const cardVariants = {
     },
 }
 
-export function NewsClient({ newsItems, page = defaultNewsPageSettings }: { newsItems: NewsItemModel[], page?: NewsPageSettings }) {
+export function NewsClient({ initialStoryId, newsItems, page = defaultNewsPageSettings }: { initialStoryId?: string; newsItems: NewsItemModel[], page?: NewsPageSettings }) {
     const allFilter = page.filters[0] || "All"
     const [filter, setFilter] = useState<string>(allFilter)
-    const [selectedId, setSelectedId] = useState<string | null>(null)
+    const [selectedId, setSelectedId] = useState<string | null>(() => newsItems.some(item => item._id === initialStoryId) ? initialStoryId! : null)
 
     const filteredNews = filter === allFilter
         ? newsItems

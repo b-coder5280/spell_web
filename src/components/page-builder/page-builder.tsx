@@ -1,6 +1,8 @@
 "use client"
 
 import Link from "next/link"
+import { Recruitment } from "@/components/home/recruitment"
+import { StudentGrowth } from "@/components/home/student-growth"
 import React from "react"
 import { ArrowRight, Calendar, ExternalLink, Mail, Newspaper } from "lucide-react"
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types"
@@ -445,45 +447,13 @@ function ResearchSection({ section, collections }: SectionRendererProps) {
 }
 
 function JoinSection({ section, collections }: SectionRendererProps) {
-    const opening = collections.opening || {}
-    const showOpening = asBoolean(section.showOpeningContent, true)
-    const bulletGroups = asArray<{ heading?: string; items?: string[] }>(section.bulletGroups)
-    const groups = showOpening
-        ? [
-            { heading: "Research Areas", items: (opening.researchAreas || []).map((area) => [area.title, area.description].filter(Boolean).join(" - ")) },
-            { heading: "Opening Positions", items: opening.openingPositions || [] },
-            { heading: "Eligibility", items: opening.eligibility || [] },
-        ]
-        : bulletGroups
-    const layout = asString(section.layout, "current")
-
     return (
-        <SectionShell settings={section.settings}>
-            <div className={cn("mx-auto w-full max-w-5xl rounded-md border border-slate-200 bg-white p-6 shadow-sm md:p-10", layout === "split" && "lg:grid lg:grid-cols-[0.9fr_1.1fr] lg:gap-12", layout === "centered" && "text-center")}>
-                <div className={cn(layout !== "split" && "mx-auto max-w-3xl")}>
-                    <SectionHeading title={asString(section.title, "Join Our Lab")} subtitle={asString(section.intro) || opening.englishIntro} align={layout === "split" ? "left" : "center"} />
-                    {showOpening && opening.koreanDescription && (
-                        <ul className="mb-8 space-y-3 text-left text-sm leading-relaxed text-muted-foreground">
-                            {opening.koreanDescription.map((item, index) => <li key={`${item}-${index}`} className="flex gap-2"><span className="font-bold text-blue-600">&bull;</span><span>{item}</span></li>)}
-                        </ul>
-                    )}
-                    <div className={cn("flex flex-col gap-3 sm:flex-row", layout !== "split" && "justify-center")}>
-                        <CtaButton link={section.primaryCta as CmsLink | undefined} />
-                        <CtaButton link={section.secondaryCta as CmsLink | undefined} variant="secondary" />
-                    </div>
-                </div>
-                <div className="mt-8 grid gap-5 md:grid-cols-2 lg:mt-0">
-                    {groups.filter((group) => group.items && group.items.length > 0).map((group) => (
-                        <div key={group.heading} className="rounded-md bg-slate-50 p-5 text-left">
-                            <h3 className="font-semibold text-blue-700">{group.heading}</h3>
-                            <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted-foreground">
-                                {(group.items || []).map((item, index) => <li key={`${item}-${index}`} className="flex gap-2"><span>&bull;</span><span>{item}</span></li>)}
-                            </ul>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </SectionShell>
+        <>
+            <SectionShell settings={section.settings}>
+                <Recruitment researchAreas={collections.opening?.researchAreas} eligibility={collections.opening?.eligibility} />
+            </SectionShell>
+            <StudentGrowth />
+        </>
     )
 }
 
