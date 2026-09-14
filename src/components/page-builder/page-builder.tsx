@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { IntroVideo } from "@/components/home/intro-video"
 import { Recruitment } from "@/components/home/recruitment"
 import { StudentGrowth } from "@/components/home/student-growth"
 import React from "react"
@@ -105,6 +106,7 @@ export type PageBuilderCollections = {
 }
 
 type PageBuilderProps = {
+    introVideoAfterHero?: boolean
     sections?: PageBuilderSection[] | null
     collections?: PageBuilderCollections
 }
@@ -199,8 +201,9 @@ class SectionErrorBoundary extends React.Component<{ children: React.ReactNode }
     }
 }
 
-export function PageBuilder({ sections, collections = {} }: PageBuilderProps) {
+export function PageBuilder({ sections, collections = {}, introVideoAfterHero = false }: PageBuilderProps) {
     const renderableSections = getRenderableSections(sections)
+    const firstHero = renderableSections.find((section) => section._type === "heroSection")
 
     return (
         <div className="flex flex-col overflow-x-hidden">
@@ -211,6 +214,7 @@ export function PageBuilder({ sections, collections = {} }: PageBuilderProps) {
                 return (
                     <SectionErrorBoundary key={section._key || section._type}>
                         <SectionComponent section={section} collections={collections} />
+                        {introVideoAfterHero && section === firstHero && <IntroVideo />}
                     </SectionErrorBoundary>
                 )
             })}

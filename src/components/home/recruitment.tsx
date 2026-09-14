@@ -12,7 +12,7 @@ type RecruitmentProps = {
 
 export function Recruitment({ researchAreas = [], eligibility = [], homePage = defaultHomePageSettings }: RecruitmentProps) {
     return (
-                    <div className="relative mx-auto mb-8 max-w-5xl overflow-hidden rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8 md:p-12">
+                    <div className="relative mx-auto mb-8 w-full max-w-full overflow-hidden rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8 md:p-12">
                         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]" />
                         <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-72 h-72 bg-indigo-500/10 rounded-full blur-[80px]" />
 

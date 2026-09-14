@@ -56,6 +56,7 @@ export default async function Home() {
   if (hasValidPageBuilderHome(filteredHomePage)) {
     return (
       <PageBuilder
+        introVideoAfterHero
         sections={homeSections}
         collections={{
           opening: data?.opening,
