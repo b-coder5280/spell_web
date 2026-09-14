@@ -2,7 +2,7 @@
 
 import { Recruitment } from "@/components/home/recruitment"
 import { StudentGrowth } from "@/components/home/student-growth"
-import { Hero } from "@/components/home/hero"
+import { Hero, HeroActions } from "@/components/home/hero"
 import { IntroVideo } from "@/components/home/intro-video"
 import { Container } from "@/components/ui/container"
 import { SectionTitle } from "@/components/ui/section-title"
@@ -84,8 +84,10 @@ export default function HomeClient({ opening, featuredPubs, latestNews = [], hom
 
     return (
         <div className="flex flex-col gap-8 pb-12">
-            <Hero settings={homePage} />
-            <IntroVideo />
+            <div>
+                <Hero settings={homePage} />
+                <IntroVideo><HeroActions settings={homePage} /></IntroVideo>
+            </div>
 
             <Container>
                 <ScrollReveal>

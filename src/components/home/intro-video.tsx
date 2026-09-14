@@ -1,11 +1,11 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, type ReactNode } from "react"
 
 import { Container } from "@/components/ui/container"
 import styles from "./intro-video.module.css"
 
-export function IntroVideo() {
+export function IntroVideo({ children }: { children?: ReactNode }) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
 
@@ -43,6 +43,7 @@ export function IntroVideo() {
         </video>
 
       </div>
+      {children}
       </Container>
 
     </section>

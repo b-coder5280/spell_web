@@ -2,7 +2,7 @@
   scroll-margin-top: 80px;
   position: relative;
   width: 100%;
-  padding: clamp(24px, 4vw, 64px) 0 clamp(40px, 5vw, 72px);
+  padding: 20px 0 clamp(24px, 3vw, 40px);
   background: transparent;
 }
 
