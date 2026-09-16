@@ -32,14 +32,14 @@ export function IntroVideo({ children }: { children?: ReactNode }) {
           playsInline
           controls
           preload="metadata"
-          poster="/images/SPELL-homepage-v25-poster.jpg"
+          poster="/images/SPELL-homepage-v41-poster.jpg"
           aria-label="SPELL lab introduction"
 
 
         >
-          <source src="/images/SPELL-homepage-v25.mp4" type="video/mp4" />
-          <source src="/images/SPELL-homepage-v25.webm" type="video/webm" />
-          Your browser does not support embedded video. <a href="/images/SPELL-homepage-v25.mp4">Download the video</a>.
+          <source src="/images/SPELL-homepage-v41.mp4" type="video/mp4" />
+          <source src="/images/SPELL-homepage-v41.webm" type="video/webm" />
+          Your browser does not support embedded video. <a href="/images/SPELL-homepage-v41.mp4">Download the video</a>.
         </video>
 
       </div>
