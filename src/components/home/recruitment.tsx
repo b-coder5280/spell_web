@@ -19,7 +19,7 @@ export function Recruitment({ researchAreas = [], eligibility = [], homePage = d
                         <div className="relative z-10 flex flex-col items-center justify-center gap-12 xl:flex-row xl:items-start">
                             <div className="mx-auto max-w-3xl text-left xl:mx-0">
                                 <h2 className="mb-8 text-center text-3xl font-bold text-foreground md:text-5xl xl:text-left">
-                                    {homePage.recruitmentTitleBefore} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">{homePage.recruitmentTitleHighlight}</span>
+                                    {homePage.recruitmentTitleBefore} <span className="text-blue-600">{homePage.recruitmentTitleHighlight}</span>
                                 </h2>
 
                                 <div className="space-y-8">

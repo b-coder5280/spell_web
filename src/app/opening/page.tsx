@@ -38,7 +38,7 @@ export default async function OpeningPage() {
                 <div className="mx-auto max-w-5xl">
                     <header className="pb-12 pt-14 sm:pb-16 sm:pt-20">
                         <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-blue-600">Join SPELL</p>
-                        <h1 className="text-4xl font-bold tracking-tight text-slate-950 sm:text-6xl">Open <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Positions</span></h1>
+                        <h1 className="text-4xl font-bold tracking-tight text-slate-950 sm:text-6xl">Open <span className="text-blue-600">Positions</span></h1>
                         <p lang="ko" className="mt-6 text-lg leading-8 text-slate-600 [word-break:keep-all]">SPELL에서 함께 연구하고 성장할 동료를 기다립니다.</p>
                         <a href={`mailto:${page.applyEmail}`} className="mt-8 inline-flex min-h-12 items-center gap-3 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/15 transition-colors hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600">
                             지원 문의하기 <ArrowUpRight aria-hidden="true" className="h-4 w-4" />

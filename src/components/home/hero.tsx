@@ -10,7 +10,7 @@ export function Hero({ settings = defaultHomePageSettings }: { settings?: HomePa
             <Container className="relative">
                 <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
                     <h1 className="text-2xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
-                        {settings.heroTitleBefore} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#14263d] via-[#243e5c] to-[#172b45]">{settings.heroTitleHighlight}</span> {settings.heroTitleAfter}
+                        {settings.heroTitleBefore} <span className="text-[#172b45]">{settings.heroTitleHighlight}</span> {settings.heroTitleAfter}
                     </h1>
 
                 </div>
