@@ -28,6 +28,29 @@ export const defaultHomeBuilderSections = [
         },
     },
     {
+        _key: "home-news-current",
+        _type: "newsSection",
+        settings: {
+            enabled: true,
+            background: "light",
+            contentWidth: "wide",
+            spacingTop: "large",
+            spacingBottom: "large",
+            anchorId: "news",
+        },
+        title: defaultHomePageSettings.latestTitle,
+        subtitle: "Latest updates from SPELL Lab.",
+        source: "latest",
+        limit: 6,
+        layout: "cards",
+        showViewAll: true,
+        viewAllCta: {
+            label: "View all news",
+            linkType: "internal",
+            internalRoute: "/news",
+        },
+    },
+    {
         _key: "home-join-current",
         _type: "joinSection",
         settings: {
@@ -97,29 +120,6 @@ export const defaultHomeBuilderSections = [
         showYear: true,
         showAuthors: true,
         showPaperLink: true,
-    },
-    {
-        _key: "home-news-current",
-        _type: "newsSection",
-        settings: {
-            enabled: true,
-            background: "light",
-            contentWidth: "wide",
-            spacingTop: "large",
-            spacingBottom: "large",
-            anchorId: "news",
-        },
-        title: defaultHomePageSettings.latestTitle,
-        subtitle: "Latest updates from SPELL Lab.",
-        source: "latest",
-        limit: 3,
-        layout: "cards",
-        showViewAll: true,
-        viewAllCta: {
-            label: "View all news",
-            linkType: "internal",
-            internalRoute: "/news",
-        },
     },
 ]
 

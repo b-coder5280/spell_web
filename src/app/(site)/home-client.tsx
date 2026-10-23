@@ -1,7 +1,6 @@
 "use client"
 
 import { Recruitment } from "@/components/home/recruitment"
-import { StudentGrowth } from "@/components/home/student-growth"
 import { Hero, HeroActions } from "@/components/home/hero"
 import { IntroVideo } from "@/components/home/intro-video"
 import { Container } from "@/components/ui/container"
@@ -80,7 +79,10 @@ export default function HomeClient({ opening, featuredPubs, latestNews = [], hom
         if (emblaApi) emblaApi.scrollNext()
     }, [emblaApi])
 
-    const visibleNews = latestNews.filter((item) => item.title).slice(0, 3)
+    const visibleNews = latestNews
+        .filter((item) => item.title)
+        .sort((a, b) => (b.date || "").localeCompare(a.date || ""))
+        .slice(0, 6)
 
     return (
         <div className="flex flex-col gap-8 pb-12">
@@ -89,13 +91,83 @@ export default function HomeClient({ opening, featuredPubs, latestNews = [], hom
                 <IntroVideo><HeroActions settings={homePage} /></IntroVideo>
             </div>
 
+            {/* Latest News Section */}
+            <Container>
+                <ScrollReveal className="w-full">
+                    <div className="min-h-[350px] rounded-3xl border border-slate-200 bg-white/50 p-6 shadow-sm backdrop-blur-md sm:p-8 md:p-10">
+                        <SectionTitle title={homePage.latestTitle} align="center" />
+                        {visibleNews.length > 0 ? (
+                            <>
+                                <div className="grid gap-5 md:grid-cols-3">
+                                    {visibleNews.map((item, index) => {
+                                        const imageUrl = item.imageUrl || item.image
+
+                                        return (
+                                            <Link
+                                                key={item._id || `${item.title}-${index}`}
+                                                href="/news"
+                                                className="group flex h-full min-h-[360px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
+                                            >
+                                                <div className="flex h-48 shrink-0 items-center justify-center border-b border-slate-100 bg-slate-50 p-5">
+                                                    {imageUrl ? (
+                                                        <img
+                                                            src={imageUrl}
+                                                            alt={item.title || "News image"}
+                                                            className="max-h-full w-auto max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                                                            loading={index === 0 ? "eager" : "lazy"}
+                                                            decoding="async"
+                                                        />
+                                                    ) : (
+                                                        <div className="flex h-full w-full items-center justify-center text-slate-400">
+                                                            <Newspaper className="h-8 w-8" />
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                <div className="flex flex-1 flex-col p-5">
+                                                    <div className="mb-3 flex flex-wrap items-center gap-2 text-xs font-medium text-muted-foreground">
+                                                        {item.date && (
+                                                            <span className="inline-flex items-center gap-1">
+                                                                <Calendar className="h-3.5 w-3.5" />
+                                                                {item.date}
+                                                            </span>
+                                                        )}
+                                                        {item.category && item.category !== "General" && (
+                                                            <span className="rounded-full bg-blue-50 px-2 py-0.5 text-blue-700">{item.category}</span>
+                                                        )}
+                                                    </div>
+                                                    <h3 className="line-clamp-3 text-base font-bold leading-snug text-slate-950 transition-colors group-hover:text-blue-700">
+                                                        {item.title}
+                                                    </h3>
+                                                    {item.description && (
+                                                        <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-muted-foreground">
+                                                            {item.description}
+                                                        </p>
+                                                    )}
+                                                </div>
+                                            </Link>
+                                        )
+                                    })}
+                                </div>
+                                <div className="mt-8 flex justify-center">
+                                    <Button variant="outline" asChild>
+                                        <Link href="/news">View all news</Link>
+                                    </Button>
+                                </div>
+                            </>
+                        ) : (
+                            <div className="flex min-h-[160px] items-center justify-center text-center text-muted-foreground">
+                                {homePage.latestPlaceholder}
+                            </div>
+                        )}
+                    </div>
+                </ScrollReveal>
+            </Container>
+
             <Container>
                 <ScrollReveal>
                     <Recruitment homePage={homePage} researchAreas={opening.researchAreas} eligibility={opening.eligibility} />
                 </ScrollReveal>
             </Container>
-
-            <StudentGrowth />
 
             {/* Selected Publication Section */}
             {featuredPubs.length > 0 && (
@@ -196,78 +268,6 @@ export default function HomeClient({ opening, featuredPubs, latestNews = [], hom
                     </ScrollReveal>
                 </Container>
             )}
-
-            {/* Quick News Demo */}
-            <Container>
-                <ScrollReveal className="w-full">
-                    <div className="min-h-[350px] rounded-3xl border border-slate-200 bg-white/50 p-6 shadow-sm backdrop-blur-md sm:p-8 md:p-10">
-                        <SectionTitle title={homePage.latestTitle} align="center" />
-                        {visibleNews.length > 0 ? (
-                            <>
-                                <div className="grid gap-5 md:grid-cols-3">
-                                    {visibleNews.map((item, index) => {
-                                        const imageUrl = item.imageUrl || item.image
-
-                                        return (
-                                            <Link
-                                                key={item._id || `${item.title}-${index}`}
-                                                href="/news"
-                                                className="group flex h-full min-h-[360px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
-                                            >
-                                                <div className="flex h-48 shrink-0 items-center justify-center border-b border-slate-100 bg-slate-50 p-5">
-                                                    {imageUrl ? (
-                                                        <img
-                                                            src={imageUrl}
-                                                            alt={item.title || "News image"}
-                                                            className="max-h-full w-auto max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
-                                                            loading={index === 0 ? "eager" : "lazy"}
-                                                            decoding="async"
-                                                        />
-                                                    ) : (
-                                                        <div className="flex h-full w-full items-center justify-center text-slate-400">
-                                                            <Newspaper className="h-8 w-8" />
-                                                        </div>
-                                                    )}
-                                                </div>
-                                                <div className="flex flex-1 flex-col p-5">
-                                                    <div className="mb-3 flex flex-wrap items-center gap-2 text-xs font-medium text-muted-foreground">
-                                                        {item.date && (
-                                                            <span className="inline-flex items-center gap-1">
-                                                                <Calendar className="h-3.5 w-3.5" />
-                                                                {item.date}
-                                                            </span>
-                                                        )}
-                                                        {item.category && item.category !== "General" && (
-                                                            <span className="rounded-full bg-blue-50 px-2 py-0.5 text-blue-700">{item.category}</span>
-                                                        )}
-                                                    </div>
-                                                    <h3 className="line-clamp-3 text-base font-bold leading-snug text-slate-950 transition-colors group-hover:text-blue-700">
-                                                        {item.title}
-                                                    </h3>
-                                                    {item.description && (
-                                                        <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-muted-foreground">
-                                                            {item.description}
-                                                        </p>
-                                                    )}
-                                                </div>
-                                            </Link>
-                                        )
-                                    })}
-                                </div>
-                                <div className="mt-8 flex justify-center">
-                                    <Button variant="outline" asChild>
-                                        <Link href="/news">View all news</Link>
-                                    </Button>
-                                </div>
-                            </>
-                        ) : (
-                            <div className="flex min-h-[160px] items-center justify-center text-center text-muted-foreground">
-                                {homePage.latestPlaceholder}
-                            </div>
-                        )}
-                    </div>
-                </ScrollReveal>
-            </Container>
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import { client } from "@/sanity/lib/client"
+import { readToken } from "@/sanity/lib/token"
 import { draftMode } from "next/headers"
 import { homePageBuilderQuery } from "@/sanity/lib/queries";
 import { defaultHomePageSettings, HomePageSettings, withDefaults } from "@/lib/site-content";
@@ -28,9 +29,9 @@ export default async function Home() {
 
   try {
     const draft = await draftMode()
-    const sanityClient = draft.isEnabled && process.env.SANITY_API_READ_TOKEN
+    const sanityClient = draft.isEnabled && readToken
       ? client.withConfig({
-        token: process.env.SANITY_API_READ_TOKEN,
+        token: readToken,
         useCdn: false,
         perspective: "drafts",
         stega: {
@@ -51,13 +52,21 @@ export default async function Home() {
   const homeSections = data?.homePage?.sections?.filter(
     (section) => section._type !== "researchSection"
   )
-  const filteredHomePage = data?.homePage ? { ...data.homePage, sections: homeSections } : data?.homePage
+  const orderedHomeSections = homeSections && [
+    ...homeSections.filter((section) => section._type === "heroSection"),
+    ...homeSections
+      .filter((section) => section._type === "newsSection")
+      .map((section) => ({ ...section, source: "latest", limit: 6, categoryFilter: "" })),
+    ...homeSections.filter((section) => section._type === "joinSection"),
+    ...homeSections.filter((section) => !["heroSection", "newsSection", "joinSection"].includes(section._type || "")),
+  ]
+  const filteredHomePage = data?.homePage ? { ...data.homePage, sections: orderedHomeSections } : data?.homePage
 
   if (hasValidPageBuilderHome(filteredHomePage)) {
     return (
       <PageBuilder
         introVideoAfterHero
-        sections={homeSections}
+        sections={orderedHomeSections}
         collections={{
           opening: data?.opening,
           latestPublications: data?.latestPublications,

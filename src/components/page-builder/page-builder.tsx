@@ -3,7 +3,6 @@
 import Link from "next/link"
 import { IntroVideo } from "@/components/home/intro-video"
 import { Recruitment } from "@/components/home/recruitment"
-import { StudentGrowth } from "@/components/home/student-growth"
 import React from "react"
 import { ArrowRight, Calendar, ExternalLink, Mail, Newspaper } from "lucide-react"
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types"
@@ -452,12 +451,9 @@ function ResearchSection({ section, collections }: SectionRendererProps) {
 
 function JoinSection({ section, collections }: SectionRendererProps) {
     return (
-        <>
-            <SectionShell settings={section.settings}>
-                <Recruitment researchAreas={collections.opening?.researchAreas} eligibility={collections.opening?.eligibility} />
-            </SectionShell>
-            <StudentGrowth />
-        </>
+        <SectionShell settings={section.settings}>
+            <Recruitment researchAreas={collections.opening?.researchAreas} eligibility={collections.opening?.eligibility} />
+        </SectionShell>
     )
 }
 

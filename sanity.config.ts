@@ -17,6 +17,8 @@ import {schema} from './src/sanity/schemaTypes'
 import {structure} from './src/sanity/structure'
 
 export default defineConfig({
+  name: 'spell',
+  title: 'SPELL Website Content',
   basePath: '/studio',
   projectId,
   dataset,

@@ -9,9 +9,10 @@ This builder is intentionally default-off. Deploying the code does not change th
 3. Confirm `Enable Page Builder on Public Home` is off.
 4. Add sections in the current homepage order:
    - Hero
+   - News (latest 6)
    - Join Our Lab
    - Publications
-   - News, Text, CTA, or other sections as needed
+   - Text, CTA, or other sections as needed
 5. Use the `current` layout preset where available to stay closest to production.
 6. Reuse existing content documents for Publications, News, Gallery, Members, and Research.
 7. Save or publish the Home Page document while leaving `Enable Page Builder on Public Home` off.
