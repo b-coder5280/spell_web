@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { defaultGalleryPageSettings } from '../../lib/site-content'
+import { GalleryGifInput } from '../components/gallery-gif-input'
 
 export const galleryPageType = defineType({
     name: 'galleryPage',
@@ -8,8 +9,8 @@ export const galleryPageType = defineType({
     initialValue: defaultGalleryPageSettings,
     fields: [
         defineField({ name: 'eyebrow', title: 'Small Heading', type: 'string' }),
-        defineField({ name: 'title', title: 'Page Title', type: 'string' }),
-        defineField({ name: 'description', title: 'Page Description', type: 'text' }),
+        defineField({ name: 'title', title: 'Page Title', type: 'string', components: { input: GalleryGifInput } }),
+        defineField({ name: 'description', title: 'Page Description', type: 'text', components: { input: GalleryGifInput } }),
         defineField({ name: 'albumsLabel', title: 'Albums Count Label', type: 'string' }),
         defineField({ name: 'viewAlbumLabel', title: 'View Album Button Label', type: 'string' }),
         defineField({ name: 'noImageLabel', title: 'No Image Label', type: 'string' }),

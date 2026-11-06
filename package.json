@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:page-builder": "jiti scripts/page-builder-smoke-tests.ts",
+    "test:gallery-text": "jiti scripts/gallery-text-smoke-tests.ts",
     "check:sanity": "node scripts/check-sanity.mjs",
     "sync:sanity-singletons": "jiti scripts/sync-singletons.ts"
   },

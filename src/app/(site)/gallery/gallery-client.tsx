@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import { X, Calendar, Camera, ChevronLeft, ChevronRight, Images } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { defaultGalleryPageSettings, GalleryPageSettings } from "@/lib/site-content"
+import { GalleryText } from "@/components/gallery/gallery-text"
+import { galleryPlainText } from "@/lib/gallery-text"
 
 export type GalleryItemModel = {
     _id: string
@@ -61,9 +63,9 @@ export function GalleryClient({ initialStoryId, galleryItems, page = defaultGall
                                 </div>
                                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-blue-600">{page.eyebrow}</p>
                             </div>
-                            <h1 className="text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl">{page.title}</h1>
+                            <h1 className="text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl"><GalleryText value={page.title} /></h1>
                             <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                                {page.description}
+                                <GalleryText value={page.description} />
                             </p>
                         </div>
                         <div className="flex w-fit shrink-0 items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 shadow-sm">
@@ -91,7 +93,7 @@ export function GalleryClient({ initialStoryId, galleryItems, page = defaultGall
                                             {item.images && item.images.length > 0 ? (
                                                 <img
                                                     src={item.images[getImageIndex(item)]}
-                                                    alt={item.title}
+                                                    alt={galleryPlainText(item.title)}
                                                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                                                     loading={index < 3 ? "eager" : "lazy"}
                                                     decoding="async"
@@ -161,12 +163,12 @@ export function GalleryClient({ initialStoryId, galleryItems, page = defaultGall
                                             layoutId={`gallery-title-${item._id}`}
                                             className="text-xl font-extrabold leading-tight tracking-tight text-slate-800 transition-colors group-hover/title:text-blue-600 sm:text-2xl"
                                         >
-                                            {item.title}
+                                            <GalleryText value={item.title} />
                                         </motion.h2>
                                     </button>
                                     {item.description && (
                                         <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-slate-600">
-                                            {item.description}
+                                            <GalleryText value={item.description} />
                                         </p>
                                     )}
                                     <div className="mt-auto flex justify-start pt-8">
@@ -210,7 +212,7 @@ export function GalleryClient({ initialStoryId, galleryItems, page = defaultGall
                                     <motion.div
                                         layoutId={`gallery-card-${item._id}`}
                                         key={item._id}
-                                        className="pointer-events-auto relative flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl"
+                                        className="pointer-events-auto relative flex max-h-[92vh] w-full max-w-5xl flex-col overflow-y-auto rounded-3xl border border-slate-200 bg-white shadow-2xl"
                                     >
                                         <div className="relative flex w-full shrink-0 flex-col bg-white">
                                             <Button
@@ -226,7 +228,7 @@ export function GalleryClient({ initialStoryId, galleryItems, page = defaultGall
                                                 {item.images && item.images.length > 0 ? (
                                                     <img
                                                         src={item.images[getImageIndex(item)]}
-                                                        alt={item.title}
+                                                        alt={galleryPlainText(item.title)}
                                                         className="max-h-[68vh] w-auto max-w-full object-contain"
                                                     />
                                                 ) : (
@@ -262,11 +264,11 @@ export function GalleryClient({ initialStoryId, galleryItems, page = defaultGall
                                                     layoutId={`gallery-title-${item._id}`}
                                                     className="text-center text-xl font-bold text-foreground sm:text-2xl"
                                                 >
-                                                    {item.title}
+                                                    <GalleryText value={item.title} />
                                                 </motion.h2>
                                                 {item.description && (
                                                     <p className="max-w-2xl whitespace-pre-line text-center text-sm leading-relaxed text-muted-foreground">
-                                                        {item.description}
+                                                        <GalleryText value={item.description} />
                                                     </p>
                                                 )}
                                                 {imageCount(item) > 1 && (

@@ -8,6 +8,8 @@ import { ArrowRight, Calendar, ExternalLink, Mail, Newspaper } from "lucide-reac
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types"
 
 import { Container } from "@/components/ui/container"
+import { GalleryText } from "@/components/gallery/gallery-text"
+import { galleryPlainText } from "@/lib/gallery-text"
 import { cn } from "@/lib/utils"
 import {
     CmsLink,
@@ -537,10 +539,10 @@ function GallerySection({ section, collections }: SectionRendererProps) {
                     return (
                         <article key={item._id || item.title} className={cn("min-w-0 overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm", layout === "featuredGrid" && index === 0 && "md:col-span-2 md:row-span-2")}>
                             <div className={cn("bg-slate-100", layout === "strip" ? "aspect-[4/3]" : "aspect-square")}>
-                                {image ? <img src={image} alt={item.title || "Gallery image"} className="h-full w-full object-cover" loading="lazy" /> : <div className="flex h-full items-center justify-center text-sm text-muted-foreground">No image</div>}
+                                {image ? <img src={image} alt={galleryPlainText(item.title || "Gallery image")} className="h-full w-full object-cover" loading="lazy" /> : <div className="flex h-full items-center justify-center text-sm text-muted-foreground">No image</div>}
                             </div>
                             <div className="p-4">
-                                <h3 className="font-semibold leading-tight text-slate-950">{item.title}</h3>
+                                <h3 className="font-semibold leading-tight text-slate-950"><GalleryText value={item.title || ''} /></h3>
                                 {item.date && <p className="mt-1 text-sm text-muted-foreground">{item.date}</p>}
                             </div>
                         </article>
