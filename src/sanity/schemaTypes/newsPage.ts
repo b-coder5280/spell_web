@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { defaultNewsPageSettings } from '../../lib/site-content'
+import { FormattedTextInput } from '../components/gallery-gif-input'
 
 export const newsPageType = defineType({
     name: 'newsPage',
@@ -7,8 +8,8 @@ export const newsPageType = defineType({
     type: 'document',
     initialValue: defaultNewsPageSettings,
     fields: [
-        defineField({ name: 'title', title: 'Page Title', type: 'string' }),
-        defineField({ name: 'subtitle', title: 'Page Subtitle', type: 'text' }),
+        defineField({ name: 'title', title: 'Page Title', type: 'string', components: { input: FormattedTextInput } }),
+        defineField({ name: 'subtitle', title: 'Page Subtitle', type: 'text', components: { input: FormattedTextInput } }),
         defineField({
             name: 'filters',
             title: 'Filter Buttons',

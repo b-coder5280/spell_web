@@ -7,6 +7,8 @@ import { X, Calendar, Tag, Newspaper } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { EmblaCarousel } from "@/components/ui/embla-carousel"
 import { defaultNewsPageSettings, NewsPageSettings } from "@/lib/site-content"
+import { GalleryText } from "@/components/gallery/gallery-text"
+import { galleryPlainText } from "@/lib/gallery-text"
 
 export type NewsItemModel = {
     _id: string
@@ -60,10 +62,10 @@ export function NewsClient({ initialStoryId, newsItems, page = defaultNewsPageSe
                             <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
                                 <Newspaper className="h-5 w-5 text-primary" />
                             </div>
-                            <h1 className="text-4xl font-extrabold tracking-tight">{page.title}</h1>
+                            <h1 className="text-4xl font-extrabold tracking-tight"><GalleryText value={page.title} /></h1>
                         </div>
                         <p className="mt-2 text-muted-foreground text-lg">
-                            {page.subtitle}
+                            <GalleryText value={page.subtitle} />
                         </p>
                     </div>
 
@@ -109,7 +111,7 @@ export function NewsClient({ initialStoryId, newsItems, page = defaultNewsPageSe
                                         {item.image ? (
                                             <img
                                                 src={item.image}
-                                                alt={item.title}
+                                                alt={galleryPlainText(item.title)}
                                                 className="h-full w-full object-cover aspect-[4/3] md:aspect-auto md:min-h-[280px] transition-transform duration-700 ease-out group-hover:scale-105"
                                             />
                                         ) : (
@@ -142,13 +144,13 @@ export function NewsClient({ initialStoryId, newsItems, page = defaultNewsPageSe
                                             layoutId={`news-title-${item._id}`}
                                             className="text-xl md:text-2xl font-bold leading-tight tracking-tight group-hover:text-primary transition-colors duration-300"
                                         >
-                                            {item.title}
+                                            <GalleryText value={item.title} />
                                         </motion.h3>
 
                                         {/* Description preview */}
                                         {item.description && (
                                             <p className="line-clamp-2 whitespace-pre-line text-sm leading-relaxed text-muted-foreground/80">
-                                                {item.description}
+                                                <GalleryText value={item.description} />
                                             </p>
                                         )}
 
@@ -220,7 +222,7 @@ export function NewsClient({ initialStoryId, newsItems, page = defaultNewsPageSe
                                                         {item.image ? (
                                                             <motion.img
                                                                 src={item.image}
-                                                                alt={item.title}
+                                                                alt={galleryPlainText(item.title)}
                                                                 className="w-auto h-auto max-w-full max-h-[60vh] object-contain mx-auto"
                                                             />
                                                         ) : (
@@ -251,12 +253,12 @@ export function NewsClient({ initialStoryId, newsItems, page = defaultNewsPageSe
                                                     layoutId={`news-title-${item._id}`}
                                                     className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-950"
                                                 >
-                                                    {item.title}
+                                                    <GalleryText value={item.title} />
                                                 </motion.h2>
                                             </div>
                                             <div className="max-w-none border-t border-slate-200 pt-6 text-slate-700">
                                                 {item.description ? (
-                                                    <p className="whitespace-pre-line leading-relaxed">{item.description}</p>
+                                                    <p className="whitespace-pre-line leading-relaxed"><GalleryText value={item.description} /></p>
                                                 ) : (
                                                     <p className="italic text-slate-500">{page.noDetailsLabel}</p>
                                                 )}

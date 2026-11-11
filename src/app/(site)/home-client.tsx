@@ -1,5 +1,8 @@
 "use client"
 
+import { GalleryText } from "@/components/gallery/gallery-text"
+import { galleryPlainText } from "@/lib/gallery-text"
+
 import { Recruitment } from "@/components/home/recruitment"
 import { Hero, HeroActions } from "@/components/home/hero"
 import { IntroVideo } from "@/components/home/intro-video"
@@ -112,7 +115,7 @@ export default function HomeClient({ opening, featuredPubs, latestNews = [], hom
                                                     {imageUrl ? (
                                                         <img
                                                             src={imageUrl}
-                                                            alt={item.title || "News image"}
+                                                            alt={galleryPlainText(item.title || "News image")}
                                                             className="max-h-full w-auto max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
                                                             loading={index === 0 ? "eager" : "lazy"}
                                                             decoding="async"
@@ -136,11 +139,11 @@ export default function HomeClient({ opening, featuredPubs, latestNews = [], hom
                                                         )}
                                                     </div>
                                                     <h3 className="line-clamp-3 text-base font-bold leading-snug text-slate-950 transition-colors group-hover:text-blue-700">
-                                                        {item.title}
+                                                        <GalleryText value={item.title || ''} />
                                                     </h3>
                                                     {item.description && (
                                                         <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-muted-foreground">
-                                                            {item.description}
+                                                            <GalleryText value={item.description} />
                                                         </p>
                                                     )}
                                                 </div>

@@ -1,4 +1,6 @@
 import { defineField, defineType } from 'sanity'
+import { FormattedTextInput } from '../components/gallery-gif-input'
+import { galleryPlainText } from '../../lib/gallery-text'
 
 export const newsType = defineType({
     name: 'news',
@@ -9,6 +11,7 @@ export const newsType = defineType({
             name: 'title',
             title: 'Title',
             type: 'string',
+            components: { input: FormattedTextInput },
             validation: (Rule) => Rule.required(),
         }),
         defineField({
@@ -40,6 +43,13 @@ export const newsType = defineType({
             name: 'description',
             title: 'Description',
             type: 'text',
+            components: { input: FormattedTextInput },
         }),
     ],
+    preview: {
+        select: { title: 'title', media: 'image' },
+        prepare({ title, media }) {
+            return { title: galleryPlainText(title || ''), media }
+        },
+    },
 })

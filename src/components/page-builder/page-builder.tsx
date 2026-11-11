@@ -507,14 +507,14 @@ function NewsSection({ section, collections }: SectionRendererProps) {
             <div className={cn(layout === "list" ? "space-y-4" : "grid gap-5 md:grid-cols-2 lg:grid-cols-3")}>
                 {items.map((item) => (
                     <article key={item._id || item.title} className="min-w-0 rounded-md border border-slate-200 bg-white shadow-sm">
-                        {layout !== "list" && (item.imageUrl || item.image) && <img src={item.imageUrl || item.image} alt={item.title || "News image"} className="aspect-[16/10] w-full rounded-t-md object-cover" loading="lazy" />}
+                        {layout !== "list" && (item.imageUrl || item.image) && <img src={item.imageUrl || item.image} alt={galleryPlainText(item.title || "News image")} className="aspect-[16/10] w-full rounded-t-md object-cover" loading="lazy" />}
                         <div className="p-5">
                             <div className="mb-3 flex flex-wrap items-center gap-3 text-xs font-medium text-muted-foreground">
                                 {item.date && <span className="inline-flex items-center gap-1"><Calendar className="h-3.5 w-3.5" />{item.date}</span>}
                                 {item.category && <span className="rounded-full bg-blue-50 px-2 py-0.5 text-blue-700">{item.category}</span>}
                             </div>
-                            <h3 className="text-lg font-bold leading-tight text-slate-950">{item.title}</h3>
-                            {layout !== "compact" && item.description && <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-muted-foreground">{item.description}</p>}
+                            <h3 className="text-lg font-bold leading-tight text-slate-950"><GalleryText value={item.title || ''} /></h3>
+                            {layout !== "compact" && item.description && <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-muted-foreground"><GalleryText value={item.description} /></p>}
                         </div>
                     </article>
                 ))}

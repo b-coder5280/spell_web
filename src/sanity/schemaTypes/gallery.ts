@@ -11,7 +11,7 @@ export const galleryType = defineType({
             name: 'title',
             title: 'Title',
             type: 'string',
-            description: '제목에 GIF를 붙여넣거나 아래 GIF 업로드 / GIF 링크 버튼으로 삽입하세요.',
+            description: '글자를 선택해 굵게·글자색을 바꾸거나 GIF 업로드 / GIF 링크로 GIF를 삽입하세요.',
             components: { input: GalleryGifInput },
             validation: (Rule) => Rule.required(),
         }),
@@ -25,7 +25,7 @@ export const galleryType = defineType({
             name: 'description',
             title: 'Description',
             type: 'text',
-            description: '글 사이에 GIF를 넣을 수 있어요. 편집 후 Publish하면 갤러리에 반영됩니다.',
+            description: '글자를 선택해 굵게·글자색을 바꾸고 글 사이에 GIF를 넣을 수 있어요. 편집 후 Publish하면 반영됩니다.',
             components: { input: GalleryGifInput },
         }),
         defineField({
